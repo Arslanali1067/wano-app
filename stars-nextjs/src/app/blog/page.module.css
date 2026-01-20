@@ -1,0 +1,15 @@
+.blogHeader {
+  text-align: center;
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.blogHeader h1 {
+  margin-bottom: 16px;
+}
+
+.blogHeader p {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}

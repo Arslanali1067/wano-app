@@ -1,0 +1,131 @@
+.footer {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.footerWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-right: 90px;
+}
+
+.footerBrand {
+  max-width: 310px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footerBrandImage {
+  width: 100px;
+  height: auto;
+}
+
+.footerParagraphHolder p {
+  color: #7d7d7d;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.footerContent {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 80px;
+}
+
+.footerBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.titleSmall {
+  color: #fff;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  font-family: 'Instrument Serif', serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.footerLink {
+  color: #7d7d7d;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerLink:hover {
+  color: #fff;
+}
+
+.footerDivider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px;
+  padding-top: 40px;
+  border-top: 1px solid #414142;
+}
+
+.footerCopyright {
+  color: #7d7d7d;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+}
+
+.whiteLink {
+  color: #fff;
+  text-decoration: underline;
+  transition: color 0.375s;
+}
+
+.whiteLink:hover {
+  color: #a1a1a1;
+}
+
+/* Responsive */
+@media screen and (max-width: 991px) {
+  .footerContent {
+    gap: 60px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .footerWrapper {
+    text-align: left;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 0;
+  }
+
+  .footerContent {
+    text-align: left;
+    grid-template-columns: 1fr;
+    margin-top: 40px;
+  }
+
+  .footerBlock {
+    text-align: left;
+    align-items: flex-start;
+  }
+
+  .footerDivider {
+    margin-top: 60px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .footerDivider {
+    gap: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 20px;
+    padding-top: 20px;
+  }
+}

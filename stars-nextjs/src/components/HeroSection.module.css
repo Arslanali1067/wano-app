@@ -1,0 +1,308 @@
+.heroSection {
+  overflow: visible;
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+
+.heroSectionHolder {
+  z-index: 2;
+  position: relative;
+}
+
+.heroSectionContainer {
+  gap: 30px;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.heroSectionHeaderHolder {
+  max-width: 870px;
+  gap: 9px;
+  perspective: 1500px;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.heroSectionParagraphHolder {
+  max-width: 430px;
+}
+
+.heroSectionButtonHolder {
+  gap: 16px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Phone Mockups */
+.heroSectionPhoneHolder {
+  position: relative;
+  margin-top: 100px;
+}
+
+.heroSectionPhoneContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.heroPhone {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.heroPhoneHolder {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.phone01 {
+  width: 360px;
+  z-index: 3;
+}
+
+.phone02 {
+  position: absolute;
+  right: 15%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.phone02Holder {
+  width: 280px;
+}
+
+.phone03 {
+  position: absolute;
+  left: 15%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.phone03Holder {
+  width: 280px;
+}
+
+.phoneBase {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  z-index: 1;
+}
+
+.phoneScreen {
+  position: relative;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.phoneScreenImg {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+}
+
+.appImage {
+  position: relative;
+  width: 85%;
+  height: auto;
+  border-radius: 20px;
+  z-index: 3;
+}
+
+/* Glow Effect */
+.glow {
+  width: 1200px;
+  height: 600px;
+  background-image: radial-gradient(circle farthest-corner at 50% 50%, rgba(245, 204, 7, 0.8), rgba(245, 204, 7, 0) 70%);
+  opacity: 0.12;
+  filter: blur(100px);
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.heroGlow {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Animations */
+.animateText {
+  opacity: 0;
+  transform: translateY(30px) rotateX(90deg) skewX(15deg);
+  transform-style: preserve-3d;
+}
+
+.animateText.visible {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.animateFadeIn {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.animateFadeIn.visible {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.animatePhoneCenter {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.animatePhoneCenter.visible {
+  animation: slideInCenter 0.8s ease forwards;
+}
+
+.animatePhoneRight {
+  opacity: 0;
+  transform: translateX(70px);
+}
+
+.animatePhoneRight.visible {
+  animation: slideInRight 0.8s ease forwards;
+}
+
+.animatePhoneLeft {
+  opacity: 0;
+  transform: translateX(-70px);
+}
+
+.animatePhoneLeft.visible {
+  animation: slideInLeft 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) rotateX(90deg) skewX(15deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0) skewX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInCenter {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-70px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .heroSectionHeaderHolder {
+    max-width: 430px;
+  }
+
+  .phone01 {
+    width: 300px;
+  }
+
+  .phone02Holder,
+  .phone03Holder {
+    width: 200px;
+  }
+
+  .phone02 {
+    right: 5%;
+  }
+
+  .phone03 {
+    left: 5%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .heroSectionPhoneHolder {
+    margin-top: 80px;
+  }
+
+  .phone01 {
+    width: 240px;
+  }
+
+  .phone02,
+  .phone03 {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .heroSection {
+    padding-top: 5px;
+  }
+
+  .heroSectionContainer {
+    gap: 20px;
+  }
+
+  .heroSectionButtonHolder {
+    width: 100%;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .heroSectionPhoneHolder {
+    margin-top: 60px;
+  }
+
+  .phone01 {
+    width: 200px;
+  }
+}

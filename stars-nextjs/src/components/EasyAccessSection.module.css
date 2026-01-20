@@ -1,0 +1,196 @@
+.easyAccessSection {
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.divider {
+  height: 1px;
+  background-color: #232329;
+  margin-bottom: 60px;
+}
+
+/* Grid Layout */
+.easyAccessGrid {
+  grid-column-gap: 80px;
+  grid-row-gap: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+/* Image Side */
+.easyAccessImageHolder {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.easyAccessHeading {
+  color: #fff;
+  font-family: 'Instrument Serif', serif;
+  font-size: 64px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.listImageHolder {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.listBackground {
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.listImage {
+  position: relative;
+  z-index: 2;
+  border-radius: 12px;
+  object-fit: cover;
+  max-width: 80%;
+  height: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Content Side */
+.listContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.listContentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* List Items */
+.list {
+  margin-top: 10px;
+}
+
+.listUnstyled {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.listItem:last-child {
+  border-bottom: none;
+}
+
+.listCheck {
+  width: 28px;
+  height: 28px;
+  background-color: rgba(245, 204, 7, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.listCheckIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.listParagraph {
+  color: #a1a1a1;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  margin: 0;
+}
+
+/* Button */
+.listButtonHolder {
+  margin-top: 40px;
+}
+
+/* Animations */
+.fadeIn {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.fadeIn.visible {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media screen and (min-width: 1440px) {
+  .easyAccessHeading {
+    font-size: 80px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .easyAccessGrid {
+    grid-column-gap: 50px;
+  }
+
+  .easyAccessHeading {
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .easyAccessGrid {
+    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .listImageHolder {
+    min-height: 300px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .easyAccessSection {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .divider {
+    margin-bottom: 40px;
+  }
+
+  .easyAccessHeading {
+    font-size: 40px;
+  }
+
+  .listImageHolder {
+    min-height: 250px;
+    border-radius: 12px;
+  }
+}

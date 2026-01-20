@@ -1,0 +1,209 @@
+.navbar {
+  z-index: 20;
+  background-color: transparent;
+  padding-top: 32px;
+  position: sticky;
+  top: 0;
+}
+
+.navbarContainer {
+  height: 70px;
+  backdrop-filter: blur(21px);
+  background-color: rgba(71, 71, 71, 0.4);
+  border-radius: 8px;
+  align-items: center;
+  padding: 0 2em;
+  display: flex;
+}
+
+.navbarHolder {
+  width: 100%;
+  height: 100%;
+}
+
+.navbarInner {
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.brand {
+  width: 100px;
+  max-width: 90px;
+  display: flex;
+  align-items: center;
+}
+
+.brandImage {
+  width: 100%;
+  height: auto;
+}
+
+.navMenu {
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.navMenuLinkHolder {
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.navMenuLinkContainer {
+  height: 100%;
+  flex: 1;
+  justify-content: flex-end;
+  padding-right: 30px;
+  display: flex;
+}
+
+.navLinks {
+  height: 100%;
+  gap: 40px;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+
+.navLink {
+  height: 100%;
+  color: #fff;
+  border-bottom: 3px solid transparent;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  transition: border-color 0.6s;
+  display: flex;
+}
+
+.navLink:hover {
+  border-bottom-color: #fff;
+  color: #fff;
+}
+
+.navMenuButtonHolder {
+  display: flex;
+  align-items: center;
+}
+
+.signInButton {
+  text-decoration: none;
+}
+
+.menuButton {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 13px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.menuIcon {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: #fff;
+  position: relative;
+}
+
+.menuIcon::before,
+.menuIcon::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background-color: #fff;
+  left: 0;
+}
+
+.menuIcon::before {
+  top: -8px;
+}
+
+.menuIcon::after {
+  bottom: -8px;
+}
+
+.menuButtonOpen {
+  background-color: var(--golden);
+}
+
+.menuButtonOpen .menuIcon,
+.menuButtonOpen .menuIcon::before,
+.menuButtonOpen .menuIcon::after {
+  background-color: #000;
+}
+
+@media screen and (max-width: 991px) {
+  .navbar {
+    padding: 12px;
+  }
+
+  .navbarContainer {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  .menuButton {
+    display: block;
+  }
+
+  .navMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #0d0d0d;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 0 0 8px 8px;
+    display: none;
+    margin-top: 12px;
+  }
+
+  .navMenuOpen {
+    display: flex;
+  }
+
+  .navMenuLinkHolder {
+    height: auto;
+    gap: 20px;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .navMenuLinkContainer {
+    height: auto;
+    padding-right: 0;
+  }
+
+  .navLinks {
+    height: auto;
+    gap: 20px;
+    flex-direction: column;
+  }
+
+  .navLink {
+    height: auto;
+    padding: 10px 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .brand {
+    width: 70px;
+    padding-left: 0;
+  }
+}
