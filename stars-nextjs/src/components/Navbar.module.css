@@ -30,8 +30,8 @@
 }
 
 .brand {
-  width: 100px;
-  max-width: 90px;
+  width: 140px;
+  max-width: 140px;
   display: flex;
   align-items: center;
 }
@@ -203,7 +203,13 @@
 
 @media screen and (max-width: 767px) {
   .brand {
-    width: 70px;
+    width: 120px;
     padding-left: 0;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .brand {
+    width: 110px;
   }
 }

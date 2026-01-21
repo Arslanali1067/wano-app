@@ -13,26 +13,32 @@ const images = {
   lyricsSvg: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/650859b42272bf8f15b09549_Lyrics.svg',
 }
 
-const checkItems = [
-  'Lorem ipsum dolor sit amet,',
-  'Consectetur adipiscing elit.',
-  'Mauris id nunc odio.',
-]
-
 const features = [
   {
-    title: 'Our app curates playlists tailored to your preferences',
-    description: 'Find Playlists on the Go" feature, your music journey becomes seamless and spontaneous. Whether you\'re commuting, working out, or simply relaxing at home, discover the perfect playlist for every moment.',
+    title: 'One Beat. Infinite Voices.',
+    description: 'From Kampala to Cape Town, New York to the Caribbean, and everywhere the diaspora calls home—Wano is the bridge. We are taking the rhythm, the humor, and the creativity of Afrocentric culture and sharing it with the globe. Whether you are remixing a beat, sharing a story in your native tongue, or just catching a vibe, Wano is where our voices echo loudest.',
     backgroundImage: images.background01,
     foregroundImage: images.listImage,
     imageFirst: false,
+    checkItems: [
+      "Connecting the continent to the diaspora, from Nairobi to New York.",
+      "Share the specific humor, beats, and energy that define our creativity.",
+      "Remix, create, and tell stories in the language that feels like home.",
+      "A stage built for us, where our stories echo loudest to the world.",
+    ],
   },
   {
-    title: 'Spark\'s "Lyrics on the Screen" feature.',
-    description: 'It\'s like having your own personal karaoke session, adding a whole new dimension to your music enjoyment. Let the lyrics guide you through the melody, and immerse yourself in the music like never before.',
+    title: 'Made for Us, By Us',
+    description: "Wano isn't just another video app—it's the first platform built to reflect Africa's true voice. We prioritize community over algorithms and culture over clicks. Here is how we do it:",
     backgroundImage: images.background02,
     foregroundImage: images.lyricsSvg,
     imageFirst: true,
+    checkItems: [
+      "Every feature is rooted in our tribes, languages, and traditions.",
+      "See what's trending in Lagos, Kigali, or your local neighborhood.",
+      "Creative tools designed to celebrate our specific rhythms and styles.",
+      "It's not about being perfect or going viral; it's about being seen, being real, and being proud.",
+    ],
   },
 ]
 
@@ -64,11 +70,11 @@ export default function ListFeaturesSection() {
           {/* Header */}
           <div className={styles.centerText}>
             <div className={`${styles.titleHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}>
-              <h2>Sing Along with Every Beat</h2>
+              <h2>Wano: The Pulse of Africa.</h2>
             </div>
             <div className={`${styles.paragraphHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: '0.1s' }}>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id nunc odio. Aliquam et tellus urna. Phasellus eget
+              The short-form video app born from Afrocentric culture, built for global connection. All people. All stories. All vibes.
               </p>
             </div>
           </div>
@@ -88,7 +94,7 @@ export default function ListFeaturesSection() {
                     </div>
                     <div className={styles.list}>
                       <ul className={styles.listUnstyled}>
-                        {checkItems.map((item, itemIndex) => (
+                        {feature.checkItems.map((item, itemIndex) => (
                           <li key={itemIndex}>
                             <div className={`${styles.listItem} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: `${0.4 + index * 0.3 + itemIndex * 0.1}s` }}>
                               <div className={styles.listCheck}>
@@ -110,7 +116,7 @@ export default function ListFeaturesSection() {
                 </div>
 
                 {/* Image */}
-                <div className={`${styles.listImageHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: `${0.5 + index * 0.3}s` }}>
+                <div className={styles.listImageHolder}>
                   <Image
                     src={feature.backgroundImage}
                     alt="Background"
@@ -120,9 +126,10 @@ export default function ListFeaturesSection() {
                   <Image
                     src={feature.foregroundImage}
                     alt={feature.title}
-                    width={600}
-                    height={400}
-                    className={styles.listImage}
+                    width={1692}
+                    height={768}
+                    className={`${styles.listImage} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}
+                    style={{ animationDelay: `${0.5 + index * 0.3}s` }}
                   />
                 </div>
               </div>

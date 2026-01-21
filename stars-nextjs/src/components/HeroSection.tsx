@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import styles from './HeroSection.module.css'
 
-const heroWords = ['Unleash', 'Your', 'Musical', 'Spark']
+const heroWords = ['Wano:', 'Africa', 'to the', 'World']
 
 // Original image URLs from HTML
 const images = {
@@ -67,14 +67,62 @@ export default function HeroSection() {
               className={`${styles.heroSectionParagraphHolder} ${styles.animateFadeIn} ${isVisible ? styles.visible : ''}`}
               style={{ animationDelay: '0.5s' }}
             >
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id nunc odio. Aliquam et tellus urna. Phasellus eget</p>
+              <p>A video app Born from Afrocentric culture, built for the world — all people, all stories, all vibes.</p>
             </div>
             <div 
               className={`${styles.heroSectionButtonHolder} ${styles.animateFadeIn} ${isVisible ? styles.visible : ''}`}
               style={{ animationDelay: '0.7s' }}
             >
-              <a href="#App" className="button">Download App</a>
-              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="button video">Watch Video</a>
+              {/* Google Play Store Badge */}
+              <a 
+                href="https://play.google.com/store" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className={styles.storeBadge}
+              >
+                <svg viewBox="0 0 180 54" className={styles.storeBadgeSvg}>
+                  <rect width="180" height="54" rx="8" fill="#000"/>
+                  <path d="M17.5 12.5L31.2 27l-13.7 14.5c-.4-.4-.7-1-.7-1.8V14.3c0-.8.3-1.4.7-1.8z" fill="url(#playGradient1)"/>
+                  <path d="M35.2 23l-4-4-13.7 8 13.7 8 4-4c1.1-.6 1.8-1.8 1.8-3s-.7-2.4-1.8-3z" fill="url(#playGradient2)"/>
+                  <path d="M17.5 41.5L31.2 27l4 4-15.9 9.2c-.6.3-1.2.4-1.8.3z" fill="url(#playGradient3)"/>
+                  <path d="M17.5 12.5c.6-.1 1.2 0 1.8.3l15.9 9.2-4 4-13.7-13.5z" fill="url(#playGradient4)"/>
+                  <defs>
+                    <linearGradient id="playGradient1" x1="17" y1="12" x2="31" y2="27" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#00C3FF"/>
+                      <stop offset="1" stopColor="#00E0A0"/>
+                    </linearGradient>
+                    <linearGradient id="playGradient2" x1="31" y1="19" x2="37" y2="27" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#FFD700"/>
+                      <stop offset="1" stopColor="#FF9500"/>
+                    </linearGradient>
+                    <linearGradient id="playGradient3" x1="17" y1="41" x2="35" y2="27" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#FF3A44"/>
+                      <stop offset="1" stopColor="#FF6B6B"/>
+                    </linearGradient>
+                    <linearGradient id="playGradient4" x1="17" y1="12" x2="35" y2="27" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#00D26A"/>
+                      <stop offset="1" stopColor="#00E0A0"/>
+                    </linearGradient>
+                  </defs>
+                  <text x="48" y="22" fill="#fff" fontSize="9" fontFamily="sans-serif">GET IT ON</text>
+                  <text x="48" y="38" fill="#fff" fontSize="16" fontWeight="500" fontFamily="sans-serif">Google Play</text>
+                </svg>
+              </a>
+
+              {/* Apple App Store Badge */}
+              <a 
+                href="https://apps.apple.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className={styles.storeBadge}
+              >
+                <svg viewBox="0 0 180 54" className={styles.storeBadgeSvg}>
+                  <rect width="180" height="54" rx="8" fill="#000"/>
+                  <path d="M32.5 27.2c0-3.8 3.1-5.6 3.2-5.7-1.8-2.6-4.5-2.9-5.5-3-2.3-.2-4.6 1.4-5.8 1.4-1.2 0-3-1.4-5-1.3-2.5 0-4.9 1.5-6.2 3.8-2.7 4.6-.7 11.5 1.9 15.2 1.3 1.8 2.8 3.9 4.8 3.8 1.9-.1 2.7-1.2 5-1.2 2.3 0 3 1.2 5 1.2 2.1 0 3.4-1.9 4.6-3.7 1.5-2.1 2.1-4.2 2.1-4.3-.1 0-4-1.5-4.1-6.2zm-3.8-11.4c1.1-1.3 1.8-3.1 1.6-4.9-1.5.1-3.4 1-4.5 2.3-1 1.1-1.8 2.9-1.6 4.7 1.7.1 3.4-.9 4.5-2.1z" fill="#fff"/>
+                  <text x="48" y="22" fill="#fff" fontSize="9" fontFamily="sans-serif">Download on the</text>
+                  <text x="48" y="38" fill="#fff" fontSize="16" fontWeight="500" fontFamily="sans-serif">App Store</text>
+                </svg>
+              </a>
             </div>
           </div>
         </div>
@@ -187,6 +235,8 @@ export default function HeroSection() {
             </div>
           </div>
 
+          {/* Center Glow Effect */}
+          <div className={`${styles.glow} ${styles.heroGlow}`} />
         </div>
       </div>
     </section>

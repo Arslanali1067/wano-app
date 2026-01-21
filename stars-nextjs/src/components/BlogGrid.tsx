@@ -36,7 +36,7 @@ export default function BlogGrid({ posts, showHeader = true }: BlogGridProps) {
         {showHeader && (
           <div className={styles.centerText}>
             <div className={`${styles.titleHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}>
-              <h2>Spark Notes Explore the World of Music</h2>
+              <h2>Wano Notes Explore the World of Music</h2>
             </div>
             <div className={`${styles.paragraphHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: '0.1s' }}>
               <p>

@@ -3,24 +3,29 @@ import Image from 'next/image'
 import styles from './Footer.module.css'
 
 const companyLinks = [
-  { href: '#', label: 'What is Stars' },
-  { href: '#', label: 'Why Us' },
+  { href: '#', label: 'About Wano' },
+  { href: '#', label: 'Our Story' },
   { href: '/blog', label: 'Blog' },
-  { href: '#', label: 'Get App' },
+  { href: '#', label: 'Careers' },
 ]
 
 const socialLinks = [
   { href: 'https://instagram.com', label: 'Instagram' },
-  { href: 'https://fb.com', label: 'Facebook' },
-  { href: 'https://linkedin.com', label: 'Linkedin' },
-  { href: 'https://twitter.com', label: 'Twitter' },
+  { href: 'https://tiktok.com', label: 'TikTok' },
+  { href: 'https://twitter.com', label: 'X (Twitter)' },
+  { href: 'https://youtube.com', label: 'YouTube' },
 ]
 
-const webflowLinks = [
-  { href: '/template/style-guide', label: 'Style Guide' },
-  { href: '/template/licensing', label: 'Licensing' },
-  { href: '/template/instructions', label: 'Instructions' },
-  { href: '/template/change-log', label: 'Change Log' },
+const supportLinks = [
+  { href: '#', label: 'Help Center' },
+  { href: '#', label: 'Contact Us' },
+  { href: '#', label: 'Privacy Policy' },
+  { href: '#', label: 'Terms of Service' },
+]
+
+const downloadLinks = [
+  { href: 'https://apps.apple.com', label: 'App Store' },
+  { href: 'https://play.google.com', label: 'Google Play' },
 ]
 
 export default function Footer() {
@@ -30,14 +35,14 @@ export default function Footer() {
         <div className={styles.footerWrapper}>
           <Link href="/" className={styles.footerBrand}>
             <Image
-              src="/images/stars-logo.svg"
-              alt="Stars Logo"
-              width={90}
-              height={27}
+              src="/images/wano-logo.png"
+              alt="Wano Logo"
+              width={140}
+              height={42}
               className={styles.footerBrandImage}
             />
             <div className={styles.footerParagraphHolder}>
-              <p>Aliquam et tellus urna. Phasellus egetadipiscing elit. Mauris id nunc odio. Aliquam et tellus urna. Phasellus eget</p>
+              <p>A video app Born from Afrocentric culture, built for the world — all people, all stories, all vibes.</p>
             </div>
           </Link>
 
@@ -52,7 +57,7 @@ export default function Footer() {
             </div>
 
             <div className={styles.footerBlock}>
-              <div className="title-small">Social media</div>
+              <div className="title-small">Follow Us</div>
               {socialLinks.map((link) => (
                 <Link
                   key={link.label}
@@ -67,38 +72,23 @@ export default function Footer() {
             </div>
 
             <div className={styles.footerBlock}>
-              <div className="title-small">Webflow stuff</div>
-              {webflowLinks.map((link) => (
+              <div className="title-small">Support</div>
+              {supportLinks.map((link) => (
                 <Link key={link.label} href={link.href} className={styles.footerLink}>
                   {link.label}
                 </Link>
               ))}
             </div>
+
           </div>
         </div>
 
         <div className={styles.footerDivider}>
           <div className={styles.footerCopyright}>
-            Created by{' '}
-            <a
-              href="http://madebyoversight.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="white-link"
-            >
-              OVERSIGHT
-            </a>
+            © {new Date().getFullYear()} Wano. All rights reserved.
           </div>
           <div className={styles.footerCopyright}>
-            Powered by{' '}
-            <a
-              href="https://webflow.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="white-link"
-            >
-              WEBFLOW
-            </a>
+            Made with ❤️ for Africa and the World
           </div>
         </div>
       </div>

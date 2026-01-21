@@ -4,8 +4,13 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-  title: 'Stars - Investment App',
-  description: 'Say goodbye to ugly tools. Invest with Stars.',
+  title: 'Wano - Music App',
+  description: 'Unleash Your Musical Journey with Wano.',
+  icons: {
+    icon: '/wano-favicon.png',
+    shortcut: '/wano-favicon.png',
+    apple: '/wano-favicon.png',
+  },
 }
 
 export default function RootLayout({

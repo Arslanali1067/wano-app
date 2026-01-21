@@ -4,8 +4,8 @@ import { useState, FormEvent, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import styles from './CTASection.module.css'
 
-// Original image URL from HTML
-const ctaImage = 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/6509e9449e02d3fc7f62553e_CTA%20Image%20(2).webp'
+// African cultural image from Unsplash
+const ctaImage = 'https://images.unsplash.com/photo-1746211993837-dec7782c2050?q=80&w=1920&auto=format&fit=crop'
 
 export default function CTASection() {
   const [email, setEmail] = useState('')
@@ -47,7 +47,10 @@ export default function CTASection() {
           <div className={styles.ctaWrapper}>
             <div className={styles.ctaContent}>
               <div className={`${styles.ctaHeading} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}>
-                <h1>Join the Spark Community Today</h1>
+                <h1>Join the Movement</h1>
+              </div>
+              <div className={`${styles.ctaSubtitle} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: '0.1s' }}>
+                <p>Wano Is Us. From every city, tribe, and language—Wano is where Africa creates, connects, and shines. Don&apos;t miss the next big thing in culture and content.</p>
               </div>
               <form onSubmit={handleSubmit} className={`${styles.formBlock} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: '0.2s' }}>
                 <div className={styles.form}>
@@ -60,7 +63,7 @@ export default function CTASection() {
                     required
                   />
                   <button type="submit" className={styles.submitButton}>
-                    Get Early Access
+                    Subcribe
                   </button>
                 </div>
                 {status === 'success' && (

@@ -22,10 +22,10 @@ export default function Navbar() {
           <div className={styles.navbarInner}>
             <Link href="/" className={styles.brand}>
               <Image
-                src="/images/stars-logo.svg"
-                alt="Stars Logo"
-                width={100}
-                height={30}
+                src="/images/wano-logo.png"
+                alt="Wano Logo"
+                width={140}
+                height={42}
                 className={styles.brandImage}
                 priority
               />

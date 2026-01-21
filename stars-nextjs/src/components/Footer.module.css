@@ -18,7 +18,7 @@
 }
 
 .footerBrandImage {
-  width: 100px;
+  width: 140px;
   height: auto;
 }
 
@@ -70,6 +70,7 @@
   align-items: center;
   margin-top: 60px;
   padding-top: 40px;
+  padding-bottom: 20px;
   border-top: 1px solid #414142;
 }
 
@@ -106,8 +107,10 @@
 
   .footerContent {
     text-align: left;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
     margin-top: 40px;
+    width: 100%;
   }
 
   .footerBlock {
@@ -116,16 +119,33 @@
   }
 
   .footerDivider {
-    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 40px;
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 479px) {
+  .footerContent {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 20px;
+  }
+
   .footerDivider {
-    gap: 20px;
+    display: flex;
+    gap: 15px;
     flex-direction: column;
     align-items: flex-start;
-    margin-top: 20px;
+    margin-top: 30px;
     padding-top: 20px;
+    width: 100%;
+  }
+
+  .footerCopyright {
+    font-size: 13px;
+    line-height: 1.4;
   }
 }

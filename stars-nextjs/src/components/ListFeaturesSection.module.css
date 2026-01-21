@@ -3,13 +3,13 @@
 }
 
 .paddingSection {
-  padding-top: 60px;
+  padding-top: 120px;
   padding-bottom: 60px;
 }
 
 /* Header */
 .centerText {
-  max-width: 640px;
+  max-width: 700px;
   text-align: center;
   flex-direction: column;
   align-items: center;
@@ -21,6 +21,7 @@
 
 .titleHolder {
   margin-bottom: 20px;
+  white-space: nowrap;
 }
 
 .paragraphHolder {
@@ -35,8 +36,9 @@
 }
 
 .listFeature {
-  grid-column-gap: 80px;
+  grid-column-gap: 130px;
   grid-row-gap: 40px;
+  grid-template-rows: auto;
   display: flex;
   align-items: center;
 }
@@ -46,14 +48,14 @@
 }
 
 .listContentWrapper {
-  display: flex;
+  grid-row-gap: 0px;
   flex-direction: column;
-  gap: 20px;
+  display: flex;
 }
 
 /* List Items */
 .list {
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 .listUnstyled {
@@ -63,65 +65,69 @@
 }
 
 .listItem {
-  display: flex;
+  grid-column-gap: 12px;
   align-items: center;
-  gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
 }
 
-.listItem:last-child {
-  border-bottom: none;
+.listUnstyled li {
+  margin-bottom: 0px;
+}
+
+.listUnstyled li:last-child {
+  margin-bottom: 0;
 }
 
 .listCheck {
-  width: 28px;
-  height: 28px;
-  background-color: rgba(245, 204, 7, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
+  width: 24px;
+  height: 24px;
+  min-height: 24px;
+  min-width: 24px;
+  background: linear-gradient(135deg, rgba(115, 189, 140, 0.2) 0%, rgba(227, 128, 40, 0.2) 100%);
+  border-radius: 200px;
   justify-content: center;
+  align-items: center;
+  display: flex;
   flex-shrink: 0;
 }
 
 .listCheckIcon {
-  width: 16px;
-  height: 16px;
+  width: 14px;
 }
 
 .listParagraph {
-  color: #a1a1a1;
-  font-family: 'Roboto', sans-serif;
-  font-size: 15px;
-  margin: 0;
+  margin-bottom: 0;
 }
 
 /* Image Holder */
 .listImageHolder {
   flex: 1;
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
   min-height: 400px;
-  display: flex;
-  align-items: center;
+  border-radius: 8px;
   justify-content: center;
+  align-items: center;
+  display: flex;
+  position: relative;
+  overflow: hidden;
 }
 
 .listBackground {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
   object-fit: cover;
-  opacity: 0.5;
 }
 
 .listImage {
-  position: relative;
   z-index: 2;
-  border-radius: 12px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  max-width: 80%;
-  height: auto;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  position: relative;
 }
 
 /* Animations */
@@ -149,10 +155,6 @@
 @media screen and (max-width: 991px) {
   .listFeature {
     grid-column-gap: 60px;
-  }
-
-  .list {
-    margin-top: 40px;
   }
 }
 
@@ -182,7 +184,7 @@
   }
 
   .listImageHolder {
+    border-radius: 6px;
     min-height: 250px;
-    border-radius: 12px;
   }
 }

@@ -18,12 +18,12 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   
   if (!post) {
     return {
-      title: 'Post Not Found - Stars',
+      title: 'Post Not Found - Wano',
     }
   }
 
   return {
-    title: `${post.title} - Stars`,
+    title: `${post.title} - Wano`,
     description: post.description,
     openGraph: {
       title: post.title,

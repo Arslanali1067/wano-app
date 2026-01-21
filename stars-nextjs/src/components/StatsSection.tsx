@@ -5,20 +5,20 @@ import styles from './StatsSection.module.css'
 
 const stats = [
   {
-    number: '10,000+',
-    description: 'Spark offers a staggering selection of over 10,000',
+    number: '5k+ Daily Stories',
+    description: 'Over 10,000 new videos and stories shared every single day.',
   },
   {
-    number: '24/7',
-    description: "Enjoy the thrill of live DJ mixes around the clock with Spark's 24/7 streaming service.",
+    number: '24/7 Nonstop Vibes',
+    description: "A cultural feed that never sleeps, streaming from Lagos to London.",
   },
   {
-    number: '1 Million',
-    description: "Dive deep into music discovery with Spark's exclusive",
+    number: '14k+ Creators',
+    description: "Join a rapidly growing community of over 14k unique voices.",
   },
   {
-    number: '50 +',
-    description: 'Providing instant song translations in 50 different languages',
+    number: '50+ Music Genres',
+    description: 'From Afrobeats to Amapiano, access a massive library of sounds.',
   },
 ]
 
@@ -51,7 +51,8 @@ export default function StatsSection() {
           <div className={styles.ctaContentWrapper}>
             <div className={`${styles.fadeIn} ${isVisible ? styles.visible : ''}`}>
               <h2 className={styles.heading03Style}>
-                Embrace the Melody, Begin Your Extraordinary Musical Journey with Spark Today!
+              Wano is the short-form video app rooted in Afrocentric culture and built for the world.
+              Share your story, remix what inspires you, and connect with creators everywhere.
               </h2>
             </div>
             <div className={`${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: '0.2s' }}>

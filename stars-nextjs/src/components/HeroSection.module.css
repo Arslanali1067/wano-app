@@ -1,6 +1,6 @@
 .heroSection {
   overflow: visible;
-  padding-top: 20px;
+  padding-top: 60px;
   padding-bottom: 60px;
 }
 
@@ -39,10 +39,28 @@
   justify-content: center;
 }
 
+.storeBadge {
+  display: block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.storeBadge:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+.storeBadgeSvg {
+  width: 160px;
+  height: 48px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 /* Phone Mockups */
 .heroSectionPhoneHolder {
   position: relative;
   margin-top: 100px;
+  overflow: visible;
 }
 
 .heroSectionPhoneContainer {
@@ -72,7 +90,7 @@
 
 .phone02 {
   position: absolute;
-  right: 15%;
+  right:12%;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
@@ -84,7 +102,7 @@
 
 .phone03 {
   position: absolute;
-  left: 15%;
+  left: 12%;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
@@ -127,20 +145,19 @@
 
 /* Glow Effect */
 .glow {
-  width: 1200px;
+  width: 1000px;
   height: 600px;
-  background-image: radial-gradient(circle farthest-corner at 50% 50%, rgba(245, 204, 7, 0.8), rgba(245, 204, 7, 0) 70%);
-  opacity: 0.12;
-  filter: blur(100px);
+  background: radial-gradient(ellipse at 50% 50%, rgba(115, 189, 140, 0.8) 0%, rgba(180, 150, 90, 0.6) 25%, rgba(227, 128, 40, 0.5) 45%, transparent 70%);
+  filter: blur(80px);
   position: absolute;
   pointer-events: none;
   z-index: 0;
 }
 
 .heroGlow {
-  top: 50%;
+  top: -100px;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
 }
 
 /* Animations */
@@ -260,32 +277,69 @@
   }
 
   .phone02 {
+    right: 0%;
+  }
+
+  .phone03 {
+    left: 0%;
+  }
+
+  .glow {
+    width: 700px;
+    height: 450px;
+    filter: blur(60px);
+  }
+
+  .heroGlow {
+    top: -80px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .heroSectionHeaderHolder {
+    max-width: 100%;
+  }
+
+  .heroSectionPhoneHolder {
+    margin-top: 80px;
+  }
+
+  .phone01 {
+    width: 200px;
+  }
+
+  .phone02Holder,
+  .phone03Holder {
+    width: 140px;
+  }
+
+  .phone02 {
     right: 5%;
   }
 
   .phone03 {
     left: 5%;
   }
-}
 
-@media screen and (max-width: 767px) {
-  .heroSectionPhoneHolder {
-    margin-top: 80px;
+  .glow {
+    width: 500px;
+    height: 350px;
+    filter: blur(50px);
   }
 
-  .phone01 {
-    width: 240px;
-  }
-
-  .phone02,
-  .phone03 {
-    display: none;
+  .heroGlow {
+    top: -60px;
   }
 }
 
 @media screen and (max-width: 479px) {
   .heroSection {
     padding-top: 5px;
+  }
+
+  .heroSectionHeaderHolder {
+    max-width: 100%;
+    gap: 6px;
   }
 
   .heroSectionContainer {
@@ -295,7 +349,13 @@
   .heroSectionButtonHolder {
     width: 100%;
     flex-direction: column;
-    gap: 16px;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .storeBadgeSvg {
+    width: 150px;
+    height: 45px;
   }
 
   .heroSectionPhoneHolder {
@@ -303,6 +363,29 @@
   }
 
   .phone01 {
-    width: 200px;
+    width: 160px;
+  }
+
+  .phone02Holder,
+  .phone03Holder {
+    width: 110px;
+  }
+
+  .phone02 {
+    right: 2%;
+  }
+
+  .phone03 {
+    left: 2%;
+  }
+
+  .glow {
+    width: 300px;
+    height: 250px;
+    filter: blur(40px);
+  }
+
+  .heroGlow {
+    top: -40px;
   }
 }
