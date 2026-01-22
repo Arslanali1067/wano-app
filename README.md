@@ -1,6 +1,4 @@
-# Wano App - Next.js Website
-
-A modern investment app landing page built with Next.js.
+# Wano App
 
 ## Features
 
