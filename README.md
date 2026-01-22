@@ -1,6 +1,6 @@
-# Stars - Next.js Website
+# Wano App - Next.js Website
 
-A modern investment app landing page built with Next.js, converted from a Webflow template.
+A modern investment app landing page built with Next.js.
 
 ## Features
 
@@ -28,8 +28,7 @@ npm install
 
 2. Add your images:
 
-Replace the placeholder images in `/public/images/` with your actual images:
-- `stars-logo.svg` - Your logo
+Replace the placeholder images in `/public/images/` with your actual images
 - `cta-background.webp` - CTA section background
 - `blog/blog-1.jpg` through `blog/blog-5.jpg` - Blog post images
 - `favicon.png` - Your favicon
