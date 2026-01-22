@@ -4,24 +4,16 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import styles from './PhoneFeaturesSection.module.css'
 
-// Original image URLs from HTML
-const images = {
-  phoneBase: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/6508360f2037ee63e0d05cb3_Base.svg',
-  phoneScreen: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/6508360ff96fe9a3f67bdc82_Screen.svg',
-  screen02: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/650a09f609027665587a5d1f_Screen%2002.webp',
-  screen03: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/650a09f68683165aba1aa830_Screen%2003.webp',
-}
-
 const features = [
   {
-    title: 'Find Playlists on the Go',
-    subtitle: 'Instant Playlists Anytime, Anywhere',
-    screenImage: images.screen03,
+    title: 'Catch Trends on the Go',
+    subtitle: 'Instant Feeds Anytime, Anywhere',
+    screenImage: '/images/Feature1.webp',
   },
   {
-    title: 'Lyrics on the Screen',
-    subtitle: 'Sing Along with Every Beat',
-    screenImage: images.screen02,
+    title: 'Own the Vibe',
+    subtitle: 'Flow with your culture\'s beat.',
+    screenImage: '/images/Feature2.webp',
   },
 ]
 
@@ -53,12 +45,11 @@ export default function PhoneFeaturesSection() {
           {/* Header */}
           <div className={styles.centerText}>
             <div className={`${styles.titleHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}>
-              <h2>Discover Music Your Way</h2>
+              <h2>Discover the Vibe Your Way</h2>
             </div>
             <div className={`${styles.paragraphHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: '0.1s' }}>
               <p>
-                Our app is designed to put you in control of your musical journey. With &quot;Instant Playlists Anytime, Anywhere&quot; 
-                and &quot;Sing Along with Every Beat,&quot; we&apos;re redefining how you experience music.
+              We put you in control of the feed. With instant access to trending challenges and tools to remix the hottest sounds, Wano redefines how you experience the culture.
               </p>
             </div>
           </div>
@@ -78,28 +69,12 @@ export default function PhoneFeaturesSection() {
                   </div>
                   <div className={`${styles.featurePhoneHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: `${0.4 + index * 0.2}s` }}>
                     <Image
-                      src={images.phoneBase}
-                      alt="Phone Base"
-                      width={320}
-                      height={640}
-                      className={styles.phoneBase}
+                      src={feature.screenImage}
+                      alt={feature.title}
+                      width={280}
+                      height={560}
+                      className={styles.featureImage}
                     />
-                    <div className={styles.phoneScreen}>
-                      <Image
-                        src={images.phoneScreen}
-                        alt="Phone Screen"
-                        width={300}
-                        height={600}
-                        className={styles.phoneScreenImg}
-                      />
-                      <Image
-                        src={feature.screenImage}
-                        alt={feature.title}
-                        width={280}
-                        height={560}
-                        className={styles.appImage}
-                      />
-                    </div>
                   </div>
                 </div>
                 {index === 0 && (

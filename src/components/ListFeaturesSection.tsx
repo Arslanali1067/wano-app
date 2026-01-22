@@ -7,18 +7,14 @@ import styles from './ListFeaturesSection.module.css'
 // Original image URLs from HTML
 const images = {
   arrowIcon: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/65083f705fec0efcb9248de2_Arrow%20Icon.svg',
-  background01: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/6508589763115dc8d34d8b3d_Background%20Image%2001.webp',
   listImage: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/650841f620e5747d9ec17538_List%20Image.webp',
-  background02: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/65085897fc474a56af87d032_Background%20Image%2002.webp',
-  lyricsSvg: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/650859b42272bf8f15b09549_Lyrics.svg',
 }
 
 const features = [
   {
     title: 'One Beat. Infinite Voices.',
     description: 'From Kampala to Cape Town, New York to the Caribbean, and everywhere the diaspora calls home—Wano is the bridge. We are taking the rhythm, the humor, and the creativity of Afrocentric culture and sharing it with the globe. Whether you are remixing a beat, sharing a story in your native tongue, or just catching a vibe, Wano is where our voices echo loudest.',
-    backgroundImage: images.background01,
-    foregroundImage: images.listImage,
+    foregroundImage: '/images/image2.webp',
     imageFirst: false,
     checkItems: [
       "Connecting the continent to the diaspora, from Nairobi to New York.",
@@ -30,8 +26,7 @@ const features = [
   {
     title: 'Made for Us, By Us',
     description: "Wano isn't just another video app—it's the first platform built to reflect Africa's true voice. We prioritize community over algorithms and culture over clicks. Here is how we do it:",
-    backgroundImage: images.background02,
-    foregroundImage: images.lyricsSvg,
+    foregroundImage: '/images/image1.webp',
     imageFirst: true,
     checkItems: [
       "Every feature is rooted in our tribes, languages, and traditions.",
@@ -117,12 +112,7 @@ export default function ListFeaturesSection() {
 
                 {/* Image */}
                 <div className={styles.listImageHolder}>
-                  <Image
-                    src={feature.backgroundImage}
-                    alt="Background"
-                    fill
-                    className={styles.listBackground}
-                  />
+                  <div className={styles.listBackgroundGradient} />
                   <Image
                     src={feature.foregroundImage}
                     alt={feature.title}

@@ -389,8 +389,8 @@ figcaption {
   h3 { font-size: 22px; }
   
   .container {
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 20px;
+    padding-right: 20px;
   }
   
   .paragraph-xl {

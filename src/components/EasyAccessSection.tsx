@@ -7,8 +7,6 @@ import styles from './EasyAccessSection.module.css'
 // Original image URLs from HTML
 const images = {
   arrowIcon: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/65083f705fec0efcb9248de2_Arrow%20Icon.svg',
-  background03: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/65085ae001679e38b3620b82_Background%20Image%2003.webp',
-  phonesImage: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/65085b030475aae5a19b4298_Phones%20Image.webp',
 }
 
 const checkItems = [
@@ -44,20 +42,15 @@ export default function EasyAccessSection() {
       <div className="container">
         <div className={styles.divider} />
         
-        <div className={styles.listFeature}>
+          <div className={styles.listFeature}>
           {/* Image Side */}
           <div className={styles.listImageHolder}>
+            <div className={styles.listBackgroundGradient} />
             <Image
-              src={images.background03}
-              alt="Background"
-              fill
-              className={styles.listBackground}
-            />
-            <Image
-              src={images.phonesImage}
-              alt="App on Phones"
-              width={1530}
-              height={768}
+              src="/images/SplashScreen.webp"
+              alt="Wano App"
+              width={360}
+              height={720}
               className={`${styles.listImage} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}
               style={{ animationDelay: '0.2s' }}
             />

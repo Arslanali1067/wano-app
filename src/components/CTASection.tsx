@@ -4,8 +4,8 @@ import { useState, FormEvent, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import styles from './CTASection.module.css'
 
-// African cultural image from Unsplash
-const ctaImage = 'https://images.unsplash.com/photo-1746211993837-dec7782c2050?q=80&w=1920&auto=format&fit=crop'
+// CTA background image
+const ctaImage = '/images/image3.webp'
 
 export default function CTASection() {
   const [email, setEmail] = useState('')

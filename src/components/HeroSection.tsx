@@ -6,15 +6,6 @@ import styles from './HeroSection.module.css'
 
 const heroWords = ['Wano:', 'Africa', 'to the', 'World']
 
-// Original image URLs from HTML
-const images = {
-  phoneBase: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/6508360f2037ee63e0d05cb3_Base.svg',
-  phoneScreen: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/6508360ff96fe9a3f67bdc82_Screen.svg',
-  screen01: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/650a09f6efe41df228d64825_Screen%2001.webp',
-  screen02: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/650a09f609027665587a5d1f_Screen%2002.webp',
-  screen03: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/650a09f68683165aba1aa830_Screen%2003.webp',
-}
-
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
@@ -137,28 +128,12 @@ export default function HeroSection() {
                 style={{ animationDelay: '0.8s' }}
               >
                 <Image
-                  src={images.phoneBase}
-                  alt="Phone Base"
+                  src="/images/SplashScreen.webp"
+                  alt="Wano App"
                   width={360}
                   height={720}
-                  className={styles.phoneBase}
+                  className={styles.splashScreenImage}
                 />
-                <div className={styles.phoneScreen}>
-                  <Image
-                    src={images.phoneScreen}
-                    alt="Phone Screen"
-                    width={340}
-                    height={680}
-                    className={styles.phoneScreenImg}
-                  />
-                  <Image
-                    src={images.screen03}
-                    alt="App Screen"
-                    width={320}
-                    height={640}
-                    className={styles.appImage}
-                  />
-                </div>
               </div>
             </div>
 
@@ -173,28 +148,12 @@ export default function HeroSection() {
                 }}
               >
                 <Image
-                  src={images.phoneBase}
-                  alt="Phone Base"
+                  src="/images/VideoEditScreen.webp"
+                  alt="Video Edit Screen"
                   width={280}
                   height={560}
-                  className={styles.phoneBase}
+                  className={styles.splashScreenImage}
                 />
-                <div className={styles.phoneScreen}>
-                  <Image
-                    src={images.phoneScreen}
-                    alt="Phone Screen"
-                    width={260}
-                    height={520}
-                    className={styles.phoneScreenImg}
-                  />
-                  <Image
-                    src={images.screen02}
-                    alt="App Screen"
-                    width={240}
-                    height={480}
-                    className={styles.appImage}
-                  />
-                </div>
               </div>
             </div>
 
@@ -209,28 +168,12 @@ export default function HeroSection() {
                 }}
               >
                 <Image
-                  src={images.phoneBase}
-                  alt="Phone Base"
+                  src="/images/HomeScreen.webp"
+                  alt="Home Screen"
                   width={280}
                   height={560}
-                  className={styles.phoneBase}
+                  className={styles.splashScreenImage}
                 />
-                <div className={styles.phoneScreen}>
-                  <Image
-                    src={images.phoneScreen}
-                    alt="Phone Screen"
-                    width={260}
-                    height={520}
-                    className={styles.phoneScreenImg}
-                  />
-                  <Image
-                    src={images.screen01}
-                    alt="App Screen"
-                    width={240}
-                    height={480}
-                    className={styles.appImage}
-                  />
-                </div>
               </div>
             </div>
           </div>

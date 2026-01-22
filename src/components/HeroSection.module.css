@@ -143,6 +143,12 @@
   z-index: 3;
 }
 
+.splashScreenImage {
+  width: 100%;
+  height: auto;
+  z-index: 3;
+}
+
 /* Glow Effect */
 .glow {
   width: 1000px;

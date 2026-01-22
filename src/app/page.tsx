@@ -18,7 +18,7 @@ export default function Home() {
       <PhoneFeaturesSection />
       <ListFeaturesSection />
       <EasyAccessSection />
-      <BlogGrid posts={featuredPosts} />
+      {/* <BlogGrid posts={featuredPosts} /> */}
       <CTASection />
     </main>
   )
