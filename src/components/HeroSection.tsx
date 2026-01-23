@@ -39,7 +39,7 @@ export default function HeroSection() {
   const leftPhoneRotation = -3 * (1 - scrollProgress)
 
   return (
-    <section className={`section ${styles.heroSection}`} ref={sectionRef}>
+    <section id="Hero" className={`section ${styles.heroSection}`} ref={sectionRef}>
       <div className="container">
         <div className={styles.heroSectionHolder}>
           <div className={styles.heroSectionContainer}>
@@ -60,13 +60,13 @@ export default function HeroSection() {
             >
               <p>A video app Born from Afrocentric culture, built for the world — all people, all stories, all vibes.</p>
             </div>
-            <div 
+            <div
               className={`${styles.heroSectionButtonHolder} ${styles.animateFadeIn} ${isVisible ? styles.visible : ''}`}
               style={{ animationDelay: '0.7s' }}
             >
               {/* Google Play Store Badge */}
               <a 
-                href="https://play.google.com/store" 
+                href="https://play.google.com/store/apps/details?id=com.wano.app&hl=en&gl=US" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className={styles.storeBadge}
@@ -102,7 +102,7 @@ export default function HeroSection() {
 
               {/* Apple App Store Badge */}
               <a 
-                href="https://apps.apple.com" 
+                href="https://apps.apple.com/pk/app/wano-app/id6753104927" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className={styles.storeBadge}
@@ -128,7 +128,7 @@ export default function HeroSection() {
                 style={{ animationDelay: '0.8s' }}
               >
                 <Image
-                  src="/images/SplashScreen.webp"
+                  src="/images/Image1(1).webp"
                   alt="Wano App"
                   width={360}
                   height={720}
@@ -148,7 +148,7 @@ export default function HeroSection() {
                 }}
               >
                 <Image
-                  src="/images/VideoEditScreen.webp"
+                  src="/images/Image3(1).webp"
                   alt="Video Edit Screen"
                   width={280}
                   height={560}
@@ -168,7 +168,7 @@ export default function HeroSection() {
                 }}
               >
                 <Image
-                  src="/images/HomeScreen.webp"
+                  src="/images/Image2(1).webp"
                   alt="Home Screen"
                   width={280}
                   height={560}

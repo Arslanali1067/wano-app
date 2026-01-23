@@ -24,7 +24,7 @@ const supportLinks = [
 ]
 
 const downloadLinks = [
-  { href: 'https://apps.apple.com', label: 'App Store' },
+  { href: 'https://apps.apple.com/pk/app/wano-app/id6753104927', label: 'App Store' },
   { href: 'https://play.google.com', label: 'Google Play' },
 ]
 

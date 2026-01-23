@@ -8,12 +8,12 @@ const features = [
   {
     title: 'Catch Trends on the Go',
     subtitle: 'Instant Feeds Anytime, Anywhere',
-    screenImage: '/images/Feature1.webp',
+    screenImage: '/images/Search.webp',
   },
   {
     title: 'Own the Vibe',
     subtitle: 'Flow with your culture\'s beat.',
-    screenImage: '/images/Feature2.webp',
+    screenImage: '/images/Profile2.webp',
   },
 ]
 

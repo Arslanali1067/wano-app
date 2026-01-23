@@ -39,7 +39,7 @@ export default function EasyAccessSection() {
 
   return (
     <section className={`section ${styles.easyAccessSection}`} ref={sectionRef}>
-      <div className="container">
+      <div id="Download" className="container">
         <div className={styles.divider} />
         
           <div className={styles.listFeature}>
@@ -47,7 +47,7 @@ export default function EasyAccessSection() {
           <div className={styles.listImageHolder}>
             <div className={styles.listBackgroundGradient} />
             <Image
-              src="/images/SplashScreen.webp"
+              src="/images/Image1(1).webp"
               alt="Wano App"
               width={360}
               height={720}
@@ -94,7 +94,7 @@ export default function EasyAccessSection() {
               <div className={`${styles.listButtonHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: '0.7s' }}>
                 {/* Google Play Store Badge */}
                 <a 
-                  href="https://play.google.com/store" 
+                  href="https://play.google.com/store/apps/details?id=com.wano.app&hl=en&gl=US" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className={styles.storeBadge}
@@ -130,7 +130,7 @@ export default function EasyAccessSection() {
 
                 {/* Apple App Store Badge */}
                 <a 
-                  href="https://apps.apple.com" 
+                  href="https://apps.apple.com/pk/app/wano-app/id6753104927" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className={styles.storeBadge}

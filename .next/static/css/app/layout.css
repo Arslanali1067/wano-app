@@ -657,6 +657,11 @@ figcaption {
   color: #fff;
 }
 
+.Navbar_navLinkActive__CmfE_ {
+  border-bottom-color: var(--golden);
+  color: #fff;
+}
+
 .Navbar_navMenuButtonHolder__xVA9j {
   display: flex;
   align-items: center;

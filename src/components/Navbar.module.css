@@ -91,6 +91,11 @@
   color: #fff;
 }
 
+.navLinkActive {
+  border-bottom-color: var(--golden);
+  color: #fff;
+}
+
 .navMenuButtonHolder {
   display: flex;
   align-items: center;

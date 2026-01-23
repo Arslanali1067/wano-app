@@ -44,7 +44,7 @@ export default function StatsSection() {
   }, [])
 
   return (
-    <section className={`section ${styles.statsSection}`} ref={sectionRef}>
+    <section id="Stats" className={`section ${styles.statsSection}`} ref={sectionRef}>
       <div className="container">
         {/* CTA Banner */}
         <div className={styles.ctaHolder}>
