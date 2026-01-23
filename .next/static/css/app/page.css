@@ -871,6 +871,11 @@
   white-space: nowrap;
 }
 
+.ListFeaturesSection_titleHolder__Wc5de h2 {
+  white-space: normal;
+  line-height: 1.2;
+}
+
 .ListFeaturesSection_paragraphHolder__1_Xca {
   max-width: 500px;
 }
@@ -1009,6 +1014,15 @@
   .ListFeaturesSection_listFeature__SfjJW {
     grid-column-gap: 60px;
   }
+
+  .ListFeaturesSection_titleHolder__Wc5de {
+    white-space: normal;
+  }
+
+  .ListFeaturesSection_titleHolder__Wc5de h2 {
+    max-width: 100%;
+    word-break: break-word;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -1024,6 +1038,15 @@
 
   .ListFeaturesSection_listContent__k28iZ {
     width: 100%;
+  }
+
+  .ListFeaturesSection_titleHolder__Wc5de {
+    white-space: normal;
+  }
+
+  .ListFeaturesSection_titleHolder__Wc5de h2 {
+    max-width: 100%;
+    word-break: break-word;
   }
 }
 
@@ -1041,6 +1064,15 @@
     border-radius: 6px;
     max-width: 402px;
     height: 340px;
+  }
+
+  .ListFeaturesSection_titleHolder__Wc5de {
+    white-space: normal;
+  }
+
+  .ListFeaturesSection_titleHolder__Wc5de h2 {
+    max-width: 100%;
+    word-break: break-word;
   }
 }
 
@@ -1071,6 +1103,11 @@
 .PhoneFeaturesSection_titleHolder__iI_2a {
   margin-bottom: 20px;
   white-space: nowrap;
+}
+
+.PhoneFeaturesSection_titleHolder__iI_2a h2 {
+  white-space: normal;
+  line-height: 1.2;
 }
 
 .PhoneFeaturesSection_paragraphHolder___LSKR {
@@ -1197,6 +1234,15 @@
   .PhoneFeaturesSection_featurePhoneHolder__aFmfa {
     height: 340px;
   }
+
+  .PhoneFeaturesSection_titleHolder__iI_2a {
+    white-space: normal;
+  }
+
+  .PhoneFeaturesSection_titleHolder__iI_2a h2 {
+    max-width: 100%;
+    word-break: break-word;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -1220,6 +1266,15 @@
 
   .PhoneFeaturesSection_featureImage__uvAjg {
     width: 220px;
+  }
+
+  .PhoneFeaturesSection_titleHolder__iI_2a {
+    white-space: normal;
+  }
+
+  .PhoneFeaturesSection_titleHolder__iI_2a h2 {
+    max-width: 100%;
+    word-break: break-word;
   }
 }
 
@@ -1250,6 +1305,15 @@
 
   .PhoneFeaturesSection_featureImage__uvAjg {
     width: 180px;
+  }
+
+  .PhoneFeaturesSection_titleHolder__iI_2a {
+    white-space: normal;
+  }
+
+  .PhoneFeaturesSection_titleHolder__iI_2a h2 {
+    max-width: 100%;
+    word-break: break-word;
   }
 }
 

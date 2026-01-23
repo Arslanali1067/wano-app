@@ -24,6 +24,11 @@
   white-space: nowrap;
 }
 
+.titleHolder h2 {
+  white-space: normal;
+  line-height: 1.2;
+}
+
 .paragraphHolder {
   max-width: 500px;
 }
@@ -162,6 +167,15 @@
   .listFeature {
     grid-column-gap: 60px;
   }
+
+  .titleHolder {
+    white-space: normal;
+  }
+
+  .titleHolder h2 {
+    max-width: 100%;
+    word-break: break-word;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -177,6 +191,15 @@
 
   .listContent {
     width: 100%;
+  }
+
+  .titleHolder {
+    white-space: normal;
+  }
+
+  .titleHolder h2 {
+    max-width: 100%;
+    word-break: break-word;
   }
 }
 
@@ -194,5 +217,14 @@
     border-radius: 6px;
     max-width: 402px;
     height: 340px;
+  }
+
+  .titleHolder {
+    white-space: normal;
+  }
+
+  .titleHolder h2 {
+    max-width: 100%;
+    word-break: break-word;
   }
 }

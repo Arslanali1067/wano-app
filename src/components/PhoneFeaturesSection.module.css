@@ -24,6 +24,11 @@
   white-space: nowrap;
 }
 
+.titleHolder h2 {
+  white-space: normal;
+  line-height: 1.2;
+}
+
 .paragraphHolder {
   max-width: 500px;
 }
@@ -148,6 +153,15 @@
   .featurePhoneHolder {
     height: 340px;
   }
+
+  .titleHolder {
+    white-space: normal;
+  }
+
+  .titleHolder h2 {
+    max-width: 100%;
+    word-break: break-word;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -171,6 +185,15 @@
 
   .featureImage {
     width: 220px;
+  }
+
+  .titleHolder {
+    white-space: normal;
+  }
+
+  .titleHolder h2 {
+    max-width: 100%;
+    word-break: break-word;
   }
 }
 
@@ -201,5 +224,14 @@
 
   .featureImage {
     width: 180px;
+  }
+
+  .titleHolder {
+    white-space: normal;
+  }
+
+  .titleHolder h2 {
+    max-width: 100%;
+    word-break: break-word;
   }
 }

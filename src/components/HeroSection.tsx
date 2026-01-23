@@ -148,7 +148,7 @@ export default function HeroSection() {
                 }}
               >
                 <Image
-                  src="/images/Image3(1).webp"
+                  src="/images/image3(1).webp"
                   alt="Video Edit Screen"
                   width={280}
                   height={560}
