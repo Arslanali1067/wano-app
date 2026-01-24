@@ -662,6 +662,14 @@ figcaption {
   color: #fff;
 }
 
+.Navbar_navLinkDisabled__dYRSy {
+  cursor: default;
+}
+
+.Navbar_navLinkDisabled__dYRSy:hover {
+  border-bottom-color: transparent;
+}
+
 .Navbar_navMenuButtonHolder__xVA9j {
   display: flex;
   align-items: center;

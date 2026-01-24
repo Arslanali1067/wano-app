@@ -96,6 +96,14 @@
   color: #fff;
 }
 
+.navLinkDisabled {
+  cursor: default;
+}
+
+.navLinkDisabled:hover {
+  border-bottom-color: transparent;
+}
+
 .navMenuButtonHolder {
   display: flex;
   align-items: center;

@@ -5,20 +5,20 @@ import styles from './StatsSection.module.css'
 
 const stats = [
   {
-    number: '5k+ Daily Stories',
-    description: 'Over 10,000 new videos and stories shared every single day.',
+    number: 'Growing Daily',
+    description: 'New videos and stories shared every day across multiple regions.',
   },
   {
-    number: '24/7 Nonstop Vibes',
-    description: "A cultural feed that never sleeps, streaming from Lagos to London.",
+    number: 'Always Active',
+    description: "A cultural feed connecting creators across time zones and continents.",
   },
   {
-    number: '14k+ Creators',
-    description: "Join a rapidly growing community of over 14k unique voices.",
+    number: '15k+ Installs',
+    description: "A fast-growing global community building from the ground up.",
   },
   {
-    number: '50+ Music Genres',
-    description: 'From Afrobeats to Amapiano, access a massive library of sounds.',
+    number: 'Cultural Sounds',
+    description: 'From Afrobeats to Amapiano and beyond — discover the sounds shaping global culture.',
   },
 ]
 
@@ -51,8 +51,7 @@ export default function StatsSection() {
           <div className={styles.ctaContentWrapper}>
             <div className={`${styles.fadeIn} ${isVisible ? styles.visible : ''}`}>
               <h2 className={styles.heading03Style}>
-              Wano is the short-form video app rooted in Afrocentric culture and built for the world.
-              Share your story, remix what inspires you, and connect with creators everywhere.
+              Wano is a global short-form video platform rooted in Afrocentric culture and connected across Africa, the Diaspora, and the Caribbean. Share your story, discover new voices, and grow with a community in motion.
               </h2>
             </div>
             <div className={`${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: '0.2s' }}>

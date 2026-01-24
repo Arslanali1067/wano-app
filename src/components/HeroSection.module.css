@@ -32,6 +32,13 @@
   max-width: 430px;
 }
 
+.heroStats {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  color: white;
+}
+
 .heroSectionButtonHolder {
   gap: 16px;
   display: flex;

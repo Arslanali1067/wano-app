@@ -478,6 +478,13 @@
   max-width: 430px;
 }
 
+.HeroSection_heroStats__vivK_ {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  opacity: 0.9;
+  color: white;
+}
+
 .HeroSection_heroSectionButtonHolder__wptmE {
   gap: 16px;
   display: flex;

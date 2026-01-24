@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from 'react'
 import Image from 'next/image'
 import styles from './HeroSection.module.css'
 
-const heroWords = ['Wano:', 'Africa', 'to the', 'World']
+const heroWords = ['WANO', '-', 'A Global Platform', 'Rooted in Culture']
 
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
@@ -58,7 +58,8 @@ export default function HeroSection() {
               className={`${styles.heroSectionParagraphHolder} ${styles.animateFadeIn} ${isVisible ? styles.visible : ''}`}
               style={{ animationDelay: '0.5s' }}
             >
-              <p>A video app Born from Afrocentric culture, built for the world — all people, all stories, all vibes.</p>
+              <p>A short-form video platform connecting Africa, the Diaspora, the Caribbean, and communities worldwide shaped by Afrocentric influence.</p>
+              <p className={styles.heroStats}>15,000+ installs and growing worldwide.</p>
             </div>
             <div
               className={`${styles.heroSectionButtonHolder} ${styles.animateFadeIn} ${isVisible ? styles.visible : ''}`}

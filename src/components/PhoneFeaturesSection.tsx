@@ -6,13 +6,13 @@ import styles from './PhoneFeaturesSection.module.css'
 
 const features = [
   {
-    title: 'Catch Trends on the Go',
-    subtitle: 'Instant Feeds Anytime, Anywhere',
+    title: 'Stay Connected in Real Time',
+    subtitle: 'Access stories, creators, and conversations anytime, across continents.',
     screenImage: '/images/Search.webp',
   },
   {
-    title: 'Own the Vibe',
-    subtitle: 'Flow with your culture\'s beat.',
+    title: 'Build Your Presence',
+    subtitle: 'Create, share, and grow with a platform designed for long-term creator visibility.',
     screenImage: '/images/Profile2.webp',
   },
 ]
@@ -45,11 +45,11 @@ export default function PhoneFeaturesSection() {
           {/* Header */}
           <div className={styles.centerText}>
             <div className={`${styles.titleHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}>
-              <h2>Discover the Vibe Your Way</h2>
+              <h2>Discover Culture, Your Way</h2>
             </div>
             <div className={`${styles.paragraphHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: '0.1s' }}>
               <p>
-              We put you in control of the feed. With instant access to trending challenges and tools to remix the hottest sounds, Wano redefines how you experience the culture.
+              Take control of your feed with access to trending creators, sounds, and stories across regions. Wano gives you a personalized experience rooted in culture and built for discovery.
               </p>
             </div>
           </div>
