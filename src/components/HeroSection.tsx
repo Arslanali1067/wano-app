@@ -9,11 +9,106 @@ const heroWords = ['WANO', '-', 'A Global Platform', 'Rooted in Culture']
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
   const [scrollProgress, setScrollProgress] = useState(0)
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false)
+  const [useVideo, setUseVideo] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const videoContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setIsVisible(true)
   }, [])
+
+  // Check connection speed and device capabilities
+  useEffect(() => {
+    const checkConnectionAndDevice = async () => {
+      // Check if device is low-end or connection is slow
+      const connection = (navigator as any).connection || (navigator as any).mozConnection || (navigator as any).webkitConnection
+      const isSlowConnection = connection && (
+        connection.effectiveType === 'slow-2g' || 
+        connection.effectiveType === '2g' ||
+        (connection.downlink && connection.downlink < 1.5)
+      )
+      
+      // Check device memory (if available)
+      const isLowEndDevice = (navigator as any).deviceMemory && (navigator as any).deviceMemory < 4
+      
+      // Check hardware concurrency (CPU cores)
+      const isLowCPU = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4
+      
+      // Only use video if connection is good and device is capable
+      if (!isSlowConnection && !isLowEndDevice && !isLowCPU) {
+        setUseVideo(true)
+      }
+    }
+
+    checkConnectionAndDevice()
+  }, [])
+
+  // Intersection Observer for lazy loading video
+  useEffect(() => {
+    if (!videoContainerRef.current || !useVideo) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setShouldLoadVideo(true)
+            observer.disconnect()
+          }
+        })
+      },
+      {
+        rootMargin: '50px', // Start loading slightly before visible
+        threshold: 0.1
+      }
+    )
+
+    observer.observe(videoContainerRef.current)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [useVideo])
+
+  // Handle video load and error
+  useEffect(() => {
+    if (!videoRef.current || !shouldLoadVideo) return
+
+    const video = videoRef.current
+    
+    // Load the video when it's ready
+    video.load()
+
+    const handleCanPlay = () => {
+      video.play().catch(() => {
+        // If autoplay fails, fallback to poster
+        setUseVideo(false)
+      })
+    }
+
+    const handleError = () => {
+      // Fallback to poster image if video fails to load
+      setUseVideo(false)
+    }
+
+    const handleLoadedData = () => {
+      // Video data loaded, try to play
+      video.play().catch(() => {
+        setUseVideo(false)
+      })
+    }
+
+    video.addEventListener('canplay', handleCanPlay)
+    video.addEventListener('loadeddata', handleLoadedData)
+    video.addEventListener('error', handleError)
+
+    return () => {
+      video.removeEventListener('canplay', handleCanPlay)
+      video.removeEventListener('loadeddata', handleLoadedData)
+      video.removeEventListener('error', handleError)
+    }
+  }, [shouldLoadVideo])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -128,13 +223,43 @@ export default function HeroSection() {
                 className={`${styles.heroPhoneHolder} ${styles.phone01} ${styles.animatePhoneCenter} ${isVisible ? styles.visible : ''}`}
                 style={{ animationDelay: '0.8s' }}
               >
+                {/* Phone Mockup Frame - base layer */}
                 <Image
-                  src="/images/Image1(1).webp"
+                  src="/images/video-mockup.webp"
                   alt="Wano App"
                   width={360}
                   height={720}
-                  className={styles.splashScreenImage}
+                  className={styles.phoneFrame}
+                  priority
                 />
+                {/* Video/Poster Container - positioned above frame, clipped to screen */}
+                <div ref={videoContainerRef} className={styles.videoContainer}>
+                  {/* Always show poster first */}
+                  <Image
+                    src="/images/Image1(1).webp"
+                    alt="Wano App"
+                    width={360}
+                    height={720}
+                    className={styles.videoPoster}
+                    priority
+                  />
+                  {/* Video overlays poster when ready */}
+                  {useVideo && shouldLoadVideo && (
+                    <video
+                      ref={videoRef}
+                      className={styles.heroVideo}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="none"
+                      poster="/images/Image1(1).webp"
+                      aria-label="Wano App Video"
+                    >
+                      <source src="/images/home-Video.mp4" type="video/mp4" />
+                    </video>
+                  )}
+                </div>
               </div>
             </div>
 
