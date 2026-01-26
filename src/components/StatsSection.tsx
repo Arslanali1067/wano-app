@@ -54,11 +54,6 @@ export default function StatsSection() {
               Wano is a global short-form video platform rooted in Afrocentric culture and connected across Africa, the Diaspora, and the Caribbean. Share your story, discover new voices, and grow with a community in motion.
               </h2>
             </div>
-            <div className={`${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: '0.2s' }}>
-              <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" className="button video">
-                Watch Video
-              </a>
-            </div>
           </div>
           <div className={styles.glow02} />
           <div className={styles.glow03} />
