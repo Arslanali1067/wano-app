@@ -1,0 +1,31 @@
+/* Platform-specific overrides for hero section */
+.platformHeroSectionPhoneHolder {
+  position: relative;
+  margin-top: 100px;
+  overflow: visible;
+}
+
+.platformHeroSection {
+  overflow: visible;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 991px) {
+  .platformHeroSectionPhoneHolder {
+    margin-top: 80px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .platformHeroSectionPhoneHolder {
+    margin-top: 60px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .platformHeroSectionPhoneHolder {
+    margin-top: 40px;
+  }
+}
