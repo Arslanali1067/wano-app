@@ -1,31 +1,31 @@
 /* Platform-specific overrides for hero section */
-.platformHeroSectionPhoneHolder {
-  position: relative;
-  margin-top: 100px;
-  overflow: visible;
-}
-
 .platformHeroSection {
   overflow: visible;
   padding-top: 60px;
   padding-bottom: 60px;
 }
 
+/* Text-only list inside hero */
+.platformHeroList {
+  margin-top: 28px;
+  max-width: 560px;
+}
+
+.platformHeroListItem {
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.platformHeroListItem:first-child {
+  border-top: 0;
+}
+
 /* Responsive adjustments */
 @media screen and (max-width: 991px) {
-  .platformHeroSectionPhoneHolder {
-    margin-top: 80px;
-  }
 }
 
 @media screen and (max-width: 767px) {
-  .platformHeroSectionPhoneHolder {
-    margin-top: 60px;
-  }
 }
 
 @media screen and (max-width: 479px) {
-  .platformHeroSectionPhoneHolder {
-    margin-top: 40px;
-  }
 }

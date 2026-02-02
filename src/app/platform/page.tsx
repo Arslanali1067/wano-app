@@ -8,11 +8,11 @@ import CTASection from '@/components/CTASection'
 export default function PlatformPage() {
   return (
     <main>
-      <PlatformHeroSection />
+      {/* <PlatformHeroSection /> */}
       {/* <StatsSection /> */}
       {/* <PhoneFeaturesSection /> */}
       <PlatformListFeaturesSection />
-      <EasyAccessSection />
+      {/* <EasyAccessSection /> */}
       <CTASection />
     </main>
   )
