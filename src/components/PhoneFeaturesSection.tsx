@@ -1,8 +1,28 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
 import styles from './PhoneFeaturesSection.module.css'
 
+// Home (default) cards used on the main landing page: 2 phone cards with title + text
+const homeCards = [
+  {
+    title: 'See Culture The Way We Live It',
+    description:
+      'Scroll a feed filled with sounds, clips, and stories from across Africa and the diaspora—curated around your language, humor, and hometown energy.',
+    image: '/images/Search.webp',
+    alt: 'Discover screen of the Wano app on a phone',
+  },
+  {
+    title: 'Create in Your Own Language and Style',
+    description:
+      'Record, remix, and share short videos that feel like you—from inside jokes in your mother tongue to trends your people actually get.',
+    image: '/images/Profile2.webp',
+    alt: 'Creator tools screen of the Wano app on a phone',
+  },
+]
+
+// Partnership-specific feature set for platform/partnerships pages
 const partnershipFeatures = [
   {
     icon: (
@@ -41,6 +61,7 @@ const partnershipFeatures = [
   },
 ]
 
+// Creator-specific feature set for creators page
 const creatorFeatures = [
   {
     icon: (
@@ -80,11 +101,16 @@ const creatorFeatures = [
 ]
 
 interface PhoneFeaturesSectionProps {
-  variant?: 'partnerships' | 'creators'
+  variant?: 'home' | 'partnerships' | 'creators'
 }
 
-export default function PhoneFeaturesSection({ variant = 'partnerships' }: PhoneFeaturesSectionProps) {
-  const features = variant === 'creators' ? creatorFeatures : partnershipFeatures
+export default function PhoneFeaturesSection({ variant = 'home' }: PhoneFeaturesSectionProps) {
+  const features =
+    variant === 'creators'
+      ? creatorFeatures
+      : variant === 'partnerships'
+      ? partnershipFeatures
+      : []
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
 
@@ -105,6 +131,63 @@ export default function PhoneFeaturesSection({ variant = 'partnerships' }: Phone
     return () => observer.disconnect()
   }, [])
 
+  // Home page: use 2 phone cards layout with images + copy above each phone
+  if (variant === 'home') {
+    return (
+      <section className={`section light-blue ${styles.phoneFeaturesSection}`} ref={sectionRef}>
+        <div id="Product" className={styles.paddingSection}>
+          <div className="container">
+            <div className={styles.centerText}>
+              <div className={`${styles.titleHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}>
+                <h2>Why Wano Feels Like Home</h2>
+              </div>
+              <div
+                className={`${styles.paragraphHolder} ${styles.fadeIn} ${
+                  isVisible ? styles.visible : ''
+                }`}
+                style={{ animationDelay: '0.1s' }}
+              >
+                <p>
+                  From your first scroll to your first upload, Wano is designed to look, sound, and
+                  feel like the culture you live every day.
+                </p>
+              </div>
+            </div>
+
+            <div className={styles.homePhoneCards}>
+              {homeCards.map((card, index) => (
+                <div key={index} className={styles.homePhoneCard}>
+                  <div
+                    className={`${styles.fadeIn} ${isVisible ? styles.visible : ''}`}
+                    style={{ animationDelay: `${0.2 + index * 0.2}s` }}
+                  >
+                    <h3 className={styles.homePhoneTitle}>{card.title}</h3>
+                    <p className={styles.homePhoneSubtitle}>{card.description}</p>
+                  </div>
+                  <div
+                    className={`${styles.homePhoneImageWrapper} ${styles.fadeIn} ${
+                      isVisible ? styles.visible : ''
+                    }`}
+                    style={{ animationDelay: `${0.4 + index * 0.2}s` }}
+                  >
+                    <Image
+                      src={card.image}
+                      alt={card.alt}
+                      width={360}
+                      height={720}
+                      className={styles.homePhoneImage}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  // Partnerships / creators: keep existing icon + bullet grid
   return (
     <section className={`section light-blue ${styles.phoneFeaturesSection}`} ref={sectionRef}>
       <div id="Product" className={styles.paddingSection}>
@@ -114,11 +197,14 @@ export default function PhoneFeaturesSection({ variant = 'partnerships' }: Phone
             <div className={`${styles.titleHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}>
               <h2>{variant === 'creators' ? 'How Creators Grow on Wano' : 'Partnership Types'}</h2>
             </div>
-            <div className={`${styles.paragraphHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: '0.1s' }}>
+            <div
+              className={`${styles.paragraphHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}
+              style={{ animationDelay: '0.1s' }}
+            >
               <p>
-              {variant === 'creators'
-                ? 'Whether you make music, create videos, or tell stories—Wano gives you the tools and community to reach audiences across Africa, the Diaspora, and the Caribbean.'
-                : 'Take control of your feed with access to trending creators, sounds, and stories across regions. Wano gives you a personalized experience rooted in culture and built for discovery.'}
+                {variant === 'creators'
+                  ? 'Whether you make music, create videos, or tell stories—Wano gives you the tools and community to reach audiences across Africa, the Diaspora, and the Caribbean.'
+                  : 'Wano gives brands and organizations a way to partner with culture at the source—through creators, communities, and technology that travel across borders.'}
               </p>
             </div>
           </div>
@@ -129,16 +215,32 @@ export default function PhoneFeaturesSection({ variant = 'partnerships' }: Phone
               <div key={index} className={styles.phoneFeature}>
                 <div className={styles.phoneFeatureWrapper}>
                   <div className={styles.phoneFeatureContent}>
-                    <div className={`${styles.cardIcon} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: `${0.2 + index * 0.2}s` }}>
+                    <div
+                      className={`${styles.cardIcon} ${styles.fadeIn} ${
+                        isVisible ? styles.visible : ''
+                      }`}
+                      style={{ animationDelay: `${0.2 + index * 0.2}s` }}
+                    >
                       {feature.icon}
                     </div>
-                    <div className={`${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: `${0.25 + index * 0.2}s` }}>
+                    <div
+                      className={`${styles.fadeIn} ${isVisible ? styles.visible : ''}`}
+                      style={{ animationDelay: `${0.25 + index * 0.2}s` }}
+                    >
                       <div className={styles.phoneFeatureTitle}>{feature.title}</div>
                     </div>
-                    <div className={`${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: `${0.3 + index * 0.2}s` }}>
+                    <div
+                      className={`${styles.fadeIn} ${isVisible ? styles.visible : ''}`}
+                      style={{ animationDelay: `${0.3 + index * 0.2}s` }}
+                    >
                       <p className={styles.phoneFeatureSubtitle}>{feature.description}</p>
                     </div>
-                    <ul className={`${styles.bulletList} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: `${0.4 + index * 0.2}s` }}>
+                    <ul
+                      className={`${styles.bulletList} ${styles.fadeIn} ${
+                        isVisible ? styles.visible : ''
+                      }`}
+                      style={{ animationDelay: `${0.4 + index * 0.2}s` }}
+                    >
                       {feature.bullets.map((bullet, bulletIndex) => (
                         <li key={bulletIndex}>
                           <span className={styles.bulletDot} />
@@ -154,7 +256,9 @@ export default function PhoneFeaturesSection({ variant = 'partnerships' }: Phone
                     <div className={`${styles.glow} ${styles.botRight}`} />
                   </>
                 )}
-                {(index === 1 || index === 2) && <div className={`${styles.glow} ${styles.botRight}`} />}
+                {(index === 1 || index === 2) && (
+                  <div className={`${styles.glow} ${styles.botRight}`} />
+                )}
               </div>
             ))}
           </div>

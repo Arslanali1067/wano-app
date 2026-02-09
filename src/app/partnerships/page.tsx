@@ -9,7 +9,7 @@ export default function PartnershipsPage() {
   return (
     <main>
       <PlatformHeroSection />
-      <PhoneFeaturesSection />
+      <PhoneFeaturesSection variant="partnerships" />
       <PlatformListFeaturesSection />
       <EasyAccessSection variant="platform" />
       <CTASection />

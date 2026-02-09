@@ -79,7 +79,7 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
               width={360}
               height={720}
               className={`${styles.listImage} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}
-              style={{ animationDelay: '0.2s' }}
+              style={{ animationDelay: '0.3s' }}
             />
           </div>
 
@@ -88,9 +88,27 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
             <div className={styles.listContentWrapper}>
               {showForm ? (
                 <>
-                  <div className={`${styles.contactHeading} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}>
+                  <div
+                    className={`${styles.contactHeading} ${styles.fadeIn} ${
+                      isVisible ? styles.visible : ''
+                    }`}
+                  >
                     <h3>{formType === 'creators' ? 'Apply to Become a Creator' : 'Contact Us'}</h3>
                   </div>
+                  {formType === 'partnerships' && (
+                    <div
+                      className={`${styles.contactIntro} ${styles.fadeIn} ${
+                        isVisible ? styles.visible : ''
+                      }`}
+                      style={{ animationDelay: '0.15s' }}
+                    >
+                      <p>
+                        For partnership inquiries, collaborations, or strategic discussions, reach out
+                        directly or use the form.
+                      </p>
+                      <p className={styles.contactEmail}>partnerships@wanoafrica.com</p>
+                    </div>
+                  )}
                   <form onSubmit={handleFormSubmit} className={`${styles.inquiryForm} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}>
                   <div className={styles.formRow}>
                     <input type="text" name="fullName" placeholder="Full Name *" className="text-field" required />

@@ -10,7 +10,7 @@ export default function CreatorsPage() {
       <PlatformHeroSection variant="creators" />
       <PhoneFeaturesSection variant="creators" />
       <PlatformListFeaturesSection variant="creators" />
-      <EasyAccessSection variant="creators" />
+      <EasyAccessSection />
       <CTASection />
     </main>
   )

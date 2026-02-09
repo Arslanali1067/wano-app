@@ -35,8 +35,7 @@
 }
 
 .listFeaturePlatform .listImage {
-  margin-top: 0;
-  object-position: center;
+  object-position: bottom;
 }
 
 .listFeaturePlatform .listContent {
@@ -59,6 +58,25 @@
   font-size: 28px;
   font-weight: 500;
   color: #fff;
+}
+
+.contactIntro {
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  font-size: 15px;
+  color: #ffffff;
+  line-height: 1.6;
+  margin: 8px 0 16px;
+}
+
+.contactIntro p {
+  margin: 0 0 6px 0;
+}
+
+.contactEmail {
+  font-weight: 500;
+  color: #ffffff;
 }
 
 .listContent {
@@ -172,7 +190,7 @@
   flex-shrink: 0;
   border-radius: 8px;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -195,12 +213,13 @@
 
 .listImage {
   z-index: 2;
-  width: 320px;
+  width: 260px;
   height: auto;
+  max-height: 90%;
   object-fit: contain;
-  object-position: top;
+  object-position: center;
   position: relative;
-  margin-top: 30px;
+  margin-top: 0;
 }
 
 /* Button */
