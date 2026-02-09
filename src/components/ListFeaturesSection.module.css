@@ -104,6 +104,19 @@
   margin-bottom: 0;
 }
 
+.listTagline {
+  margin-top: 10px;
+  margin-bottom: 0;
+  opacity: 0.9;
+}
+
+.listBadgesRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
 /* Image Holder */
 .listImageHolder {
   width: 577px;

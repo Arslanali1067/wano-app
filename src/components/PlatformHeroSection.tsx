@@ -69,9 +69,6 @@ export default function PlatformHeroSection({ variant = 'partnerships' }: Platfo
                   <p>
                   {content.description}
                   </p>
-                  {/* <p className={styles.heroStats}>
-                    15,000+ installs and growing worldwide.
-                  </p> */}
                   <div
                     className={`${styles.heroSectionButtonHolder} ${platformStyles.heroButtonHolder} ${styles.animateFadeIn} ${isVisible ? styles.visible : ''}`}
                     style={{ animationDelay: '0.3s' }}
