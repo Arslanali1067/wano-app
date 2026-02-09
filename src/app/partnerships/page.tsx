@@ -5,7 +5,7 @@ import PlatformListFeaturesSection from '@/components/PlatformListFeaturesSectio
 import EasyAccessSection from '@/components/EasyAccessSection'
 import CTASection from '@/components/CTASection'
 
-export default function PlatformPage() {
+export default function PartnershipsPage() {
   return (
     <main>
       <PlatformHeroSection />

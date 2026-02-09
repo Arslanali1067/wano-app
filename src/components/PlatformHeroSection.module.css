@@ -1,31 +1,101 @@
-/* Platform-specific overrides for hero section */
-.platformHeroSectionPhoneHolder {
-  position: relative;
-  margin-top: 100px;
-  overflow: visible;
-}
-
+/* Platform hero - background image with title & subtext */
 .platformHeroSection {
-  overflow: visible;
-  padding-top: 60px;
-  padding-bottom: 60px;
+  overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 24px;
+  margin-bottom: 60px;
 }
 
-/* Responsive adjustments */
-@media screen and (max-width: 991px) {
-  .platformHeroSectionPhoneHolder {
-    margin-top: 80px;
+.heroButtonHolder {
+  margin-top: 24px;
+}
+
+.heroWrapper {
+  position: relative;
+  min-height: 700px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.heroBgImage {
+  object-fit: cover;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 11, 21, 0.35) 0%, rgba(11, 11, 21, 0.5) 100%);
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  padding: 120px 0;
+}
+
+/* Subtext below title - soft white for visibility on bg image */
+.heroSubtext {
+  color: rgba(255, 255, 255, 0.40);
+}
+
+.heroSubtext p {
+  color: #ffffff;
+}
+
+/* Responsive - match navbar padding on mobile */
+@media screen and (max-width: 980px) {
+  .platformHeroSection {
+    margin-top: 16px;
+  }
+
+  .heroOuter {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .heroWrapper {
+    min-height: 480px;
+  }
+
+  .heroContent {
+    padding: 80px 0;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .platformHeroSectionPhoneHolder {
-    margin-top: 60px;
+  .heroOuter {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .heroWrapper {
+    min-height: 450px;
   }
 }
 
 @media screen and (max-width: 479px) {
-  .platformHeroSectionPhoneHolder {
-    margin-top: 40px;
+  .platformHeroSection {
+    margin-top: 12px;
+  }
+
+  .heroOuter {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .heroWrapper {
+    min-height: 400px;
+  }
+
+  .heroContent {
+    padding: 60px 0;
   }
 }

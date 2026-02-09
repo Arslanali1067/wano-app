@@ -1,17 +1,16 @@
 import PlatformHeroSection from '@/components/PlatformHeroSection'
-import StatsSection from '@/components/StatsSection'
 import PhoneFeaturesSection from '@/components/PhoneFeaturesSection'
 import PlatformListFeaturesSection from '@/components/PlatformListFeaturesSection'
 import EasyAccessSection from '@/components/EasyAccessSection'
 import CTASection from '@/components/CTASection'
 
-export default function PlatformPage() {
+export default function CreatorsPage() {
   return (
     <main>
-      <PlatformHeroSection />
-      <PhoneFeaturesSection />
-      <PlatformListFeaturesSection />
-      <EasyAccessSection variant="platform" />
+      <PlatformHeroSection variant="creators" />
+      <PhoneFeaturesSection variant="creators" />
+      <PlatformListFeaturesSection variant="creators" />
+      <EasyAccessSection variant="creators" />
       <CTASection />
     </main>
   )

@@ -9,9 +9,9 @@ import styles from './Navbar.module.css'
 const navLinks = [
   { href: '/', label: 'Home', type: 'link' as const },
   { label: 'Platform', type: 'disabled' as const },
-  { label: 'Creators', type: 'disabled' as const },
+  { href: '/creators', label: 'Creators', type: 'link' as const },
   { label: 'About', type: 'disabled' as const },
-  { label: 'Partnerships', type: 'disabled' as const },
+  { href: '/partnerships', label: 'Partnerships', type: 'link' as const },
   { href: '/#Download', label: 'Get App', type: 'anchor' as const },
 ]
 
