@@ -6,9 +6,16 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import styles from './Navbar.module.css'
 
-const navLinks = [
+const navLinks: Array<
+  | { href: string; label: string; type: 'link' }
+  | { label: string; type: 'anchor'; href: string }
+  | {
+      label: string
+      type: 'submenu'
+      items: { label: string; href: string }[]
+    }
+> = [
   { href: '/', label: 'Home', type: 'link' as const },
-  { label: 'Platform', type: 'disabled' as const },
   { href: '/creators', label: 'Creators', type: 'link' as const },
   {
     label: 'About',
@@ -123,15 +130,7 @@ export default function Navbar() {
                         )
                       }
 
-                      return (
-                        <span
-                          key={link.label}
-                          className={`${baseClass} ${styles.navLinkDisabled}`}
-                          onClick={() => setIsMenuOpen(false)}
-                        >
-                          {link.label}
-                        </span>
-                      )
+                      return null
                     })}
                   </div>
                 </div>
