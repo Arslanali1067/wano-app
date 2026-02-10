@@ -65,12 +65,76 @@ const creatorFeatures = [
   },
 ]
 
+const aboutFeatures = [
+  {
+    title: 'Our Mission',
+    description:
+      'Wano is a global short-form video platform rooted in Afrocentric culture, connecting Africa, the Diaspora, the Caribbean, and communities worldwide shaped by its influence.',
+    foregroundImage: '/images/About-1.webp',
+    imageFirst: false,
+    checkItems: [
+      'Enable cultural discovery across Africa, the Diaspora, and the Caribbean',
+      'Give creators meaningful visibility and opportunities to grow',
+      'Connect communities globally through short-form video and storytelling',
+      'Build a platform designed for long-term impact, not just trends',
+    ],
+  },
+  {
+    title: 'Why Wano',
+    description:
+      'Africa is home to the world’s youngest population, and Afrocentric culture continues to shape global trends across music, fashion, language, and everyday life.',
+    foregroundImage: '/images/About-2.webp',
+    imageFirst: true,
+    checkItems: [
+      'Put culture at the center of how content is discovered and shared',
+      'Give underrepresented creators a platform built for their voices',
+      'Connect Africa, the Diaspora, and the Caribbean through digital storytelling',
+      'Help shape the future of global culture, not just participate in it',
+    ],
+  },
+  {
+    title: 'More Than an App',
+    description:
+      'Wano is building an ecosystem designed for long-term cultural exchange and creator growth. It starts with short-form video, and expands through community, partnerships, and platform development.',
+    foregroundImage: '/images/About-3.webp',
+    imageFirst: false,
+    checkItems: [
+      'A global discovery experience rooted in culture',
+      'A growing creator community across continents',
+      'A platform designed for long-term scale',
+      'Build a platform designed for long-term impact, not just trends',
+    ],
+  },
+  {
+    title: 'What We Stand For',
+    description:
+      'Wano is built on a clear set of values that guide how we design, grow, and partner. These principles shape how we support creators, represent culture, and build a platform meant to last.',
+    foregroundImage: '/images/About-4.webp',
+    imageFirst: true,
+    checkItems: [
+      'Culture First — Identity and heritage are not a category; they are the foundation of everything we build.',
+      'Global Inclusion — Rooted in Afrocentric influence and open to voices from around the world.',
+      'Creator Growth — Designed to give creators early visibility and long-term opportunity.',
+      'Built for the Future — A platform developed intentionally, sustainably, and with long-term impact in mind.',
+    ],
+  },
+]
+
 interface PlatformListFeaturesSectionProps {
-  variant?: 'partnerships' | 'creators'
+  variant?: 'partnerships' | 'creators' | 'about'
+  hideHeader?: boolean
 }
 
-export default function PlatformListFeaturesSection({ variant = 'partnerships' }: PlatformListFeaturesSectionProps) {
-  const features = variant === 'creators' ? creatorFeatures : partnershipFeatures
+export default function PlatformListFeaturesSection({
+  variant = 'partnerships',
+  hideHeader = false,
+}: PlatformListFeaturesSectionProps) {
+  const features =
+    variant === 'creators'
+      ? creatorFeatures
+      : variant === 'about'
+      ? aboutFeatures
+      : partnershipFeatures
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
 
@@ -96,25 +160,31 @@ export default function PlatformListFeaturesSection({ variant = 'partnerships' }
       <div id="Platform" className={styles.paddingSection}>
         <div className="container">
           {/* Header */}
-          <div className={styles.centerText}>
-            <div
-              className={`${styles.titleHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}
-            >
-              <h2>
-                {variant === 'creators' ? 'Why Create on Wano' : 'Why Partner With Wano'}
-              </h2>
+          {!hideHeader && (
+            <div className={styles.centerText}>
+              <div
+                className={`${styles.titleHolder} ${styles.fadeIn} ${
+                  isVisible ? styles.visible : ''
+                }`}
+              >
+                <h2>
+                  {variant === 'creators' ? 'Why Create on Wano' : 'Why Partner With Wano'}
+                </h2>
+              </div>
+              <div
+                className={`${styles.paragraphHolder} ${styles.fadeIn} ${
+                  isVisible ? styles.visible : ''
+                }`}
+                style={{ animationDelay: '0.1s' }}
+              >
+                <p>
+                  {variant === 'creators'
+                    ? 'Wano gives creators a space built around culture, community, and real connection—so your stories travel further without losing their roots.'
+                    : 'Wano connects partners to a fast-growing cultural ecosystem across Africa and the diaspora, turning authentic stories into lasting relationships with the communities that move global culture.'}
+                </p>
+              </div>
             </div>
-            <div
-              className={`${styles.paragraphHolder} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}
-              style={{ animationDelay: '0.1s' }}
-            >
-              <p>
-                {variant === 'creators'
-                  ? 'Wano gives creators a space built around culture, community, and real connection—so your stories travel further without losing their roots.'
-                  : 'Wano connects partners to a fast-growing cultural ecosystem across Africa and the diaspora, turning authentic stories into lasting relationships with the communities that move global culture.'}
-              </p>
-            </div>
-          </div>
+          )}
 
           {/* Feature List */}
           <div className={styles.listWrapper}>

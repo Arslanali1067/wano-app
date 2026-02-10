@@ -10,18 +10,26 @@ import platformStyles from './PlatformHeroSection.module.css'
 const heroContent = {
   partnerships: {
     title: 'Partnerships',
-    description: 'Wano collaborates with brands, organizations, creators, and institutions aligned with cultural growth and global expansion across Africa, the Diaspora, and the Caribbean.',
+    description:
+      'Wano collaborates with brands, organizations, creators, and institutions aligned with cultural growth and global expansion across Africa, the Diaspora, and the Caribbean.',
     bgImage: '/images/image3.webp',
   },
   creators: {
     title: 'Creators',
-    description: 'Join Wano as a creator and share your culture with the world. From music and video to storytelling—build your audience and grow with a community that celebrates you.',
+    description:
+      'Join Wano as a creator and share your culture with the world. From music and video to storytelling—build your audience and grow with a community that celebrates you.',
     bgImage: '/images/Creators-bg.webp',
   },
-}
+  about: {
+    title: 'About Wano',
+    description:
+      'Wano is a global short-form video platform rooted in Afrocentric culture, connecting Africa, the Diaspora, the Caribbean, and communities worldwide shaped by its influence.',
+    bgImage: '/images/About-bg.webp',
+  },
+} as const
 
 interface PlatformHeroSectionProps {
-  variant?: 'partnerships' | 'creators'
+  variant?: keyof typeof heroContent
 }
 
 export default function PlatformHeroSection({ variant = 'partnerships' }: PlatformHeroSectionProps) {
@@ -39,7 +47,9 @@ export default function PlatformHeroSection({ variant = 'partnerships' }: Platfo
   return (
     <section
       id="Hero"
-      className={`section ${styles.heroSection} ${platformStyles.platformHeroSection}`}
+      className={`section ${styles.heroSection} ${platformStyles.platformHeroSection} ${
+        variant === 'about' ? platformStyles.aboutVariant : ''
+      }`}
       ref={sectionRef}
     >
       <div className={`container ${platformStyles.heroOuter}`}>
@@ -59,7 +69,16 @@ export default function PlatformHeroSection({ variant = 'partnerships' }: Platfo
                   <div
                     className={`${styles.animateText} ${isVisible ? styles.visible : ''}`}
                   >
-                    <h1>{content.title}</h1>
+                    {variant === 'about' ? (
+                      <h1>
+                        About{' '}
+                        <span className={platformStyles.aboutWanoWord}>
+                          WANO
+                        </span>
+                      </h1>
+                    ) : (
+                      <h1>{content.title}</h1>
+                    )}
                   </div>
                 </div>
                 <div

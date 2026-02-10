@@ -41,6 +41,29 @@
   padding: 120px 0;
 }
 
+/* About hero: animated gradient on just the "Wano" word */
+.aboutWanoWord {
+  font-family: 'Skranji', cursive;
+  background: linear-gradient(90deg, #ffffff, #73bd8c, #e38028, #ffffff);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: aboutTitleGradient 6s linear infinite;
+}
+
+@keyframes aboutTitleGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 /* Subtext below title - soft white for visibility on bg image */
 .heroSubtext {
   color: rgba(255, 255, 255, 0.40);
