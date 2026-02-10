@@ -4,6 +4,54 @@
   padding-bottom: 60px;
 }
 
+/* Dedicated spacing for WANO Studio hero */
+.studioHero {
+  padding-top: 200px;
+  padding-bottom: 300px;
+}
+
+/* WANO Studio hero card (bordered, like about section) */
+.studioHeroCard {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 32px;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  background-color: var(--background-light);
+  text-align: center;
+}
+
+/* Animated gradient on the WANO word (same as About hero) */
+.studioWanoWord {
+  font-family: 'Skranji', cursive;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    #73bd8c 20%,
+    #e38028 60%,
+    #ffffff 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: aboutTitleGradient 6s linear infinite;
+}
+
+@media screen and (max-width: 767px) {
+  .studioHero {
+    padding-top: 140px;
+    padding-bottom: 180px;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  .studioHero {
+    padding-top: 100px;
+    padding-bottom: 140px;
+  }
+}
+
 .heroSectionHolder {
   z-index: 2;
   position: relative;
