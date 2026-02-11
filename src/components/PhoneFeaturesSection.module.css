@@ -310,7 +310,7 @@
 
   .homePhoneCard {
     border-radius: 6px;
-    padding: 20px 20px 28px;
+    padding: 20px 20px 0px;
   }
 
   .homePhoneTitle {

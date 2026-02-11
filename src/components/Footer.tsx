@@ -3,10 +3,9 @@ import Image from 'next/image'
 import styles from './Footer.module.css'
 
 const companyLinks = [
-  { href: '#', label: 'About Wano' },
-  { href: '#', label: 'Our Story' },
+  { href: '/about', label: 'About Wano' },
+  { href: '/wano-studio', label: 'WANO Studio' },
   { href: '/blog', label: 'Blog' },
-  { href: '#', label: 'Careers' },
 ]
 
 const socialLinks = [
@@ -17,10 +16,9 @@ const socialLinks = [
 ]
 
 const supportLinks = [
-  { href: '#', label: 'Help Center' },
-  { href: '#', label: 'Contact Us' },
-  { href: '#', label: 'Privacy Policy' },
-  { href: '#', label: 'Terms of Service' },
+  { href: '/contact', label: 'Contact Us' },
+  { href: '/privacy', label: 'Privacy Policy' },
+  { href: '/terms-of-service', label: 'Terms of Service' },
 ]
 
 const downloadLinks = [

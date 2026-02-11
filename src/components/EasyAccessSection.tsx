@@ -31,11 +31,11 @@ const creatorTypes = [
 ]
 
 interface EasyAccessSectionProps {
-  variant?: 'default' | 'platform' | 'creators'
+  variant?: 'default' | 'platform' | 'creators' | 'contact'
 }
 
 export default function EasyAccessSection({ variant = 'default' }: EasyAccessSectionProps) {
-  const showForm = variant === 'platform' || variant === 'creators'
+  const showForm = variant === 'platform' || variant === 'creators' || variant === 'contact'
   const formType = variant === 'creators' ? 'creators' : 'partnerships'
   const [isVisible, setIsVisible] = useState(false)
   const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle')
@@ -88,14 +88,16 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
             <div className={styles.listContentWrapper}>
               {showForm ? (
                 <>
-                  <div
-                    className={`${styles.contactHeading} ${styles.fadeIn} ${
-                      isVisible ? styles.visible : ''
-                    }`}
-                  >
-                    <h3>{formType === 'creators' ? 'Apply to Become a Creator' : 'Contact Us'}</h3>
-                  </div>
-                  {formType === 'partnerships' && (
+                  {variant !== 'contact' && (
+                    <div
+                      className={`${styles.contactHeading} ${styles.fadeIn} ${
+                        isVisible ? styles.visible : ''
+                      }`}
+                    >
+                      <h3>{formType === 'creators' ? 'Apply to Become a Creator' : 'Contact Us'}</h3>
+                    </div>
+                  )}
+                  {formType === 'partnerships' && variant !== 'contact' && (
                     <div
                       className={`${styles.contactIntro} ${styles.fadeIn} ${
                         isVisible ? styles.visible : ''
@@ -113,23 +115,52 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
                   <div className={styles.formRow}>
                     <input type="text" name="fullName" placeholder="Full Name *" className="text-field" required />
                   </div>
-                  <div className={styles.formRow}>
-                    <input type="text" name="organization" placeholder={formType === 'creators' ? 'Social Handle / Channel (optional)' : 'Organization / Brand (optional)'} className="text-field" />
-                  </div>
+                  {variant !== 'contact' && (
+                    <div className={styles.formRow}>
+                      <input
+                        type="text"
+                        name="organization"
+                        placeholder={
+                          formType === 'creators'
+                            ? 'Social Handle / Channel (optional)'
+                            : 'Organization / Brand (optional)'
+                        }
+                        className="text-field"
+                      />
+                    </div>
+                  )}
                   <div className={styles.formRow}>
                     <input type="email" name="email" placeholder="Email *" className="text-field" required />
                   </div>
+                  {variant === 'contact' && (
+                    <div className={styles.formRow}>
+                      <input
+                        type="tel"
+                        name="phone"
+                        placeholder="Phone (optional)"
+                        className="text-field"
+                      />
+                    </div>
+                  )}
                   <div className={styles.formRow}>
                     <input type="text" name="country" placeholder="Country / Region (optional)" className="text-field" />
                   </div>
-                  <div className={styles.formRow}>
-                    <select name={formType === 'creators' ? 'creatorType' : 'partnershipType'} className={`text-field ${styles.formSelect}`} required>
-                      <option value="">{formType === 'creators' ? 'Creator Type *' : 'Partnership Type *'}</option>
-                      {(formType === 'creators' ? creatorTypes : partnershipTypes).map((opt) => (
-                        <option key={opt.value} value={opt.value}>{opt.label}</option>
-                      ))}
-                    </select>
-                  </div>
+                  {variant !== 'contact' && (
+                    <div className={styles.formRow}>
+                      <select
+                        name={formType === 'creators' ? 'creatorType' : 'partnershipType'}
+                        className={`text-field ${styles.formSelect}`}
+                        required
+                      >
+                        <option value="">{formType === 'creators' ? 'Creator Type *' : 'Partnership Type *'}</option>
+                        {(formType === 'creators' ? creatorTypes : partnershipTypes).map((opt) => (
+                          <option key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
                   <div className={styles.formRow}>
                     <textarea name="message" placeholder="Message *" className={`text-field ${styles.formTextarea}`} rows={5} required />
                   </div>
