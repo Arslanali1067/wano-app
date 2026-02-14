@@ -60,7 +60,7 @@ export default function ContactPage() {
               <p style={{ margin: 0 }}>
                 <strong>For general inquiries:</strong>
                 <br />
-                <a href="mailto:hello@wanoafrica.com">hello@wanoafrica.com</a>
+                <a href="mailto:hello@wanoafrica.com">inquiries@wanoafrica.com</a>
               </p>
             </div>
             <div
