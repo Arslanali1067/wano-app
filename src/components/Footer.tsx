@@ -9,10 +9,10 @@ const companyLinks = [
 ]
 
 const socialLinks = [
-  { href: 'https://instagram.com', label: 'Instagram' },
-  { href: 'https://tiktok.com', label: 'TikTok' },
-  { href: 'https://twitter.com', label: 'X (Twitter)' },
-  { href: 'https://youtube.com', label: 'YouTube' },
+  { href: 'https://www.instagram.com/wanoapp/', label: 'Instagram' },
+  { href: 'https://www.tiktok.com/@wanoapp6', label: 'TikTok' },
+  { href: 'https://x.com/Wano2025', label: 'X (Twitter)' },
+  { href: 'https://www.youtube.com/@wano-app', label: 'YouTube' },
 ]
 
 const supportLinks = [
