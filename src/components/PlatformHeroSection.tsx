@@ -3,7 +3,6 @@
 import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
 import styles from './HeroSection.module.css'
 import platformStyles from './PlatformHeroSection.module.css'
 
@@ -36,13 +35,12 @@ export default function PlatformHeroSection({ variant = 'partnerships' }: Platfo
   const content = heroContent[variant]
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
-  const pathname = usePathname()
 
   useEffect(() => {
     setIsVisible(true)
   }, [])
 
-  const joinHref = pathname === '/' ? '#Download' : '/#Download'
+  const joinHref = '#Download'
 
   return (
     <section
