@@ -38,13 +38,64 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
   const showForm = variant === 'platform' || variant === 'creators' || variant === 'contact'
   const formType = variant === 'creators' ? 'creators' : 'partnerships'
   const [isVisible, setIsVisible] = useState(false)
-  const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState<string>('')
   const sectionRef = useRef<HTMLDivElement>(null)
 
-  const handleFormSubmit = (e: FormEvent) => {
+  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setFormStatus('success')
-    setTimeout(() => setFormStatus('idle'), 3000)
+    setFormStatus('loading')
+
+    const form = e.currentTarget
+    const formData = new FormData(form)
+
+    const payload: Record<string, string> = {
+      fullName: formData.get('fullName') as string,
+      email: formData.get('email') as string,
+      message: formData.get('message') as string,
+      formSource: variant === 'contact' ? 'Contact Page' : variant === 'creators' ? 'Creators' : 'Partnerships',
+    }
+
+    const org = formData.get('organization')
+    if (org) payload.organization = org as string
+    const phone = formData.get('phone')
+    if (phone) payload.phone = phone as string
+    const country = formData.get('country')
+    if (country) payload.country = country as string
+    const partnershipType = formData.get('partnershipType')
+    if (partnershipType) payload.partnershipType = partnershipType as string
+    const creatorType = formData.get('creatorType')
+    if (creatorType) payload.creatorType = creatorType as string
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+      const data = await res.json()
+
+      if (!res.ok) {
+        setErrorMessage(data?.error || 'Something went wrong')
+        setFormStatus('error')
+        setTimeout(() => {
+          setFormStatus('idle')
+          setErrorMessage('')
+        }, 8000)
+        return
+      }
+
+      setFormStatus('success')
+      form.reset()
+      setTimeout(() => setFormStatus('idle'), 5000)
+    } catch {
+      setErrorMessage('Network error. Please check your connection and try again.')
+      setFormStatus('error')
+      setTimeout(() => {
+        setFormStatus('idle')
+        setErrorMessage('')
+      }, 8000)
+    }
   }
 
   useEffect(() => {
@@ -165,11 +216,18 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
                     <textarea name="message" placeholder="Message *" className={`text-field ${styles.formTextarea}`} rows={5} required />
                   </div>
                   <div className={styles.formRow}>
-                    <button type="submit" className="submit-button">{formType === 'creators' ? 'Apply Now' : 'Submit Inquiry'}</button>
+                    <button type="submit" className="submit-button" disabled={formStatus === 'loading'}>
+                      {formStatus === 'loading' ? 'Sending...' : formType === 'creators' ? 'Apply Now' : 'Submit Inquiry'}
+                    </button>
                   </div>
                   <p className={styles.formNote}>{formType === 'creators' ? 'We review applications and reach out to creators who align with our community.' : 'We review inquiries carefully and respond directly.'}</p>
                   {formStatus === 'success' && (
                     <div className={styles.formSuccess}>Thank you! Your inquiry has been received.</div>
+                  )}
+                  {formStatus === 'error' && (
+                    <div className={styles.formError}>
+                      {errorMessage || 'Something went wrong. Please try again or email us directly.'}
+                    </div>
                   )}
                 </form>
                 </>
