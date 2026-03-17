@@ -48,9 +48,15 @@ export default function Footer() {
             <div className={styles.footerBlock}>
               <div className="title-small">Company</div>
               {companyLinks.map((link) => (
-                <Link key={link.label} href={link.href} className={styles.footerLink}>
-                  {link.label}
-                </Link>
+                link.label === 'Blog' ? (
+                  <span key={link.label} className={styles.footerLink}>
+                    {link.label}
+                  </span>
+                ) : (
+                  <Link key={link.label} href={link.href} className={styles.footerLink}>
+                    {link.label}
+                  </Link>
+                )
               ))}
             </div>
 

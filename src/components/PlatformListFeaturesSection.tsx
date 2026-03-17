@@ -30,7 +30,7 @@ const partnershipFeatures = [
     foregroundImage: '/images/Section2.webp',
     imageFirst: true,
     checkItems: [
-      "15,000+ installs and growing",
+      "35k+ installs and growing",
       "Early-stage partnership advantage",
       "Opportunity to shape product and ecosystem",
       "Cross-continental distribution potential",
@@ -57,7 +57,7 @@ const creatorFeatures = [
     foregroundImage: '/images/Creators2.webp',
     imageFirst: true,
     checkItems: [
-      "15,000+ installs and growing",
+      "35k+ installs and growing",
       "Early creator advantage",
       "Community support and feedback",
       "Cross-continental reach",
