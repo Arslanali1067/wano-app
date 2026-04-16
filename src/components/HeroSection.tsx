@@ -154,7 +154,7 @@ export default function HeroSection() {
               style={{ animationDelay: '0.5s' }}
             >
               <p>A short-form video platform connecting Africa, the Diaspora, the Caribbean, and communities worldwide shaped by Afrocentric influence.</p>
-              <p className={styles.heroStats}>35k+ installs and growing worldwide.</p>
+              <p className={styles.heroStats}>50k+ installs and growing worldwide.</p>
             </div>
             <div
               className={`${styles.heroSectionButtonHolder} ${styles.animateFadeIn} ${isVisible ? styles.visible : ''}`}

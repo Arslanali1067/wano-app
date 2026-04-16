@@ -13,7 +13,7 @@ const stats = [
     description: "A cultural feed connecting creators across time zones and continents.",
   },
   {
-    number: '35k+ Installs',
+    number: '50k+ Installs',
     description: "A fast-growing global community building from the ground up.",
   },
   {
