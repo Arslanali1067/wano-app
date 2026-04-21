@@ -14,7 +14,7 @@ const images = {
 const partnershipFeatures = [
   {
     title: 'Built for Culture, Not Just Reach',
-    description: "Wano connects brands with a culturally active audience across Africa, the Diaspora, and the Caribbean — not just users, but people who create, share, and shape trends.",
+    description: "Wano connects brands with a culturally active audience across Africa and the Diaspora — not just users, but people who create, share, and shape trends.",
     foregroundImage: '/images/Section.webp',
     imageFirst: false,
     checkItems: [
@@ -69,11 +69,11 @@ const aboutFeatures = [
   {
     title: 'Our Mission',
     description:
-      'Wano is a global short-form video platform rooted in Afrocentric culture, connecting Africa, the Diaspora, the Caribbean, and communities worldwide shaped by its influence.',
+      'Wano is a global short-form video platform rooted in Afrocentric culture, connecting Africa, the Diaspora, and communities worldwide shaped by its influence.',
     foregroundImage: '/images/About-1.webp',
     imageFirst: false,
     checkItems: [
-      'Enable cultural discovery across Africa, the Diaspora, and the Caribbean',
+      'Enable cultural discovery across Africa and the Diaspora',
       'Give creators meaningful visibility and opportunities to grow',
       'Connect communities globally through short-form video and storytelling',
       'Build a platform designed for long-term impact, not just trends',
@@ -88,7 +88,7 @@ const aboutFeatures = [
     checkItems: [
       'Put culture at the center of how content is discovered and shared',
       'Give underrepresented creators a platform built for their voices',
-      'Connect Africa, the Diaspora, and the Caribbean through digital storytelling',
+      'Connect Africa, and the Diaspora,through digital storytelling',
       'Help shape the future of global culture, not just participate in it',
     ],
   },

@@ -203,7 +203,7 @@ export default function PhoneFeaturesSection({ variant = 'home' }: PhoneFeatures
             >
               <p>
                 {variant === 'creators'
-                  ? 'Whether you make music, create videos, or tell stories—Wano gives you the tools and community to reach audiences across Africa, the Diaspora, and the Caribbean.'
+                  ? 'Whether you make music, create videos, or tell stories—Wano gives you the tools and community to reach audiences across Africa and the Diaspora.'
                   : 'Wano gives brands and organizations a way to partner with culture at the source—through creators, communities, and technology that travel across borders.'}
               </p>
             </div>

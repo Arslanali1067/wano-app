@@ -24,7 +24,7 @@ export default function PrivacyPage() {
         >
           <p style={{ marginBottom: 16 }}>
             Wano (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is a global short-form video
-            platform rooted in Afrocentric culture, connecting Africa, the Diaspora, the Caribbean,
+            platform rooted in Afrocentric culture, connecting Africa, the Diaspora
             and communities worldwide. Your privacy is important to us, and this Privacy Policy
             explains how we collect, use, and protect your information when you use the Wano app and
             services.

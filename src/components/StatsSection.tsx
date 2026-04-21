@@ -51,7 +51,7 @@ export default function StatsSection() {
           <div className={styles.ctaContentWrapper}>
             <div className={`${styles.fadeIn} ${isVisible ? styles.visible : ''}`}>
               <h2 className={styles.heading03Style}>
-              Wano is a global short-form video platform rooted in Afrocentric culture and connected across Africa, the Diaspora, and the Caribbean. Share your story, discover new voices, and grow with a community in motion.
+              Wano is a global short-form video platform rooted in Afrocentric culture and connected across Africa and the Diaspora. Share your story, discover new voices, and grow with a community in motion.
               </h2>
             </div>
           </div>

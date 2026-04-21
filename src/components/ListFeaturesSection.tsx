@@ -13,7 +13,7 @@ const images = {
 const features = [
   {
     title: 'One Beat. Infinite Voices.',
-    description: 'From Kampala to Cape Town, New York to the Caribbean, and everywhere the diaspora calls home—Wano is the bridge. We are taking the rhythm, the humor, and the creativity of Afrocentric culture and sharing it with the globe. Whether you are remixing a beat, sharing a story in your native tongue, or just catching a vibe, Wano is where our voices echo loudest.',
+    description: 'From Kampala to Cape Town and everywhere the diaspora calls home—Wano is the bridge. We are taking the rhythm, the humor, and the creativity of Afrocentric culture and sharing it with the globe. Whether you are remixing a beat, sharing a story in your native tongue, or just catching a vibe, Wano is where our voices echo loudest.',
     foregroundImage: '/images/image2.webp',
     imageFirst: false,
     checkItems: [

@@ -6,7 +6,7 @@ import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: 'WANO — A Global Platform Rooted in Culture',
-  description: 'A short-form video platform connecting Africa, the Diaspora, the Caribbean, and communities worldwide shaped by Afrocentric influence. ',
+  description: 'A short-form video platform connecting Africa, the Diaspora, and communities worldwide shaped by Afrocentric influence. ',
   icons: {
     icon: '/wano-favicon.png',
     shortcut: '/wano-favicon.png',

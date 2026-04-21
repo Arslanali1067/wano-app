@@ -10,7 +10,7 @@ const heroContent = {
   partnerships: {
     title: 'Partnerships',
     description:
-      'Wano collaborates with brands, organizations, creators, and institutions aligned with cultural growth and global expansion across Africa, the Diaspora, and the Caribbean.',
+      'Wano collaborates with brands, organizations, creators, and institutions aligned with cultural growth and global expansion across Africa and the Diaspora.',
     bgImage: '/images/image3.webp',
   },
   creators: {
@@ -22,7 +22,7 @@ const heroContent = {
   about: {
     title: 'About Wano',
     description:
-      'Wano is a global short-form video platform rooted in Afrocentric culture, connecting Africa, the Diaspora, the Caribbean, and communities worldwide shaped by its influence.',
+      'Wano is a global short-form video platform rooted in Afrocentric culture, connecting Africa, the Diaspora, and communities worldwide shaped by its influence.',
     bgImage: '/images/About-bg.webp',
   },
 } as const
