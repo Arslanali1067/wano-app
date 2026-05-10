@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.wano.app",
+      "sha256_cert_fingerprints": [
+        "03:25:27:8D:05:1F:4D:DA:46:75:1C:76:9F:15:15:B9:25:AA:33:3B:E7:91:A3:4A:7A:D5:B8:F4:1A:4D:62:39"
+      ]
+    }
+  }
+]
