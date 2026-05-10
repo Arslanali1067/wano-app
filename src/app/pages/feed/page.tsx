@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Feed } from "./feed";
+import { Feed } from "./Feed";
 
 type Props = {
   searchParams: Promise<{ videoId?: string }>;
@@ -12,7 +12,9 @@ async function getVideo(videoId: string) {
   return res.json();
 }
 
-export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  searchParams,
+}: Props): Promise<Metadata> {
   const { videoId } = await searchParams;
   const data = videoId ? await getVideo(videoId) : null;
 
