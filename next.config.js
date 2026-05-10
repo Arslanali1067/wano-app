@@ -26,6 +26,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'wano-africadev.lon1.cdn.digitaloceanspaces.com',
+      },
     ],
   },
 }
