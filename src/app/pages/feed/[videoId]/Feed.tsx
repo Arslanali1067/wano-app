@@ -1,7 +1,14 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import Image from "next/image";
 import Hls from "hls.js";
 import styles from "./Feed.module.css";
+
+interface User {
+  username: string;
+  display_name: string;
+  profile_picture: string;
+}
 
 interface VideoData {
   _id: string;
@@ -13,6 +20,7 @@ interface VideoData {
   remoteUrl_CF: string;
   is_liked: boolean;
   is_following: boolean;
+  user: User;
 }
 
 export const Feed = ({ data: _data }: { data: unknown }) => {
@@ -60,8 +68,26 @@ export const Feed = ({ data: _data }: { data: unknown }) => {
             />
           </div>
           <div className={styles.meta}>
-            {data.title && <h2 className={styles.title}>{data.title}</h2>}
-            {data.description && <p className={styles.description}>{data.description}</p>}
+            {data.user && (
+              <div className={styles.creator}>
+                {data.user.profile_picture && (
+                  <Image
+                    src={data.user.profile_picture}
+                    alt={data.user.display_name}
+                    width={44}
+                    height={44}
+                    className={styles.avatar}
+                  />
+                )}
+                <div className={styles.creatorInfo}>
+                  <span className={styles.displayName}>{data.user.display_name}</span>
+                  <span className={styles.handle}>@{data.user.username}</span>
+                </div>
+              </div>
+            )}
+            {data.description && (
+              <p className={styles.description}>{data.description}</p>
+            )}
             <div className={styles.stats}>
               <span className={styles.stat}><strong>{data.views_count}</strong> views</span>
               <span className={styles.stat}><strong>{data.likes_count}</strong> likes</span>
