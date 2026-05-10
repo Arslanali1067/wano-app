@@ -16,7 +16,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { videoId } = await params;
   const data = await getVideo(videoId);
 
-  const description = data?.description || "Watch videos on Wano App";
+  const user = data?.user;
+  const creatorTag = user ? `${user.display_name} (@${user.username})` : null;
+  const description = [creatorTag, data?.description].filter(Boolean).join(" · ") || "Watch videos on Wano App";
   const thumbnail = data?.urls?.thumbnail;
 
   return {

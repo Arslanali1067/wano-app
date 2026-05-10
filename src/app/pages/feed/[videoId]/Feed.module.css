@@ -1,6 +1,6 @@
 .page {
   min-height: 100vh;
-  padding: 48px 0 80px;
+  padding: 24px 0 80px;
   background-color: var(--background);
 }
 
@@ -25,7 +25,7 @@
   margin-bottom: 16px;
   float: right;
   border-radius: 12px;
-  background: linear-gradient(135deg, #73BD8C 0%, #E38028 100%);
+  background: linear-gradient(135deg, #73bd8c 0%, #e38028 100%);
   color: #fff;
   font-size: 15px;
   font-weight: 600;
@@ -60,7 +60,39 @@
   margin-top: 16px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+}
+
+.creator {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid var(--border-color);
+}
+
+.creatorInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.displayName {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.handle {
+  font-size: 12px;
+  color: var(--text-secondary);
 }
 
 .title {
