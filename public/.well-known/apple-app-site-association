@@ -5,7 +5,8 @@
       {
         "appID": "8BY222TD3Q.com.wano.app",
         "paths": [
-          "/pages/feed"
+          "/pages/feed",
+          "/pages/feed/*"
         ]
       }
     ]
