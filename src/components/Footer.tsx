@@ -82,6 +82,9 @@ export default function Footer() {
                   {link.label}
                 </Link>
               ))}
+              <a href="/sitemap.xml" className={styles.footerLink}>
+                Sitemap
+              </a>
             </div>
 
           </div>
