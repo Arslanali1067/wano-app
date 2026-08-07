@@ -1,4 +1,21 @@
+import type { Metadata } from 'next'
 import styles from '@/components/HeroSection.module.css'
+
+export const metadata: Metadata = {
+  title: 'WANO Studio',
+  description:
+    'WANO Studio — The upcoming creative production suite and tools for video creators on WANO.',
+  alternates: {
+    canonical: '/wano-studio',
+  },
+  openGraph: {
+    title: 'WANO Studio — Creator Suite & Tools',
+    description:
+      'WANO Studio — The upcoming creative production suite and tools for video creators on WANO.',
+    url: 'https://wanoafrica.com/wano-studio',
+    images: ['/images/VideoEditScreen.webp'],
+  },
+}
 
 export default function WanoStudioPage() {
   return (
@@ -16,5 +33,6 @@ export default function WanoStudioPage() {
     </main>
   )
 }
+
 
 

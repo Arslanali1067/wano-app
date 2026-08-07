@@ -1,3 +1,14 @@
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Terms of Service',
+  description:
+    'Read the WANO Terms of Service governing your use of the WANO platform and app services.',
+  alternates: {
+    canonical: '/terms-of-service',
+  },
+}
+
 export default function TermsOfServicePage() {
   return (
     <main>

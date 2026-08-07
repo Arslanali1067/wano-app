@@ -48,16 +48,20 @@ function buildDescription(item: FeedItem): string {
 
 async function fetchAllVideos(): Promise<FeedItem[]> {
   const byId = new Map<string, FeedItem>();
-  for (let page = 0; page < MAX_PAGES; page++) {
-    const url = `${FEED_API}?skip=${page * PAGE_SIZE}&limit=${PAGE_SIZE}&authenticated=false`;
-    const res = await fetch(url);
-    if (!res.ok) break;
-    const batch: FeedItem[] = await res.json();
-    if (!Array.isArray(batch) || batch.length === 0) break;
-    for (const item of batch) {
-      if (item?.id && !byId.has(item.id)) byId.set(item.id, item);
+  try {
+    for (let page = 0; page < MAX_PAGES; page++) {
+      const url = `${FEED_API}?skip=${page * PAGE_SIZE}&limit=${PAGE_SIZE}&authenticated=false`;
+      const res = await fetch(url, { next: { revalidate: 3600 } });
+      if (!res.ok) break;
+      const batch: FeedItem[] = await res.json();
+      if (!Array.isArray(batch) || batch.length === 0) break;
+      for (const item of batch) {
+        if (item?.id && !byId.has(item.id)) byId.set(item.id, item);
+      }
+      if (batch.length < PAGE_SIZE) break;
     }
-    if (batch.length < PAGE_SIZE) break;
+  } catch {
+    // Return harvested items or empty list if remote feed is unreachable
   }
   return Array.from(byId.values());
 }

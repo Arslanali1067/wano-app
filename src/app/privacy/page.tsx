@@ -1,4 +1,15 @@
 
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description:
+    'Read the WANO Privacy Policy to understand how we collect, protect, and use your personal information.',
+  alternates: {
+    canonical: '/privacy',
+  },
+}
+
 export default function PrivacyPage() {
   return (
     <main>

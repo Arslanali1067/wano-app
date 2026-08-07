@@ -238,7 +238,7 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
                   </div>
                   <div className={`${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: '0.1s' }}>
                     <p>
-                    Culture isn't just something you watch—it's something you live. Discover new sounds, remix the beat, and share your unique vibe. On Wano, the rhythm is always in your hands.
+                    Culture isn&apos;t just something you watch&mdash;it&apos;s something you live. Discover new sounds, remix the beat, and share your unique vibe. On Wano, the rhythm is always in your hands.
                     </p>
                     <h6>Join the Global Movement. Start creating for free today.</h6>
                   </div>

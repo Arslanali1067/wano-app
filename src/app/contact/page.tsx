@@ -1,5 +1,22 @@
+import type { Metadata } from 'next'
 import EasyAccessSection from '@/components/EasyAccessSection'
 import CTASection from '@/components/CTASection'
+
+export const metadata: Metadata = {
+  title: 'Contact Us',
+  description:
+    'Get in touch with WANO. Contact our team for general inquiries, partnerships, or creator support.',
+  alternates: {
+    canonical: '/contact',
+  },
+  openGraph: {
+    title: 'Contact Us | WANO',
+    description:
+      'Get in touch with WANO. Contact our team for general inquiries, partnerships, or creator support.',
+    url: 'https://wanoafrica.com/contact',
+  },
+}
+
 
 export default function ContactPage() {
   return (

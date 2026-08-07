@@ -4,8 +4,17 @@ import { blogPosts } from '@/data/blogPosts'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Blog - Wano',
-  description: 'Explore the world of music with Wano Notes - our latest articles and updates.',
+  title: 'Blog - WANO Notes',
+  description: 'Explore the world of music, culture, and storytelling with Wano Notes — our latest articles and updates.',
+  alternates: {
+    canonical: '/blog',
+  },
+  openGraph: {
+    title: 'WANO Notes — Blog & Articles',
+    description: 'Explore the world of music, culture, and storytelling with Wano Notes — our latest articles and updates.',
+    url: 'https://wanoafrica.com/blog',
+    images: ['/images/Section2.webp'],
+  },
 }
 
 export default function BlogPage() {
