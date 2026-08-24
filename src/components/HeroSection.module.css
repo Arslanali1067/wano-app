@@ -400,11 +400,6 @@
     border-radius: 35px;
   }
 
-  .heroVideo,
-  .videoPoster {
-    border-radius: 35px;
-  }
-
   .phone02Holder,
   .phone03Holder {
     width: 200px;
@@ -448,11 +443,6 @@
     -webkit-clip-path: inset(3.5% 4.5% 3.5% 4.5% round 30px);
   }
   
-  .heroVideo,
-  .videoPoster {
-    border-radius: 30px;
-  }
-
   .heroVideo,
   .videoPoster {
     border-radius: 30px;
@@ -522,11 +512,6 @@
     -webkit-clip-path: inset(3.5% 4.5% 3.5% 4.5% round 25px);
   }
   
-  .heroVideo,
-  .videoPoster {
-    border-radius: 25px;
-  }
-
   .heroVideo,
   .videoPoster {
     border-radius: 25px;

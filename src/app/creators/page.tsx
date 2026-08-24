@@ -23,13 +23,13 @@ export const metadata: Metadata = {
 
 export default function CreatorsPage() {
   return (
-    <main>
+    <>
       <PlatformHeroSection variant="creators" />
       <PhoneFeaturesSection variant="creators" />
       <PlatformListFeaturesSection variant="creators" />
-      <EasyAccessSection />
+      <EasyAccessSection variant="creators" />
       <CTASection />
-    </main>
+    </>
   )
 }
 

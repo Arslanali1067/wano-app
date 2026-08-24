@@ -1,0 +1,24 @@
+[
+  {
+    "fullName": "Kofi Mensah",
+    "email": "kofi@example.com",
+    "phone": "+233 24 123 4567",
+    "country": "Ghana",
+    "city": "Accra",
+    "productionCompany": "Black Star Studios",
+    "filmTitle": "Golden Horizon",
+    "countryRepresented": "Ghana",
+    "yearCompleted": "2025",
+    "runtime": "24 mins",
+    "category": "Short Film",
+    "languages": "Twi, English",
+    "subtitles": "Yes",
+    "synopsis": "A young inventor in Accra builds a solar-powered water filtration device to help his community through a severe drought, discovering unexpected allies along the way.",
+    "viewingLink": "https://vimeo.com/123456789",
+    "viewingPassword": "wano-screener",
+    "rightsConfirmed": true,
+    "id": "WTV-664788",
+    "createdAt": "2026-08-23T17:48:28.687Z",
+    "status": "New"
+  }
+]

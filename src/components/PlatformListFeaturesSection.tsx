@@ -5,10 +5,8 @@ import Image from 'next/image'
 import styles from './ListFeaturesSection.module.css'
 import heroStyles from './HeroSection.module.css'
 
-// Reuse the same arrow icon as the home ListFeaturesSection for list items
 const images = {
-  arrowIcon:
-    'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/65083f705fec0efcb9248de2_Arrow%20Icon.svg',
+  arrowIcon: '/icons/check-arrow.svg',
 }
 
 const partnershipFeatures = [

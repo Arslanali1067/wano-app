@@ -9,7 +9,8 @@ const ctaImage = '/images/image3.webp'
 
 export default function CTASection() {
   const [email, setEmail] = useState('')
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMessage, setErrorMessage] = useState('')
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
 
@@ -30,13 +31,38 @@ export default function CTASection() {
     return () => observer.disconnect()
   }, [])
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
-    if (email) {
-      // Simulate form submission
+    if (!email) return
+
+    setStatus('loading')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName: 'Newsletter Subscriber',
+          email,
+          message: 'User requested to subscribe to Wano updates/newsletter.',
+          formSource: 'Newsletter Subscription',
+        }),
+      })
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null)
+        setErrorMessage(data?.error || 'Failed to submit. Please try again.')
+        setStatus('error')
+        setTimeout(() => setStatus('idle'), 5000)
+        return
+      }
+
       setStatus('success')
       setEmail('')
-      setTimeout(() => setStatus('idle'), 3000)
+      setTimeout(() => setStatus('idle'), 5000)
+    } catch {
+      setErrorMessage('Network error. Please try again.')
+      setStatus('error')
+      setTimeout(() => setStatus('idle'), 5000)
     }
   }
 
@@ -47,7 +73,7 @@ export default function CTASection() {
           <div className={styles.ctaWrapper}>
             <div className={styles.ctaContent}>
               <div className={`${styles.ctaHeading} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}>
-                <h1>Join the Movement</h1>
+                <h2>Join the Movement</h2>
               </div>
               <div className={`${styles.ctaSubtitle} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`} style={{ animationDelay: '0.1s' }}>
                 <p>Wano Is Us. From every city, tribe, and language—Wano is where Africa creates, connects, and shines. Don&apos;t miss the next big thing in culture and content.</p>
@@ -58,12 +84,14 @@ export default function CTASection() {
                     type="email"
                     className={styles.textField}
                     placeholder="Your Email"
+                    aria-label="Your Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    disabled={status === 'loading'}
                     required
                   />
-                  <button type="submit" className={styles.submitButton}>
-                    Subcribe
+                  <button type="submit" className={styles.submitButton} disabled={status === 'loading'}>
+                    {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
                   </button>
                 </div>
                 {status === 'success' && (
@@ -73,7 +101,7 @@ export default function CTASection() {
                 )}
                 {status === 'error' && (
                   <div className={styles.errorMessage}>
-                    <div>Oops!<br />Something went wrong while submitting the form.</div>
+                    <div>{errorMessage || 'Oops! Something went wrong while submitting the form.'}</div>
                   </div>
                 )}
               </form>

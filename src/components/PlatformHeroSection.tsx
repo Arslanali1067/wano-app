@@ -7,6 +7,12 @@ import styles from './HeroSection.module.css'
 import platformStyles from './PlatformHeroSection.module.css'
 
 const heroContent = {
+  platform: {
+    title: 'The WANO Platform',
+    description:
+      'Engineered for speed, culture, and community. Discover fast short-form video streaming, native storytelling tools, and seamless global connection.',
+    bgImage: '/images/Feature1.webp',
+  },
   partnerships: {
     title: 'Partnerships',
     description:
@@ -31,7 +37,7 @@ interface PlatformHeroSectionProps {
   variant?: keyof typeof heroContent
 }
 
-export default function PlatformHeroSection({ variant = 'partnerships' }: PlatformHeroSectionProps) {
+export default function PlatformHeroSection({ variant = 'platform' }: PlatformHeroSectionProps) {
   const content = heroContent[variant]
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)

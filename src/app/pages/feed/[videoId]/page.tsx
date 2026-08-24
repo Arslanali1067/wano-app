@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Feed } from "./Feed";
 
 type Props = {
@@ -6,10 +7,16 @@ type Props = {
 };
 
 async function getVideo(videoId: string) {
-  const res = await fetch(
-    `https://devbe.wanoafrica.com/api/v1/videos/${videoId}?authenticated=false`,
-  );
-  return res.json();
+  try {
+    const res = await fetch(
+      `https://devbe.wanoafrica.com/api/v1/videos/${videoId}?authenticated=false`,
+      { next: { revalidate: 60 } }
+    );
+    if (!res.ok) return null;
+    return await res.json();
+  } catch {
+    return null;
+  }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -113,6 +120,11 @@ function buildVideoJsonLd(data: any) {
 export default async function FeedPage({ params }: Props) {
   const { videoId } = await params;
   const data = await getVideo(videoId);
+
+  if (!data || data.detail) {
+    notFound();
+  }
+
   const jsonLd = buildVideoJsonLd(data);
 
   return (

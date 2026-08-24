@@ -227,7 +227,7 @@ export default function PhoneFeaturesSection({ variant = 'home' }: PhoneFeatures
                       className={`${styles.fadeIn} ${isVisible ? styles.visible : ''}`}
                       style={{ animationDelay: `${0.25 + index * 0.2}s` }}
                     >
-                      <div className={styles.phoneFeatureTitle}>{feature.title}</div>
+                      <h3 className={styles.phoneFeatureTitle}>{feature.title}</h3>
                     </div>
                     <div
                       className={`${styles.fadeIn} ${isVisible ? styles.visible : ''}`}

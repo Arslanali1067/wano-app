@@ -4,10 +4,8 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import styles from './ListFeaturesSection.module.css'
 
-// Original image URLs from HTML
 const images = {
-  arrowIcon: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/65083f705fec0efcb9248de2_Arrow%20Icon.svg',
-  listImage: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/650841f620e5747d9ec17538_List%20Image.webp',
+  arrowIcon: '/icons/check-arrow.svg',
 }
 
 const features = [

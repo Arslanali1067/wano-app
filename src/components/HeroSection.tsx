@@ -198,7 +198,7 @@ export default function HeroSection() {
 
               {/* Apple App Store Badge */}
               <a 
-                href="https://apps.apple.com/pk/app/wano-app/id6753104927" 
+                href="https://apps.apple.com/app/wano-app/id6753104927" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className={styles.storeBadge}

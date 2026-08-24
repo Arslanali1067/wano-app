@@ -73,9 +73,10 @@ export const Feed = ({ data: _data }: { data: unknown }) => {
                 {data.user.profile_picture && (
                   <Image
                     src={data.user.profile_picture}
-                    alt={data.user.display_name}
+                    alt={data.user.display_name || data.user.username || "Creator"}
                     width={44}
                     height={44}
+                    unoptimized
                     className={styles.avatar}
                   />
                 )}

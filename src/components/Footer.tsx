@@ -4,8 +4,10 @@ import styles from './Footer.module.css'
 
 const companyLinks = [
   { href: '/about', label: 'About Wano' },
+  { href: '/tv', label: 'Wano TV' },
+  { href: '/tv#submit-film', label: 'Submit Your Film' },
   { href: '/wano-studio', label: 'WANO Studio' },
-  { href: '/blog', label: 'Blog' },
+  { href: '/partnerships', label: 'Partnerships' },
 ]
 
 const socialLinks = [
@@ -22,8 +24,8 @@ const supportLinks = [
 ]
 
 const downloadLinks = [
-  { href: 'https://apps.apple.com/pk/app/wano-app/id6753104927', label: 'App Store' },
-  { href: 'https://play.google.com', label: 'Google Play' },
+  { href: 'https://apps.apple.com/app/wano-app/id6753104927', label: 'App Store' },
+  { href: 'https://play.google.com/store/apps/details?id=com.wano.app&hl=en&gl=US', label: 'Google Play' },
 ]
 
 export default function Footer() {
@@ -40,7 +42,7 @@ export default function Footer() {
               className={styles.footerBrandImage}
             />
             <div className={styles.footerParagraphHolder}>
-              <p>A video app Born from Afrocentric culture, built for the world — all people, all stories, all vibes.</p>
+              <p>A video app born from Afrocentric culture, built for the world — all people, all stories, all vibes.</p>
             </div>
           </Link>
 
@@ -48,15 +50,9 @@ export default function Footer() {
             <div className={styles.footerBlock}>
               <div className="title-small">Company</div>
               {companyLinks.map((link) => (
-                link.label === 'Blog' ? (
-                  <span key={link.label} className={styles.footerLink}>
-                    {link.label}
-                  </span>
-                ) : (
-                  <Link key={link.label} href={link.href} className={styles.footerLink}>
-                    {link.label}
-                  </Link>
-                )
+                <Link key={link.label} href={link.href} className={styles.footerLink}>
+                  {link.label}
+                </Link>
               ))}
             </div>
 

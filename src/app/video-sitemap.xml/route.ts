@@ -3,7 +3,7 @@ const FEED_API = "https://devbe.wanoafrica.com/api/v1/feed/";
 const PAGE_SIZE = 1000;
 const MAX_PAGES = 200; // safety cap (=> up to 200k videos)
 
-// Revalidate the generated XML hourly instead of rebuilding per request.
+export const dynamic = 'force-dynamic';
 export const revalidate = 3600;
 
 interface FeedUser {
@@ -51,14 +51,25 @@ async function fetchAllVideos(): Promise<FeedItem[]> {
   try {
     for (let page = 0; page < MAX_PAGES; page++) {
       const url = `${FEED_API}?skip=${page * PAGE_SIZE}&limit=${PAGE_SIZE}&authenticated=false`;
-      const res = await fetch(url, { next: { revalidate: 3600 } });
-      if (!res.ok) break;
-      const batch: FeedItem[] = await res.json();
-      if (!Array.isArray(batch) || batch.length === 0) break;
-      for (const item of batch) {
-        if (item?.id && !byId.has(item.id)) byId.set(item.id, item);
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
+      try {
+        const res = await fetch(url, {
+          signal: controller.signal,
+          next: { revalidate: 3600 },
+        });
+        clearTimeout(timeoutId);
+        if (!res.ok) break;
+        const batch: FeedItem[] = await res.json();
+        if (!Array.isArray(batch) || batch.length === 0) break;
+        for (const item of batch) {
+          if (item?.id && !byId.has(item.id)) byId.set(item.id, item);
+        }
+        if (batch.length < PAGE_SIZE) break;
+      } catch {
+        clearTimeout(timeoutId);
+        break;
       }
-      if (batch.length < PAGE_SIZE) break;
     }
   } catch {
     // Return harvested items or empty list if remote feed is unreachable

@@ -19,18 +19,16 @@ export const metadata: Metadata = {
 
 export default function WanoStudioPage() {
   return (
-    <main>
-      <section className={`section ${styles.heroSection} ${styles.studioHero}`}>
-        <div className="container">
-          <div className={styles.studioHeroCard}>
-            <h1>
-              <span className={styles.studioWanoWord}>WANO</span> Studio
-            </h1>
-            <p>In development – coming soon.</p>
-          </div>
+    <section className={`section ${styles.heroSection} ${styles.studioHero}`}>
+      <div className="container">
+        <div className={styles.studioHeroCard}>
+          <h1>
+            <span className={styles.studioWanoWord}>WANO</span> Studio
+          </h1>
+          <p>In development – coming soon.</p>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
   )
 }
 

@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main>
+    <>
       {/* Page header (same style as Contact) */}
       <section className="section padding-section">
         <div className="container" style={{ textAlign: 'center' }}>
-          <h2>Privacy Policy</h2>
+          <h1>Privacy Policy</h1>
           <p style={{ marginTop: 8, fontSize: 14, opacity: 0.8 }}>
             Last updated: February 2026
           </p>
@@ -44,12 +44,12 @@ export default function PrivacyPage() {
             By using Wano, you agree to the practices described in this policy.
           </p>
 
-          <h6 style={{ marginTop: 24, marginBottom: 8 }}>1. Information We Collect</h6>
+          <h3 style={{ marginTop: 24, marginBottom: 8, fontSize: 18, fontWeight: 600 }}>1. Information We Collect</h3>
           <p style={{ marginBottom: 16 }}>
             We collect information to provide, improve, and protect our platform.
           </p>
 
-          <h6 style={{ marginTop: 24, marginBottom: 8 }}>Information You Provide</h6>
+          <h3 style={{ marginTop: 24, marginBottom: 8, fontSize: 16, fontWeight: 600 }}>Information You Provide</h3>
           <p style={{ marginBottom: 8 }}>
             When you create an account or use Wano, you may provide:
           </p>
@@ -68,7 +68,7 @@ export default function PrivacyPage() {
             <li style={{ padding: '4px 0' }}>Any information you submit through forms or support requests</li>
           </ul>
 
-          <h6 style={{ marginTop: 24, marginBottom: 8 }}>Information Collected Automatically</h6>
+          <h3 style={{ marginTop: 24, marginBottom: 8, fontSize: 16, fontWeight: 600 }}>Information Collected Automatically</h3>
           <p style={{ marginBottom: 8 }}>When you use Wano, we may collect:</p>
           <ul
             style={{
@@ -86,13 +86,13 @@ export default function PrivacyPage() {
             </li>
           </ul>
 
-          <h6 style={{ marginTop: 24, marginBottom: 8 }}>Information from Third Parties</h6>
+          <h3 style={{ marginTop: 24, marginBottom: 8, fontSize: 16, fontWeight: 600 }}>Information from Third Parties</h3>
           <p style={{ marginBottom: 24 }}>
             If you sign in using a third-party service (like Google or Apple), we may receive basic
             profile information from them.
           </p>
 
-          <h6 style={{ marginTop: 24, marginBottom: 8 }}>2. How We Use Your Information</h6>
+          <h3 style={{ marginTop: 24, marginBottom: 8, fontSize: 18, fontWeight: 600 }}>2. How We Use Your Information</h3>
           <p style={{ marginBottom: 8 }}>We use your information to:</p>
           <ul
             style={{
@@ -112,7 +112,7 @@ export default function PrivacyPage() {
           </ul>
           <p style={{ marginBottom: 24 }}>We do not sell your personal data.</p>
 
-          <h6 style={{ marginTop: 24, marginBottom: 8 }}>3. How Your Content Is Used</h6>
+          <h3 style={{ marginTop: 24, marginBottom: 8, fontSize: 18, fontWeight: 600 }}>3. How Your Content Is Used</h3>
           <p style={{ marginBottom: 8 }}>When you upload videos, photos, or other content:</p>
           <ul
             style={{
@@ -133,7 +133,7 @@ export default function PrivacyPage() {
             You can delete your content at any time.
           </p>
 
-          <h6 style={{ marginTop: 24, marginBottom: 8 }}>4. Sharing of Information</h6>
+          <h3 style={{ marginTop: 24, marginBottom: 8, fontSize: 18, fontWeight: 600 }}>4. Sharing of Information</h3>
           <p style={{ marginBottom: 8 }}>We may share limited information with:</p>
           <ul
             style={{
@@ -151,14 +151,14 @@ export default function PrivacyPage() {
           </ul>
           <p style={{ marginBottom: 24 }}>We never share your private messages publicly.</p>
 
-          <h6 style={{ marginTop: 24, marginBottom: 8 }}>5. Data Security</h6>
+          <h3 style={{ marginTop: 24, marginBottom: 8, fontSize: 18, fontWeight: 600 }}>5. Data Security</h3>
           <p style={{ marginBottom: 24 }}>
             We use technical and organizational safeguards to protect your data. While no system is
             100% secure, we work hard to protect your information from unauthorized access, loss, or
             misuse.
           </p>
 
-          <h6 style={{ marginTop: 24, marginBottom: 8 }}>6. Your Rights</h6>
+          <h3 style={{ marginTop: 24, marginBottom: 8, fontSize: 18, fontWeight: 600 }}>6. Your Rights</h3>
           <p style={{ marginBottom: 8 }}>Depending on where you live, you may have the right to:</p>
           <ul
             style={{
@@ -175,35 +175,32 @@ export default function PrivacyPage() {
           </ul>
           <p style={{ marginBottom: 24 }}>You can request this by contacting us.</p>
 
-          <h6 style={{ marginTop: 24, marginBottom: 8 }}>7. Children&apos;s Privacy</h6>
+          <h3 style={{ marginTop: 24, marginBottom: 8, fontSize: 18, fontWeight: 600 }}>7. Children&apos;s Privacy</h3>
           <p style={{ marginBottom: 24 }}>
             Wano is not intended for users under 13. We do not knowingly collect data from
             children. If we learn that we have, we will delete it.
           </p>
 
-          <h6 style={{ marginTop: 24, marginBottom: 8 }}>8. International Users</h6>
+          <h3 style={{ marginTop: 24, marginBottom: 8, fontSize: 18, fontWeight: 600 }}>8. International Users</h3>
           <p style={{ marginBottom: 24 }}>
             Wano is a global platform. By using it, you agree that your data may be processed and
             stored in different countries where our servers and partners operate.
           </p>
 
-          <h6 style={{ marginTop: 24, marginBottom: 8 }}>9. Changes to This Policy</h6>
+          <h3 style={{ marginTop: 24, marginBottom: 8, fontSize: 18, fontWeight: 600 }}>9. Changes to This Policy</h3>
           <p style={{ marginBottom: 24 }}>
             We may update this Privacy Policy from time to time. When we do, we will update the
             &quot;Last updated&quot; date and notify users if required.
           </p>
 
-          <h6 style={{ marginTop: 24, marginBottom: 8 }}>10. Contact Us</h6>
+          <h3 style={{ marginTop: 24, marginBottom: 8, fontSize: 18, fontWeight: 600 }}>10. Contact Us</h3>
           <p style={{ marginBottom: 0 }}>
             If you have questions about this Privacy Policy or your data, contact us at:{' '}
             <a href="mailto:privacy@wanoafrica.com">privacy@wanoafrica.com</a>.
           </p>
         </div>
       </section>
-
-      {/* CTA + footer (footer comes from layout) */}
-      {/* <CTASection /> */}
-    </main>
+    </>
   )
 }
 

@@ -23,14 +23,14 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main>
+    <>
       <HeroSection />
       <StatsSection />
       <PhoneFeaturesSection />
       <ListFeaturesSection />
       <EasyAccessSection />
       <CTASection />
-    </main>
+    </>
   )
 }
 

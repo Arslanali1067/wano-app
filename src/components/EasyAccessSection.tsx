@@ -4,9 +4,9 @@ import { useEffect, useRef, useState, FormEvent } from 'react'
 import Image from 'next/image'
 import styles from './EasyAccessSection.module.css'
 
-// Original image URLs from HTML
+// Local check icon
 const images = {
-  arrowIcon: 'https://wubflow-shield.nocodexport.dev/6508308b2a1ae17b91dac2b6/65083f705fec0efcb9248de2_Arrow%20Icon.svg',
+  arrowIcon: '/icons/check-arrow.svg',
 }
 
 const checkItems = [
@@ -164,7 +164,7 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
                   )}
                   <form onSubmit={handleFormSubmit} className={`${styles.inquiryForm} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}>
                   <div className={styles.formRow}>
-                    <input type="text" name="fullName" placeholder="Full Name *" className="text-field" required />
+                    <input type="text" name="fullName" placeholder="Full Name *" aria-label="Full Name" className="text-field" required />
                   </div>
                   {variant !== 'contact' && (
                     <div className={styles.formRow}>
@@ -176,12 +176,13 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
                             ? 'Social Handle / Channel (optional)'
                             : 'Organization / Brand (optional)'
                         }
+                        aria-label={formType === 'creators' ? 'Social Handle or Channel' : 'Organization or Brand'}
                         className="text-field"
                       />
                     </div>
                   )}
                   <div className={styles.formRow}>
-                    <input type="email" name="email" placeholder="Email *" className="text-field" required />
+                    <input type="email" name="email" placeholder="Email *" aria-label="Email" className="text-field" required />
                   </div>
                   {variant === 'contact' && (
                     <div className={styles.formRow}>
@@ -189,17 +190,19 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
                         type="tel"
                         name="phone"
                         placeholder="Phone (optional)"
+                        aria-label="Phone"
                         className="text-field"
                       />
                     </div>
                   )}
                   <div className={styles.formRow}>
-                    <input type="text" name="country" placeholder="Country / Region (optional)" className="text-field" />
+                    <input type="text" name="country" placeholder="Country / Region (optional)" aria-label="Country or Region" className="text-field" />
                   </div>
                   {variant !== 'contact' && (
                     <div className={styles.formRow}>
                       <select
                         name={formType === 'creators' ? 'creatorType' : 'partnershipType'}
+                        aria-label={formType === 'creators' ? 'Creator Type' : 'Partnership Type'}
                         className={`text-field ${styles.formSelect}`}
                         required
                       >
@@ -213,7 +216,7 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
                     </div>
                   )}
                   <div className={styles.formRow}>
-                    <textarea name="message" placeholder="Message *" className={`text-field ${styles.formTextarea}`} rows={5} required />
+                    <textarea name="message" placeholder="Message *" aria-label="Message" className={`text-field ${styles.formTextarea}`} rows={5} required />
                   </div>
                   <div className={styles.formRow}>
                     <button type="submit" className="submit-button" disabled={formStatus === 'loading'}>
@@ -301,7 +304,7 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
                       </svg>
                     </a>
                     <a 
-                      href="https://apps.apple.com/pk/app/wano-app/id6753104927" 
+                      href="https://apps.apple.com/app/wano-app/id6753104927" 
                       target="_blank" 
                       rel="noopener noreferrer" 
                       className={styles.storeBadge}

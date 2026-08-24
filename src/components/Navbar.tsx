@@ -16,6 +16,7 @@ const navLinks: Array<
     }
 > = [
   { href: '/', label: 'Home', type: 'link' as const },
+  { href: '/tv', label: 'Wano TV', type: 'link' as const },
   { href: '/creators', label: 'Creators', type: 'link' as const },
   {
     label: 'About',

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main>
+    <>
       {/* Page header */}
       <section className="section padding-section">
         <div className="container" style={{ textAlign: 'center' }}>
@@ -77,7 +77,7 @@ export default function ContactPage() {
               <p style={{ margin: 0 }}>
                 <strong>For general inquiries:</strong>
                 <br />
-                <a href="mailto:hello@wanoafrica.com">inquiries@wanoafrica.com</a>
+                <a href="mailto:inquiries@wanoafrica.com">inquiries@wanoafrica.com</a>
               </p>
             </div>
             <div
@@ -154,7 +154,7 @@ export default function ContactPage() {
 
       {/* CTA + footer (footer comes from layout) */}
       <CTASection />
-    </main>
+    </>
   )
 }
 

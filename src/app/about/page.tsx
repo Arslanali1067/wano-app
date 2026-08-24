@@ -21,11 +21,11 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main>
+    <>
       <PlatformHeroSection variant="about" />
       <PlatformListFeaturesSection variant="about" hideHeader />
       <CTASection />
-    </main>
+    </>
   );
 }
 
