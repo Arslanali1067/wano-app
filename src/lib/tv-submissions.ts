@@ -31,29 +31,34 @@ const DATA_DIR = path.join(process.cwd(), 'data')
 const SUBMISSIONS_FILE = path.join(DATA_DIR, 'tv-submissions.json')
 
 function ensureStorage(): void {
-  if (!fs.existsSync(DATA_DIR)) {
-    fs.mkdirSync(DATA_DIR, { recursive: true })
-  }
-  if (!fs.existsSync(SUBMISSIONS_FILE)) {
-    fs.writeFileSync(SUBMISSIONS_FILE, JSON.stringify([], null, 2), 'utf-8')
+  try {
+    if (!fs.existsSync(DATA_DIR)) {
+      fs.mkdirSync(DATA_DIR, { recursive: true })
+    }
+    if (!fs.existsSync(SUBMISSIONS_FILE)) {
+      fs.writeFileSync(SUBMISSIONS_FILE, JSON.stringify([], null, 2), 'utf-8')
+    }
+  } catch (err) {
+    // Read-only filesystem (e.g. Vercel / AWS Lambda /var/task)
+    // Silently continue since serverless cannot write to local project directory
   }
 }
 
 export function getAllSubmissions(): FilmSubmission[] {
   try {
     ensureStorage()
-    const content = fs.readFileSync(SUBMISSIONS_FILE, 'utf-8')
-    return JSON.parse(content || '[]') as FilmSubmission[]
+    if (fs.existsSync(SUBMISSIONS_FILE)) {
+      const content = fs.readFileSync(SUBMISSIONS_FILE, 'utf-8')
+      return JSON.parse(content || '[]') as FilmSubmission[]
+    }
+    return []
   } catch (err) {
-    console.error('Error reading tv-submissions.json:', err)
+    console.warn('Unable to read tv-submissions.json (read-only or missing):', err)
     return []
   }
 }
 
 export function saveSubmission(submissionData: Omit<FilmSubmission, 'id' | 'createdAt' | 'status'>): FilmSubmission {
-  ensureStorage()
-  const submissions = getAllSubmissions()
-  
   // Generate human-readable short submission ID: WTV-XXXXXX
   const randomNum = Math.floor(100000 + Math.random() * 900000)
   const id = `WTV-${randomNum}`
@@ -65,8 +70,17 @@ export function saveSubmission(submissionData: Omit<FilmSubmission, 'id' | 'crea
     status: 'New',
   }
 
-  submissions.unshift(newSubmission)
-  fs.writeFileSync(SUBMISSIONS_FILE, JSON.stringify(submissions, null, 2), 'utf-8')
+  // Attempt local storage if filesystem is writable (e.g., local development)
+  try {
+    ensureStorage()
+    const submissions = getAllSubmissions()
+    submissions.unshift(newSubmission)
+    fs.writeFileSync(SUBMISSIONS_FILE, JSON.stringify(submissions, null, 2), 'utf-8')
+  } catch (err) {
+    // In serverless environments (Vercel, AWS Lambda), file system is read-only.
+    // Submissions are delivered via email (Resend) or external database.
+    console.warn('[Wano TV] Local filesystem write skipped (read-only environment):', err instanceof Error ? err.message : err)
+  }
   
   return newSubmission
 }
