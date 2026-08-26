@@ -412,21 +412,26 @@
 .theaterSubmitBtn {
   background: var(--golden-gradient);
   color: #000;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 11px 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 13px 26px;
   border-radius: 8px;
   text-transform: none;
   letter-spacing: normal;
   text-decoration: none;
-  transition: all 0.25s ease;
+  transition: all 0.35s ease;
   box-shadow: 0 4px 15px rgba(115, 189, 140, 0.25);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .theaterSubmitBtn:hover {
+  background: linear-gradient(135deg, #5BA875 0%, #C96A1F 100%);
   color: #000;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(227, 128, 40, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(227, 128, 40, 0.35);
 }
 
 /* SECTION BADGE */
@@ -871,20 +876,25 @@
 .letterCtaBtn {
   background: var(--golden-gradient);
   color: #000;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 12px 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 14px 28px;
   border-radius: 8px;
   text-decoration: none;
   text-transform: none;
   letter-spacing: normal;
-  transition: all 0.25s ease;
+  transition: all 0.35s ease;
   box-shadow: 0 4px 15px rgba(115, 189, 140, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .letterCtaBtn:hover {
+  background: linear-gradient(135deg, #5BA875 0%, #C96A1F 100%);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(227, 128, 40, 0.4);
+  box-shadow: 0 8px 25px rgba(227, 128, 40, 0.4);
   color: #000;
 }
 
@@ -1367,12 +1377,13 @@
   color: #000;
   border: none;
   border-radius: 8px;
+  font-family: 'Inter', sans-serif;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: normal;
   text-transform: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.35s ease;
   box-shadow: 0 6px 30px rgba(115, 189, 140, 0.25);
   display: flex;
   align-items: center;
@@ -1381,13 +1392,17 @@
 }
 
 .submitFilmBtn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #5BA875 0%, #C96A1F 100%);
   transform: translateY(-2px);
   box-shadow: 0 10px 35px rgba(227, 128, 40, 0.35);
 }
 
 .submitFilmBtn:disabled {
-  opacity: 0.6;
+  opacity: 0.45;
   cursor: not-allowed;
+  filter: grayscale(0.6);
+  box-shadow: none;
+  transform: none;
 }
 
 .formErrorBanner {

@@ -18,7 +18,7 @@ export default function TvHeroSection() {
           style={{ transitionDelay: '0.1s' }}
         >
           <span className={styles.heroBadgePulse} />
-          <span className={styles.heroBadgeText}>WANO TV • COMING SEPTEMBER 2026</span>
+          <span className={styles.heroBadgeText}>WANO TV • COMING SOON</span>
         </div>
 
         <div
@@ -74,7 +74,7 @@ export default function TvHeroSection() {
             <div className={styles.viewfinderHeader}>
               <div className={styles.recIndicator}>
                 <span className={styles.recDot} />
-                <span>REC [00:09:2026]</span>
+                <span>REC [00:00:00]</span>
               </div>
               <div className={styles.viewfinderMeta}>
                 <span>4K UHD</span>
@@ -132,7 +132,7 @@ export default function TvHeroSection() {
             <div className={styles.theaterFooter}>
               <div className={styles.launchPillHolder}>
                 <div className={styles.launchBadge}>
-                  <span>✨</span> Coming September 2026
+                  <span>✨</span> Coming Soon
                 </div>
                 <div className={styles.statusPillLive}>
                   <span>●</span> Submissions Open Worldwide

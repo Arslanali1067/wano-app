@@ -404,7 +404,7 @@ export default function InteractiveTvSections() {
               {
                 num: '04',
                 title: 'Launch on Wano TV',
-                desc: 'Your film streams to an eager audience across Africa and worldwide diaspora communities starting September 2026.',
+                desc: 'Your film streams to an eager audience across Africa and worldwide diaspora communities at launch.',
               },
             ].map((step, sIdx) => (
               <div key={step.num} className={`${styles.processStep} ${styles.fadeIn} ${isProcessVisible ? styles.visible : ''}`} style={{ animationDelay: `${0.15 + sIdx * 0.15}s` }}>

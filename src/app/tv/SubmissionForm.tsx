@@ -61,11 +61,6 @@ export default function SubmissionForm() {
   const [right3, setRight3] = useState(false)
   const [right4, setRight4] = useState(false)
 
-  // Modals
-  const [showTermsModal, setShowTermsModal] = useState(false)
-  const [showPrivacyModal, setShowPrivacyModal] = useState(false)
-  const [showFaqModal, setShowFaqModal] = useState(false)
-
   // Animation on scroll
   const [isFormVisible, setIsFormVisible] = useState(false)
   const formCardRef = useRef<HTMLDivElement>(null)
@@ -719,14 +714,9 @@ export default function SubmissionForm() {
             </p>
             <p style={{ margin: '8px 0 0 0' }}>
               Read our{' '}
-              <button
-                type="button"
-                onClick={() => setShowTermsModal(true)}
-                className={styles.termsLink}
-                style={{ background: 'none', border: 'none', padding: 0, font: 'inherit' }}
-              >
-                Submission Terms
-              </button>{' '}
+              <Link href="/terms-of-service" target="_blank" className={styles.termsLink}>
+                Terms of Service
+              </Link>{' '}
               and{' '}
               <Link href="/privacy" target="_blank" className={styles.termsLink}>
                 Privacy Policy
@@ -743,55 +733,13 @@ export default function SubmissionForm() {
         <div className={styles.submitBtnHolder}>
           <button
             type="submit"
-            disabled={loading}
+            disabled={loading || !(right1 && right2 && right3 && right4)}
             className={styles.submitFilmBtn}
           >
-            {loading ? 'Submitting Film...' : 'SUBMIT FILM'}
+            {loading ? 'Submitting Film...' : 'Submit Film'}
           </button>
         </div>
       </form>
-
-      {/* SUBMISSION TERMS MODAL */}
-      {showTermsModal && (
-        <div className={styles.modalBackdrop} onClick={() => setShowTermsModal(false)}>
-          <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
-            <button
-              type="button"
-              className={styles.modalCloseBtn}
-              onClick={() => setShowTermsModal(false)}
-            >
-              &times;
-            </button>
-            <h3 className={styles.modalTitle}>Wano TV Submission Terms</h3>
-            <div className={styles.modalBody}>
-              <h4>1. Purpose of Submission</h4>
-              <p>
-                The Wano TV submission portal allows filmmakers to submit completed films and documentaries solely for consideration and editorial evaluation for potential inclusion on Wano TV.
-              </p>
-
-              <h4>2. Ownership & Intellectual Property</h4>
-              <p>
-                You retain 100% of your copyright and intellectual property rights. Submitting your film through this form does not grant Wano or its affiliates permanent distribution rights, commercial broadcast rights, or ownership transfer.
-              </p>
-
-              <h4>3. Evaluation License</h4>
-              <p>
-                By submitting, you grant Wano a limited, non-exclusive, revocable right to privately view and assess your screener link for curation and selection purposes.
-              </p>
-
-              <h4>4. Selection & Distribution Agreements</h4>
-              <p>
-                Submission does not guarantee selection, licensing, or streaming on Wano TV. If your film is shortlisted or selected, our acquisition team will contact you with a formal licensing and distribution contract.
-              </p>
-
-              <h4>5. Confidentiality</h4>
-              <p>
-                All private viewing links and passwords provided are kept confidential within the Wano TV curation committee.
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   )
 }

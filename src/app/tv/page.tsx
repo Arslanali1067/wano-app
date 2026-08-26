@@ -8,7 +8,7 @@ import CTASection from '@/components/CTASection'
 export const metadata: Metadata = {
   title: 'Submit Your Film to Wano TV — Stories Worth Watching',
   description:
-    'Wano TV is looking for original films, documentaries, and stories from Africa and the global diaspora. Submit your finished film for consideration for our September 2026 launch.',
+    'Wano TV is looking for original films, documentaries, and stories from Africa and the global diaspora. Submit your finished film for consideration for our upcoming launch.',
   alternates: {
     canonical: '/tv',
   },
