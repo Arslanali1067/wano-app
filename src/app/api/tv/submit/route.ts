@@ -125,7 +125,7 @@ export async function POST(request: NextRequest) {
   <div class="card">
     <div class="header">
       <div class="logo">WANO TV</div>
-      <div class="tagline">Stories worth watching • Coming Soon</div>
+      <div class="tagline">Stories worth watching • Launching Soon</div>
     </div>
     
     <div class="title">Film Received — Thank you for submitting!</div>
