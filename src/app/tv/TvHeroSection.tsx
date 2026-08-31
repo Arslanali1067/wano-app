@@ -13,14 +13,22 @@ export default function TvHeroSection() {
   return (
     <section className={styles.heroSection}>
       <div className="container">
+        {/* Top Badges */}
         <div
-          className={`${styles.heroBadge} ${styles.animateFadeIn} ${isVisible ? styles.visible : ''}`}
+          className={`${styles.heroBadgeGroup} ${styles.animateFadeIn} ${isVisible ? styles.visible : ''}`}
           style={{ transitionDelay: '0.1s' }}
         >
-          <span className={styles.heroBadgePulse} />
-          <span className={styles.heroBadgeText}>WANO TV • COMING SOON</span>
+          <div className={styles.heroBadge}>
+            <span className={styles.heroBadgePulse} />
+            <span className={styles.heroBadgeText}>WANO TV • COMING SOON</span>
+          </div>
+          <div className={styles.freeSubmissionBadge}>
+            <span className={styles.freeBadgeIcon}>✦</span>
+            <span>No Submission Fee • Open Worldwide</span>
+          </div>
         </div>
 
+        {/* Strengthened Opening Title */}
         <div
           className={`${styles.animateText} ${isVisible ? styles.visible : ''}`}
           style={{ transitionDelay: '0.2s' }}
@@ -30,12 +38,13 @@ export default function TvHeroSection() {
           </h1>
         </div>
 
+        {/* Crystal Clear Proposition */}
         <div
           className={`${styles.animateFadeIn} ${isVisible ? styles.visible : ''}`}
           style={{ transitionDelay: '0.35s' }}
         >
           <p className={styles.heroSubtitle}>
-            Wano TV is looking for original films, documentaries and stories from Africa and the global diaspora.
+            Wano TV is a curated home for films, documentaries and original stories from Africa and the global African diaspora.
           </p>
         </div>
 
@@ -48,6 +57,7 @@ export default function TvHeroSection() {
           </p>
         </div>
 
+        {/* Action CTAs */}
         <div
           className={`${styles.heroButtons} ${styles.animateFadeIn} ${isVisible ? styles.visible : ''}`}
           style={{ transitionDelay: '0.55s' }}
@@ -56,8 +66,8 @@ export default function TvHeroSection() {
             <span>Submit Your Film</span>
             <span>→</span>
           </a>
-          <a href="#what-we-are-looking-for" className={styles.secondaryCtaBtn}>
-            <span>Explore Categories</span>
+          <a href="#why-wano-tv" className={styles.secondaryCtaBtn}>
+            <span>Why Wano TV?</span>
             <span>↓</span>
           </a>
         </div>
@@ -70,14 +80,14 @@ export default function TvHeroSection() {
           <div className={styles.cinematicFrameInner}>
             <div className={styles.frameSpotlight} />
 
-            {/* Viewfinder Bar */}
+            {/* Viewfinder Bar - Story First, No 4K Gatekeeping */}
             <div className={styles.viewfinderHeader}>
               <div className={styles.recIndicator}>
                 <span className={styles.recDot} />
                 <span>REC [00:00:00]</span>
               </div>
               <div className={styles.viewfinderMeta}>
-                <span>4K UHD</span>
+                <span>HD & CINEMA FORMATS</span>
                 <span>•</span>
                 <span>2.39:1 CINEMASCOPE</span>
                 <span>•</span>
@@ -97,7 +107,7 @@ export default function TvHeroSection() {
                 </h2>
               </div>
               <p className={styles.theaterDescription}>
-                A premier streaming stage celebrating authentic African cinema, groundbreaking diaspora documentaries, and visionary independent storytelling.
+                Building a new screen for African and diaspora storytelling. We invite independent filmmakers, documentarians, and visionaries to help define what appears on that screen.
               </p>
             </div>
 
@@ -123,7 +133,7 @@ export default function TvHeroSection() {
                 <div className={styles.pillarIcon}>🌟</div>
                 <h3 className={styles.pillarTitle}>Emerging & Independent</h3>
                 <p className={styles.pillarText}>
-                  An open, unpretentious platform championing both rising independent directors and established filmmakers.
+                  An open platform championing both rising independent directors and experienced filmmakers on the merit of their story.
                 </p>
               </div>
             </div>
@@ -135,13 +145,13 @@ export default function TvHeroSection() {
                   <span>✨</span> Coming Soon
                 </div>
                 <div className={styles.statusPillLive}>
-                  <span>●</span> Submissions Open Worldwide
+                  <span>●</span> 100% Free Submissions Open
                 </div>
               </div>
 
               <div className={styles.theaterCtaHolder}>
                 <a href="#submit-film" className={styles.theaterSubmitBtn}>
-                  Submit Your Film →
+                  Submit Your Screener →
                 </a>
               </div>
             </div>

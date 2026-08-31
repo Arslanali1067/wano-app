@@ -251,11 +251,14 @@ export default function SubmissionForm() {
 
             <div className={styles.successInstructionBox}>
               <p style={{ margin: '0 0 6px 0', fontWeight: 700 }}>What happens next?</p>
-              <p style={{ margin: 0 }}>
-                Our editorial and curation team will privately review your screener. If your film is selected for the next stage, Wano will contact you directly via <strong>{submittedData.email}</strong>.
+              <p style={{ margin: '0 0 6px 0' }}>
+                Our curation team will privately review your screener link. Selected submissions will normally hear from our team within <strong>14–30 days</strong> via <strong>{submittedData.email}</strong>.
               </p>
-              <p style={{ margin: '10px 0 0 0', color: '#ffedd5', fontWeight: 600 }}>
-                ⚠️ Please do not send master film files unless requested by Wano.
+              <p style={{ margin: 0, color: '#fed7aa', fontSize: '12.5px' }}>
+                🛡️ You retain full copyright ownership of your work. Licensing terms are agreed prior to release.
+              </p>
+              <p style={{ margin: '10px 0 0 0', color: '#ffedd5', fontWeight: 600, fontSize: '12.5px' }}>
+                ⚠️ Please do not send master video files unless requested by Wano.
               </p>
             </div>
           </div>
@@ -281,9 +284,13 @@ export default function SubmissionForm() {
       ref={formCardRef}
     >
       <div className={styles.formHeader}>
+        <div className={styles.formBadgeRow}>
+          <span className={styles.formHeaderBadge}>NO SUBMISSION FEE</span>
+          <span className={styles.formHeaderBadgeSecondary}>14–30 DAY RESPONSE WINDOW</span>
+        </div>
         <h2 className={styles.formHeaderTitle}>Filmmaker Submission Form</h2>
         <p className={styles.formHeaderSubtitle}>
-          Complete the details below to submit your finished film or documentary for consideration for Wano TV.
+          Submit your completed film, documentary, or original story for consideration for Wano TV. Initial review requires only a private screener viewing link.
         </p>
       </div>
 
@@ -440,7 +447,7 @@ export default function SubmissionForm() {
                 required
                 value={runtime}
                 onChange={(e) => setRuntime(e.target.value)}
-                placeholder="e.g. 22 mins, 1 hr 15 mins"
+                placeholder="e.g. 18 mins (Short), 85 mins (Feature)"
                 className={styles.customInput}
               />
             </div>
@@ -540,7 +547,7 @@ export default function SubmissionForm() {
             <span className={styles.groupBadge}>Screener</span>
           </div>
           <p className={styles.groupDesc}>
-            Provide a secure online streaming link (Vimeo, YouTube, Google Drive, or other secure streaming platform).
+            Provide a secure online streaming link (Vimeo, YouTube unlisted/private, Google Drive, etc.).
           </p>
 
           <div className={styles.formGrid2}>
@@ -573,7 +580,7 @@ export default function SubmissionForm() {
           <div className={styles.noticeBox}>
             <span className={styles.noticeIcon}>🔒</span>
             <p className={styles.noticeText}>
-              <strong>Important:</strong> Filmmakers should <strong>NOT</strong> upload full master film video files to the Wano website during initial submission. We only require a private screener viewing link at this stage for evaluation.
+              <strong>No Master File Upload:</strong> Filmmakers should <strong>NOT</strong> upload master video files at this stage. We only require a private screener viewing link for curation review.
             </p>
           </div>
         </div>
@@ -647,11 +654,11 @@ export default function SubmissionForm() {
         {/* GROUP 5: RIGHTS CONFIRMATION */}
         <div className={styles.formSectionGroup}>
           <div className={styles.groupTitle}>
-            <span>5. Rights Confirmation</span>
-            <span className={styles.groupBadge}>Agreement</span>
+            <span>5. Plain Rights Confirmation</span>
+            <span className={styles.groupBadge}>Agreed Terms</span>
           </div>
           <p className={styles.groupDesc}>
-            Please review and confirm each of the following statements:
+            Please review and confirm each statement below:
           </p>
 
           <div className={styles.rightsGroup}>
@@ -677,7 +684,7 @@ export default function SubmissionForm() {
                 className={styles.customCheckbox}
               />
               <span className={styles.checkboxLabel}>
-                I understand that submitting a film does not guarantee selection or distribution on Wano TV.
+                I understand that submission is 100% free and does not transfer copyright ownership of my film to Wano.
               </span>
             </label>
 
@@ -703,14 +710,14 @@ export default function SubmissionForm() {
                 className={styles.customCheckbox}
               />
               <span className={styles.checkboxLabel}>
-                I confirm that the information provided in this submission is accurate.
+                I understand that if selected, distribution and licensing terms are agreed with me before my film appears on Wano TV.
               </span>
             </label>
           </div>
 
           <div className={styles.termsNotice}>
             <p style={{ margin: 0 }}>
-              🛡️ <strong>Rights Protection:</strong> Submitting your film does <strong>not</strong> transfer copyright ownership or grant Wano permanent distribution rights. If your film is selected, licensing and distribution terms will be agreed upon separately before publication.
+              🛡️ <strong>Plain Rights Guarantee:</strong> &ldquo;You keep ownership of your film. Submission does not transfer copyright to Wano. If selected, distribution and licensing terms are agreed with you before your film appears on Wano TV.&rdquo;
             </p>
             <p style={{ margin: '8px 0 0 0' }}>
               Read our{' '}

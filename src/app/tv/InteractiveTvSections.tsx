@@ -9,118 +9,79 @@ interface CategoryItem {
   formatTag: string
   tagColor: 'green' | 'orange' | 'purple' | 'blue'
   shortSummary: string
-  description: string
-  curationHighlights: string[]
+  runtimeHint: string
   iconSvg: string
-  featured?: boolean
 }
 
 const categoriesData: CategoryItem[] = [
   {
     id: 'short-films',
     title: 'Short Films',
-    formatTag: 'Narrative • 5 to 40 mins',
+    formatTag: 'Narrative Fiction',
     tagColor: 'green',
-    shortSummary: 'Punchy, emotional, and unforgettable cinematic stories.',
-    description:
-      'We are seeking compelling narrative fiction across all genres—drama, psychological thriller, sci-fi, comedy, and artistic animation. We love films that make powerful statements and hook audiences within the first minute.',
-    curationHighlights: [
-      'Original screenplays & strong character arcs',
-      'Distinctive visual style and creative cinematography',
-      'Completed sound design and clean dialogue mix',
-    ],
+    shortSummary:
+      'Punchy, emotional, and unforgettable cinematic stories across drama, thriller, sci-fi, comedy, and artistic animation.',
+    runtimeHint: '5 to 40 mins',
     iconSvg: '🎬',
-    featured: true,
   },
   {
     id: 'documentaries',
     title: 'Documentaries',
-    formatTag: 'Non-Fiction • Short & Feature Length',
+    formatTag: 'Non-Fiction & Impact',
     tagColor: 'orange',
-    shortSummary: 'Real human truths, untold histories, and grassroots impact.',
-    description:
-      'From investigative portraits to celebrations of African innovators, climate resilience, and artistic pioneers. We champion non-fiction films that reveal untold realities and give voice to communities across Africa and the global diaspora.',
-    curationHighlights: [
-      'Authentic access & ethical storytelling',
-      'Compelling archival or on-the-ground footage',
-      'Clear narrative point of view and cultural depth',
-    ],
+    shortSummary:
+      'Investigative portraits, grassroots impact stories, climate resilience, and chronicles of African innovators and cultural icons.',
+    runtimeHint: 'Short & Feature length',
     iconSvg: '📽️',
-    featured: true,
   },
   {
     id: 'cultural-stories',
     title: 'Cultural Stories',
     formatTag: 'Heritage & Modern Folklore',
     tagColor: 'green',
-    shortSummary: 'Reimagined folklore, indigenous voices, and sacred traditions.',
-    description:
-      'Narratives exploring ancestral traditions, mythologies, indigenous rites of passage, linguistic heritage, and contemporary urban adaptations of African cultural heritage.',
-    curationHighlights: [
-      'Authentic portrayal of local languages & customs',
-      'Vibrant costuming, ritual, and production design',
-      'Celebration of African identity across generations',
-    ],
+    shortSummary:
+      'Reimagined folklore, ancestral traditions, indigenous rites, and contemporary urban adaptations of African heritage.',
+    runtimeHint: 'Shorts & Features',
     iconSvg: '🌍',
   },
   {
     id: 'human-interest',
     title: 'Human-Interest Stories',
-    formatTag: 'Character Studies • Inspiring Journeys',
+    formatTag: 'Character Studies',
     tagColor: 'blue',
-    shortSummary: 'Personal triumphs, everyday heroes, and community resilience.',
-    description:
-      'Deeply moving character-driven stories highlighting courage, unexpected friendships, familial bonds, artistic sacrifice, and everyday people overcoming extraordinary odds.',
-    curationHighlights: [
-      'Deep emotional connection and raw honesty',
-      'Intimate camera work and immersive pacing',
-      'Universal themes of hope, family, and perseverance',
-    ],
+    shortSummary:
+      'Intimate character-driven journeys highlighting resilience, everyday heroes, unexpected bonds, and personal triumphs.',
+    runtimeHint: 'Any length',
     iconSvg: '💫',
   },
   {
     id: 'independent-films',
     title: 'Independent Films',
-    formatTag: 'Visionary Cinema • Micro to Mid Budget',
+    formatTag: 'Visionary Cinema',
     tagColor: 'orange',
-    shortSummary: 'Raw, boundary-pushing cinema unconstrained by studio formulas.',
-    description:
-      'We love filmmakers who take creative risks. Whether shot on a cinema rig or an iPhone with an incredible script, we value visionary ambition, authentic dialogue, and raw filmmaking craft.',
-    curationHighlights: [
-      'Bold directorial vision and stylistic voice',
-      'Smart resourcefulness and gripping performances',
-      'Alternative storytelling structures and fresh perspectives',
-    ],
+    shortSummary:
+      'Boundary-pushing indie cinema unconstrained by studio formulas, driven by bold directorial voices and raw craft.',
+    runtimeHint: 'Micro to Mid Budget',
     iconSvg: '🎥',
   },
   {
     id: 'music-creative',
     title: 'Music & Creative Films',
-    formatTag: 'Visual Albums • Sound Culture',
+    formatTag: 'Sound & Visual Culture',
     tagColor: 'purple',
-    shortSummary: 'Visual albums, dance pieces, and music retrospectives.',
-    description:
-      'Afrobeats, Amapiano, Highlife, Reggae, Dancehall, Jazz, and Hip-Hop culture. Audio-visual films, choreographer showcases, and documentaries chronicling musical movements.',
-    curationHighlights: [
-      'Immersive audio sync and spatial sound quality',
-      'Dynamic editing rhythm and color grading',
-      'Celebration of musical heritage and youth culture',
-    ],
+    shortSummary:
+      'Visual albums, choreographic dance films, sound culture documentaries, and musical retrospectives across Afrobeats, Amapiano, Jazz, and more.',
+    runtimeHint: 'Shorts & Features',
     iconSvg: '🎵',
   },
   {
     id: 'travel-place',
     title: 'Travel & Place-Based Stories',
-    formatTag: 'Expeditions • City Profiles • Landscapes',
+    formatTag: 'Cities & Landscapes',
     tagColor: 'blue',
-    shortSummary: 'Atmospheric portraits of cities, landscapes, and diaspora links.',
-    description:
-      'From bustling creative scenes in Lagos, Nairobi, Dakar, and Johannesburg to Caribbean coastlines and European diaspora hubs. Films that immerse viewers in the atmosphere of a place.',
-    curationHighlights: [
-      'High-fidelity landscape and environmental visuals',
-      'Local culinary, architectural, and community color',
-      'Cross-border journeys and diasporic connections',
-    ],
+    shortSummary:
+      'Atmospheric portraits exploring bustling creative scenes in African cities and vibrant diaspora link points across the world.',
+    runtimeHint: 'Shorts & Series',
     iconSvg: '🗺️',
   },
 ]
@@ -128,66 +89,48 @@ const categoriesData: CategoryItem[] = [
 const pipelineSteps = [
   {
     stepNumber: '01',
-    phase: 'INITIAL INTAKE',
-    title: 'Private Screener Link',
-    timeframe: 'Instant Receipt',
+    phase: 'SUBMIT',
+    title: 'Submit Screener Link',
+    timeframe: 'Instant Receipt • 100% Free',
     icon: '🔗',
-    summary:
-      'Submit your private viewing link (Vimeo, YouTube, or Google Drive) through our clean form below. No master video upload is required.',
-    details: [
-      'Password protection fully supported for private screeners',
-      'Instant automated confirmation email with reference ID',
-      'No copyright transfer—your IP remains 100% yours',
-    ],
+    desc: 'Share your private viewing link (Vimeo, YouTube unlisted, or Google Drive) through our clean form. No master video file upload is required at this stage.',
   },
   {
     stepNumber: '02',
-    phase: 'EDITORIAL SCREENING',
-    title: 'Private Curation Review',
-    timeframe: '2–3 Weeks',
+    phase: 'REVIEW',
+    title: 'Editorial Screening',
+    timeframe: 'Private Evaluation',
     icon: '👁️',
-    summary:
-      'Our dedicated programming committee watches and scores every submitted film for narrative resonance, cultural nuance, and technical quality.',
-    details: [
-      'Watched privately by filmmakers and industry curators',
-      'Evaluated across craft, pacing, vision, and cultural impact',
-      'Independent and emerging voices given equal review priority',
-    ],
+    desc: 'Our curation committee privately watches and evaluates your film for narrative resonance, cultural nuance, and storytelling craft.',
   },
   {
     stepNumber: '03',
-    phase: 'ACQUISITION & FAIR TERMS',
-    title: 'Shortlisting & Licensing',
-    timeframe: 'Collaborative Dialogue',
-    icon: '📝',
-    summary:
-      'If your film is shortlisted, our acquisitions team reaches out to discuss transparent non-exclusive licensing, promotional support, and premiere schedules.',
-    details: [
-      'Transparent licensing terms with zero rights grabbing',
-      'Marketing collateral & promotional trailer coordination',
-      'Filmmaker spotlights and interview opportunities on Wano',
-    ],
+    phase: 'DECISION',
+    title: 'Selection Decision',
+    timeframe: '14–30 Days Response Window',
+    icon: '📩',
+    desc: 'Selected submissions will normally hear directly from our team within 14–30 days to discuss potential programming fit.',
   },
   {
     stepNumber: '04',
-    phase: 'GLOBAL PREMIERE',
-    title: 'Stream on Wano TV',
-    timeframe: 'Launching Sept 2026',
+    phase: 'AGREEMENT',
+    title: 'Rights & Licensing',
+    timeframe: 'Creator-First Terms',
+    icon: '📝',
+    desc: 'We discuss transparent, non-exclusive distribution terms and agree on everything with you before your film ever appears on Wano TV.',
+  },
+  {
+    stepNumber: '05',
+    phase: 'RELEASE',
+    title: 'Wano TV Release',
+    timeframe: 'Global Launch & Push',
     icon: '🚀',
-    summary:
-      'Your film premieres to an engaged audience across Africa, the diaspora, and global cinema lovers on mobile and smart TV apps.',
-    details: [
-      'High-bitrate HD/4K streaming delivery',
-      'Global audience reach across 50+ countries',
-      'Dedicated category placement and promotional push',
-    ],
+    desc: 'Your film premieres to audiences across Africa and the global diaspora, accompanied by dedicated Wano promotional support and filmmaker spotlights.',
   },
 ]
 
 export default function InteractiveTvSections() {
   const [activeCategoryFilter, setActiveCategoryFilter] = useState<string>('all')
-  const [activeStep, setActiveStep] = useState<number>(0)
-  const [expandedCard, setExpandedCard] = useState<string | null>('short-films')
   const [isLookingVisible, setIsLookingVisible] = useState(false)
   const [isProcessVisible, setIsProcessVisible] = useState(false)
   const lookingRef = useRef<HTMLElement>(null)
@@ -225,25 +168,43 @@ export default function InteractiveTvSections() {
 
   return (
     <>
-      {/* SECTION 1: ENHANCED BENTO CURATION FOCUS */}
+      {/* SECTION 1: STREAMLINED CURATION CATEGORIES & ACCEPTED LENGTHS */}
       <section id="what-we-are-looking-for" className={styles.lookingForSection} ref={lookingRef}>
         <div className="container">
           <div className={`${styles.sectionHeader} ${styles.fadeIn} ${isLookingVisible ? styles.visible : ''}`}>
             <div className={styles.sectionBadge}>
               <span className={styles.sectionBadgeDot} />
-              <span>CURATION SPECTRUM</span>
+              <span>PROGRAMMING FOCUS</span>
             </div>
             <h2 className={styles.sectionTitle}>
               What We’re <span className={styles.gradientText}>Looking For</span>
             </h2>
             <p className={styles.sectionSubtitle}>
-              From electrifying short dramas to grand diaspora documentaries, we seek original stories that reflect the depth, rhythm, and imagination of our global community.
+              From electric short films to expansive documentaries and creative cinema, we seek completed or near-completed stories reflecting the depth and imagination of Africa and the global diaspora.
             </p>
+
+            {/* Clear Accepted Film Lengths Banner */}
+            <div className={styles.acceptedLengthsBanner}>
+              <div className={styles.lengthPill}>
+                <span className={styles.lengthDot}>●</span>
+                <strong>Short Films:</strong> 5 to 40 mins
+              </div>
+              <div className={styles.lengthDivider}>•</div>
+              <div className={styles.lengthPill}>
+                <span className={styles.lengthDot}>●</span>
+                <strong>Feature Films & Docs:</strong> 40 to 120+ mins
+              </div>
+              <div className={styles.lengthDivider}>•</div>
+              <div className={styles.lengthPill}>
+                <span className={styles.lengthDot}>●</span>
+                <strong>Docuseries:</strong> Multi-part stories
+              </div>
+            </div>
 
             {/* Filter Pills */}
             <div className={styles.categoryFilterRow}>
               {[
-                { id: 'all', label: 'All Formats (7)' },
+                { id: 'all', label: 'All Categories (7)' },
                 { id: 'narrative', label: 'Shorts & Indie Cinema' },
                 { id: 'doc', label: 'Docs & Real Stories' },
                 { id: 'culture', label: 'Culture & Sound' },
@@ -263,78 +224,43 @@ export default function InteractiveTvSections() {
             </div>
           </div>
 
-          {/* BENTO GRID */}
-          <div className={styles.bentoGrid}>
+          {/* STREAMLINED COMPACT CATEGORY GRID */}
+          <div className={styles.compactCategoryGrid}>
             {filteredCategories.map((cat, idx) => {
-              const isExpanded = expandedCard === cat.id
               return (
                 <div
                   key={cat.id}
-                  className={`${styles.bentoCard} ${cat.featured ? styles.bentoCardFeatured : ''} ${
-                    isExpanded ? styles.bentoCardActive : ''
-                  } ${styles.fadeIn} ${isLookingVisible ? styles.visible : ''}`}
-                  style={{ animationDelay: `${0.1 + (idx % 3) * 0.15}s` }}
-                  onClick={() => setExpandedCard(isExpanded ? null : cat.id)}
+                  className={`${styles.compactCategoryCard} ${styles.fadeIn} ${
+                    isLookingVisible ? styles.visible : ''
+                  }`}
+                  style={{ animationDelay: `${0.08 + (idx % 4) * 0.08}s` }}
                 >
-                  {/* Card Glow Ambient */}
-                  <div
-                    className={
-                      cat.tagColor === 'green'
-                        ? styles.bentoGlowGreen
-                        : cat.tagColor === 'orange'
-                        ? styles.bentoGlowOrange
-                        : cat.tagColor === 'purple'
-                        ? styles.bentoGlowPurple
-                        : styles.bentoGlowBlue
-                    }
-                  />
-
-                  {/* Card Header */}
-                  <div className={styles.bentoCardHeader}>
-                    <div className={styles.bentoIconWrapper}>
-                      <span className={styles.bentoIcon}>{cat.iconSvg}</span>
+                  <div className={styles.compactCardHeader}>
+                    <div className={styles.compactIconWrapper}>
+                      <span>{cat.iconSvg}</span>
                     </div>
-
-                    <div className={styles.bentoTagGroup}>
-                      <span
-                        className={`${styles.formatTagBadge} ${
-                          cat.tagColor === 'green'
-                            ? styles.tagGreen
-                            : cat.tagColor === 'orange'
-                            ? styles.tagOrange
-                            : cat.tagColor === 'purple'
-                            ? styles.tagPurple
-                            : styles.tagBlue
-                        }`}
-                      >
-                        {cat.formatTag}
-                      </span>
-                    </div>
+                    <span
+                      className={`${styles.formatTagBadge} ${
+                        cat.tagColor === 'green'
+                          ? styles.tagGreen
+                          : cat.tagColor === 'orange'
+                          ? styles.tagOrange
+                          : cat.tagColor === 'purple'
+                          ? styles.tagPurple
+                          : styles.tagBlue
+                      }`}
+                    >
+                      {cat.formatTag}
+                    </span>
                   </div>
 
-                  {/* Title & Pitch */}
-                  <h3 className={styles.bentoTitle}>{cat.title}</h3>
-                  <p className={styles.bentoPitch}>{cat.shortSummary}</p>
+                  <h3 className={styles.compactCardTitle}>{cat.title}</h3>
+                  <p className={styles.compactCardPitch}>{cat.shortSummary}</p>
 
-                  <p className={styles.bentoDescription}>{cat.description}</p>
-
-                  {/* Highlights List */}
-                  <div className={styles.highlightsContainer}>
-                    <div className={styles.highlightsHeader}>Key Elements We Look For:</div>
-                    <ul className={styles.highlightsList}>
-                      {cat.curationHighlights.map((hl, i) => (
-                        <li key={i} className={styles.highlightItem}>
-                          <span className={styles.checkMarker}>✓</span>
-                          <span>{hl}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Card Action Hint */}
-                  <div className={styles.cardFooterBar}>
-                    <a href="#submit-film" className={styles.cardSubmitLink}>
-                      <span>Submit In This Category</span>
+                  <div className={styles.compactCardFooter}>
+                    <span className={styles.compactRuntime}>⏱️ {cat.runtimeHint}</span>
+                    <a href="#submit-film" className={styles.compactSubmitLink}>
+                      <span>Submit</span>
                       <span>→</span>
                     </a>
                   </div>
@@ -342,77 +268,52 @@ export default function InteractiveTvSections() {
               )
             })}
           </div>
-
-          {/* Authentic Filmmakers Welcome Banner */}
-          <div className={`${styles.filmmakerLetterCard} ${styles.fadeIn} ${isLookingVisible ? styles.visible : ''}`} style={{ animationDelay: '0.3s' }}>
-            <div className={styles.letterStamp}>WANO TV</div>
-            <div className={styles.letterContent}>
-              <div className={styles.letterHeader}>
-                <span className={styles.letterBadge}>OPEN PROGRAMMING INITIATIVE</span>
-                <h4 className={styles.letterTitle}>
-                  No Gatekeepers. No Hollywood Pedigree Needed.
-                </h4>
-              </div>
-              <p className={styles.letterBody}>
-                We do not restrict Wano TV only to established studios or film school alumni. Whether this is your first independent short or your fifth award-winning feature, our programming committee evaluates every single entry with equal attention and respect. If your story has heart, craft, and vision, it deserves a global screen.
-              </p>
-              <div className={styles.letterFooter}>
-                <div className={styles.curatorSign}>
-                  <span className={styles.curatorAvatar}>✦</span>
-                  <div>
-                    <strong>Wano TV Programming Committee</strong>
-                    <p className={styles.curatorMeta}>Curating for Africa & The Diaspora</p>
-                  </div>
-                </div>
-                <a href="#submit-film" className={styles.letterCtaBtn}>
-                  Submit Your Screener Link
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* SECTION 2: HOW IT WORKS / TIMELINE */}
+      {/* SECTION 2: 5-STEP FILMMAKER JOURNEY & RESPONSE PERIOD */}
       <section className={styles.processSection} ref={processRef}>
         <div className="container">
           <div className={`${styles.sectionHeader} ${styles.fadeIn} ${isProcessVisible ? styles.visible : ''}`}>
-            <span className={styles.sectionPretitle}>Simple & Transparent</span>
-            <h2 className={styles.sectionTitle}>How Curation Works</h2>
+            <span className={styles.sectionPretitle}>Simple, Transparent & Creator-First</span>
+            <h2 className={styles.sectionTitle}>What Happens After Submission</h2>
             <p className={styles.sectionSubtitle}>
-              Our streamlined consideration process ensures your film is reviewed privately and evaluated with care.
+              Here is how your film travels from screener link to streaming release on Wano TV.
             </p>
           </div>
 
-          <div className={styles.processGrid}>
-            {[
-              {
-                num: '01',
-                title: 'Submit Screener Link',
-                desc: 'Share your secure Vimeo, YouTube, or Google Drive screener link via the form below. No master video upload needed.',
-              },
-              {
-                num: '02',
-                title: 'Editorial Review',
-                desc: 'The Wano TV curation committee privately evaluates your film for narrative quality, cultural depth, and storytelling artistry.',
-              },
-              {
-                num: '03',
-                title: 'Selection & Licensing',
-                desc: 'If shortlisted, our acquisition team contacts you to discuss formal licensing terms, premiere plans, and creator agreements.',
-              },
-              {
-                num: '04',
-                title: 'Launch on Wano TV',
-                desc: 'Your film streams to an eager audience across Africa and worldwide diaspora communities at launch.',
-              },
-            ].map((step, sIdx) => (
-              <div key={step.num} className={`${styles.processStep} ${styles.fadeIn} ${isProcessVisible ? styles.visible : ''}`} style={{ animationDelay: `${0.15 + sIdx * 0.15}s` }}>
-                <span className={styles.stepNumber}>STEP {step.num}</span>
-                <h3 className={styles.stepTitle}>{step.title}</h3>
-                <p className={styles.stepDesc}>{step.desc}</p>
+          {/* 5-Step Visual Pipeline */}
+          <div className={styles.pipeline5Grid}>
+            {pipelineSteps.map((step, sIdx) => (
+              <div
+                key={step.stepNumber}
+                className={`${styles.pipeline5Card} ${styles.fadeIn} ${isProcessVisible ? styles.visible : ''}`}
+                style={{ animationDelay: `${0.1 + sIdx * 0.1}s` }}
+              >
+                <div className={styles.pipelineCardTop}>
+                  <span className={styles.pipelineStepNum}>{step.stepNumber}</span>
+                  <span className={styles.pipelinePhaseTag}>{step.phase}</span>
+                </div>
+                <div className={styles.pipelineIcon}>{step.icon}</div>
+                <h3 className={styles.pipelineTitle}>{step.title}</h3>
+                <div className={styles.pipelineTimeframe}>
+                  <span className={styles.timeframeIcon}>⏱️</span>
+                  <span>{step.timeframe}</span>
+                </div>
+                <p className={styles.pipelineDesc}>{step.desc}</p>
               </div>
             ))}
+          </div>
+
+          {/* Response Time Guarantee Box */}
+          <div
+            className={`${styles.responseCommitmentBanner} ${styles.fadeIn} ${isProcessVisible ? styles.visible : ''}`}
+            style={{ animationDelay: '0.6s' }}
+          >
+            <div className={styles.responseIcon}>📬</div>
+            <div className={styles.responseText}>
+              <strong>Expected Response Window:</strong> Selected submissions will normally hear from our curation team within <strong>14–30 days</strong>. If your film is shortlisted, we will reach out directly to your provided email address to discuss next steps.
+            </div>
           </div>
         </div>
       </section>
