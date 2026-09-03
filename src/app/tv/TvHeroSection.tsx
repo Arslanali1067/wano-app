@@ -87,10 +87,10 @@ export default function TvHeroSection() {
                 <span>REC [00:00:00]</span>
               </div>
               <div className={styles.viewfinderMeta}>
-                <span>HD & CINEMA FORMATS</span>
-                <span>•</span>
-                <span>2.39:1 CINEMASCOPE</span>
-                <span>•</span>
+                <span className={styles.hideOnMobile}>HD & CINEMA FORMATS</span>
+                <span className={styles.hideOnMobile}>•</span>
+                <span className={styles.hideOnMobile}>2.39:1 CINEMASCOPE</span>
+                <span className={styles.hideOnMobile}>•</span>
                 <span className={styles.viewfinderTag}>CURATED SELECTION</span>
               </div>
             </div>
@@ -141,10 +141,10 @@ export default function TvHeroSection() {
             {/* Theater Frame Footer */}
             <div className={styles.theaterFooter}>
               <div className={styles.launchPillHolder}>
-                <div className={styles.launchBadge}>
+                <div className={`${styles.launchBadge} ${styles.hideOnMobile}`}>
                   <span>✨</span> Coming Soon
                 </div>
-                <div className={styles.statusPillLive}>
+                <div className={`${styles.statusPillLive} ${styles.hideOnMobile}`}>
                   <span>●</span> 100% Free Submissions Open
                 </div>
               </div>

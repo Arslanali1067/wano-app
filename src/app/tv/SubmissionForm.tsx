@@ -15,6 +15,202 @@ const categories = [
   'Other',
 ]
 
+const countries = [
+  { name: 'Afghanistan', flag: '🇦🇫' },
+  { name: 'Albania', flag: '🇦🇱' },
+  { name: 'Algeria', flag: '🇩🇿' },
+  { name: 'Andorra', flag: '🇦🇩' },
+  { name: 'Angola', flag: '🇦🇴' },
+  { name: 'Argentina', flag: '🇦🇷' },
+  { name: 'Armenia', flag: '🇦🇲' },
+  { name: 'Australia', flag: '🇦🇺' },
+  { name: 'Austria', flag: '🇦🇹' },
+  { name: 'Azerbaijan', flag: '🇦🇿' },
+  { name: 'Bahamas', flag: '🇧🇸' },
+  { name: 'Bahrain', flag: '🇧🇭' },
+  { name: 'Bangladesh', flag: '🇧🇩' },
+  { name: 'Barbados', flag: '🇧🇧' },
+  { name: 'Belarus', flag: '🇧🇾' },
+  { name: 'Belgium', flag: '🇧🇪' },
+  { name: 'Belize', flag: '🇧🇿' },
+  { name: 'Benin', flag: '🇧🇯' },
+  { name: 'Bhutan', flag: '🇧🇹' },
+  { name: 'Bolivia', flag: '🇧🇴' },
+  { name: 'Bosnia and Herzegovina', flag: '🇧🇦' },
+  { name: 'Botswana', flag: '🇧🇼' },
+  { name: 'Brazil', flag: '🇧🇷' },
+  { name: 'Brunei', flag: '🇧🇳' },
+  { name: 'Bulgaria', flag: '🇧🇬' },
+  { name: 'Burkina Faso', flag: '🇧🇫' },
+  { name: 'Burundi', flag: '🇧🇮' },
+  { name: 'Cambodia', flag: '🇰🇭' },
+  { name: 'Cameroon', flag: '🇨🇲' },
+  { name: 'Canada', flag: '🇨🇦' },
+  { name: 'Cape Verde', flag: '🇨🇻' },
+  { name: 'Central African Republic', flag: '🇨🇫' },
+  { name: 'Chad', flag: '🇹🇩' },
+  { name: 'Chile', flag: '🇨🇱' },
+  { name: 'China', flag: '🇨🇳' },
+  { name: 'Colombia', flag: '🇨🇴' },
+  { name: 'Comoros', flag: '🇰🇲' },
+  { name: 'Congo', flag: '🇨🇬' },
+  { name: 'Costa Rica', flag: '🇨🇷' },
+  { name: 'Croatia', flag: '🇭🇷' },
+  { name: 'Cuba', flag: '🇨🇺' },
+  { name: 'Cyprus', flag: '🇨🇾' },
+  { name: 'Czech Republic', flag: '🇨🇿' },
+  { name: 'Democratic Republic of the Congo', flag: '🇨🇩' },
+  { name: 'Denmark', flag: '🇩🇰' },
+  { name: 'Djibouti', flag: '🇩🇯' },
+  { name: 'Dominica', flag: '🇩🇲' },
+  { name: 'Dominican Republic', flag: '🇩🇴' },
+  { name: 'East Timor', flag: '🇹🇱' },
+  { name: 'Ecuador', flag: '🇪🇨' },
+  { name: 'Egypt', flag: '🇪🇬' },
+  { name: 'El Salvador', flag: '🇸🇻' },
+  { name: 'Equatorial Guinea', flag: '🇬🇶' },
+  { name: 'Eritrea', flag: '🇪🇷' },
+  { name: 'Estonia', flag: '🇪🇪' },
+  { name: 'Eswatini', flag: '🇸🇿' },
+  { name: 'Ethiopia', flag: '🇪🇹' },
+  { name: 'Fiji', flag: '🇫🇯' },
+  { name: 'Finland', flag: '🇫🇮' },
+  { name: 'France', flag: '🇫🇷' },
+  { name: 'Gabon', flag: '🇬🇦' },
+  { name: 'Gambia', flag: '🇬🇲' },
+  { name: 'Georgia', flag: '🇬🇪' },
+  { name: 'Germany', flag: '🇩🇪' },
+  { name: 'Ghana', flag: '🇬🇭' },
+  { name: 'Greece', flag: '🇬🇷' },
+  { name: 'Grenada', flag: '🇬🇩' },
+  { name: 'Guatemala', flag: '🇬🇹' },
+  { name: 'Guinea', flag: '🇬🇳' },
+  { name: 'Guinea-Bissau', flag: '🇬🇼' },
+  { name: 'Guyana', flag: '🇬🇾' },
+  { name: 'Haiti', flag: '🇭🇹' },
+  { name: 'Honduras', flag: '🇭🇳' },
+  { name: 'Hungary', flag: '🇭🇺' },
+  { name: 'Iceland', flag: '🇮🇸' },
+  { name: 'India', flag: '🇮🇳' },
+  { name: 'Indonesia', flag: '🇮🇩' },
+  { name: 'Iran', flag: '🇮🇷' },
+  { name: 'Iraq', flag: '🇮🇶' },
+  { name: 'Ireland', flag: '🇮🇪' },
+  { name: 'Israel', flag: '🇮🇱' },
+  { name: 'Italy', flag: '🇮🇹' },
+  { name: 'Ivory Coast', flag: '🇨🇮' },
+  { name: 'Jamaica', flag: '🇯🇲' },
+  { name: 'Japan', flag: '🇯🇵' },
+  { name: 'Jordan', flag: '🇯🇴' },
+  { name: 'Kazakhstan', flag: '🇰🇿' },
+  { name: 'Kenya', flag: '🇰🇪' },
+  { name: 'Kiribati', flag: '🇰🇮' },
+  { name: 'Kuwait', flag: '🇰🇼' },
+  { name: 'Kyrgyzstan', flag: '🇰🇬' },
+  { name: 'Laos', flag: '🇱🇦' },
+  { name: 'Latvia', flag: '🇱🇻' },
+  { name: 'Lebanon', flag: '🇱🇧' },
+  { name: 'Lesotho', flag: '🇱🇸' },
+  { name: 'Liberia', flag: '🇱🇷' },
+  { name: 'Libya', flag: '🇱🇾' },
+  { name: 'Liechtenstein', flag: '🇱🇮' },
+  { name: 'Lithuania', flag: '🇱🇹' },
+  { name: 'Luxembourg', flag: '🇱🇺' },
+  { name: 'Madagascar', flag: '🇲🇬' },
+  { name: 'Malawi', flag: '🇲🇼' },
+  { name: 'Malaysia', flag: '🇲🇾' },
+  { name: 'Maldives', flag: '🇲🇻' },
+  { name: 'Mali', flag: '🇲🇱' },
+  { name: 'Malta', flag: '🇲🇹' },
+  { name: 'Marshall Islands', flag: '🇲🇭' },
+  { name: 'Mauritania', flag: '🇲🇷' },
+  { name: 'Mauritius', flag: '🇲🇺' },
+  { name: 'Mexico', flag: '🇲🇽' },
+  { name: 'Micronesia', flag: '🇫🇲' },
+  { name: 'Moldova', flag: '🇲🇩' },
+  { name: 'Monaco', flag: '🇲🇨' },
+  { name: 'Mongolia', flag: '🇲🇳' },
+  { name: 'Montenegro', flag: '🇲🇪' },
+  { name: 'Morocco', flag: '🇲🇦' },
+  { name: 'Mozambique', flag: '🇲🇿' },
+  { name: 'Myanmar', flag: '🇲🇲' },
+  { name: 'Namibia', flag: '🇳🇦' },
+  { name: 'Nauru', flag: '🇳🇷' },
+  { name: 'Nepal', flag: '🇳🇵' },
+  { name: 'Netherlands', flag: '🇳🇱' },
+  { name: 'New Zealand', flag: '🇳🇿' },
+  { name: 'Nicaragua', flag: '🇳🇮' },
+  { name: 'Niger', flag: '🇳🇪' },
+  { name: 'Nigeria', flag: '🇳🇬' },
+  { name: 'North Korea', flag: '🇰🇵' },
+  { name: 'North Macedonia', flag: '🇲🇰' },
+  { name: 'Norway', flag: '🇳🇴' },
+  { name: 'Oman', flag: '🇴🇲' },
+  { name: 'Pakistan', flag: '🇵🇰' },
+  { name: 'Palau', flag: '🇵🇼' },
+  { name: 'Panama', flag: '🇵🇦' },
+  { name: 'Papua New Guinea', flag: '🇵🇬' },
+  { name: 'Paraguay', flag: '🇵🇾' },
+  { name: 'Peru', flag: '🇵🇪' },
+  { name: 'Philippines', flag: '🇵🇭' },
+  { name: 'Poland', flag: '🇵🇱' },
+  { name: 'Portugal', flag: '🇵🇹' },
+  { name: 'Qatar', flag: '🇶🇦' },
+  { name: 'Romania', flag: '🇷🇴' },
+  { name: 'Russia', flag: '🇷🇺' },
+  { name: 'Rwanda', flag: '🇷🇼' },
+  { name: 'Saint Kitts and Nevis', flag: '🇰🇳' },
+  { name: 'Saint Lucia', flag: '🇱🇨' },
+  { name: 'Saint Vincent and the Grenadines', flag: '🇻🇨' },
+  { name: 'Samoa', flag: '🇼🇸' },
+  { name: 'San Marino', flag: '🇸🇲' },
+  { name: 'Saudi Arabia', flag: '🇸🇦' },
+  { name: 'Senegal', flag: '🇸🇳' },
+  { name: 'Serbia', flag: '🇷🇸' },
+  { name: 'Seychelles', flag: '🇸🇨' },
+  { name: 'Sierra Leone', flag: '🇸🇱' },
+  { name: 'Singapore', flag: '🇸🇬' },
+  { name: 'Slovakia', flag: '🇸🇰' },
+  { name: 'Slovenia', flag: '🇸🇮' },
+  { name: 'Solomon Islands', flag: '🇸🇧' },
+  { name: 'Somalia', flag: '🇸🇴' },
+  { name: 'South Africa', flag: '🇿🇦' },
+  { name: 'South Korea', flag: '🇰🇷' },
+  { name: 'South Sudan', flag: '🇸🇸' },
+  { name: 'Spain', flag: '🇪🇸' },
+  { name: 'Sri Lanka', flag: '🇱🇰' },
+  { name: 'Sudan', flag: '🇸🇩' },
+  { name: 'Suriname', flag: '🇸🇷' },
+  { name: 'Sweden', flag: '🇸🇪' },
+  { name: 'Switzerland', flag: '🇨🇭' },
+  { name: 'Syria', flag: '🇸🇾' },
+  { name: 'Taiwan', flag: '🇹🇼' },
+  { name: 'Tajikistan', flag: '🇹🇯' },
+  { name: 'Tanzania', flag: '🇹🇿' },
+  { name: 'Thailand', flag: '🇹🇭' },
+  { name: 'Togo', flag: '🇹🇬' },
+  { name: 'Tonga', flag: '🇹🇴' },
+  { name: 'Trinidad and Tobago', flag: '🇹🇹' },
+  { name: 'Tunisia', flag: '🇹🇳' },
+  { name: 'Turkey', flag: '🇹🇷' },
+  { name: 'Turkmenistan', flag: '🇹🇲' },
+  { name: 'Tuvalu', flag: '🇹🇻' },
+  { name: 'Uganda', flag: '🇺🇬' },
+  { name: 'Ukraine', flag: '🇺🇦' },
+  { name: 'United Arab Emirates', flag: '🇦🇪' },
+  { name: 'United Kingdom', flag: '🇬🇧' },
+  { name: 'United States', flag: '🇺🇸' },
+  { name: 'Uruguay', flag: '🇺🇾' },
+  { name: 'Uzbekistan', flag: '🇺🇿' },
+  { name: 'Vanuatu', flag: '🇻🇺' },
+  { name: 'Vatican City', flag: '🇻🇦' },
+  { name: 'Venezuela', flag: '🇻🇪' },
+  { name: 'Vietnam', flag: '🇻🇳' },
+  { name: 'Yemen', flag: '🇾🇪' },
+  { name: 'Zambia', flag: '🇿🇲' },
+  { name: 'Zimbabwe', flag: '🇿🇼' }
+]
+
 interface SubmittedFilmData {
   id: string
   filmTitle: string
@@ -37,6 +233,13 @@ export default function SubmissionForm() {
   const [country, setCountry] = useState('')
   const [city, setCity] = useState('')
   const [productionCompany, setProductionCompany] = useState('')
+
+  // Country dropdown state
+  const [countrySearch, setCountrySearch] = useState('')
+  const [showCountryDropdown, setShowCountryDropdown] = useState(false)
+  const [filteredCountries, setFilteredCountries] = useState(countries)
+  const [selectedCountry, setSelectedCountry] = useState<{ name: string; flag: string } | null>(null)
+  const countryDropdownRef = useRef<HTMLDivElement>(null)
 
   const [filmTitle, setFilmTitle] = useState('')
   const [countryRepresented, setCountryRepresented] = useState('')
@@ -81,6 +284,64 @@ export default function SubmissionForm() {
 
     return () => observer.disconnect()
   }, [])
+
+  // Filter countries based on search
+  useEffect(() => {
+    if (countrySearch) {
+      const filtered = countries.filter(country =>
+        country.name.toLowerCase().includes(countrySearch.toLowerCase())
+      )
+      setFilteredCountries(filtered)
+    } else {
+      setFilteredCountries(countries)
+    }
+  }, [countrySearch])
+
+  // Close dropdowns when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (countryDropdownRef.current && !countryDropdownRef.current.contains(event.target as Node)) {
+        setShowCountryDropdown(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  // Country dropdown handlers
+  const handleCountryInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    // Only allow typing if no country is selected
+    if (selectedCountry) return
+    
+    const value = e.target.value
+    setCountrySearch(value)
+    setCountry(value)
+    setShowCountryDropdown(true)
+  }
+
+  const handleCountrySelect = (countryName: string) => {
+    const selectedCountryObj = countries.find(c => c.name === countryName)
+    if (selectedCountryObj) {
+      setSelectedCountry(selectedCountryObj)
+      setCountry(countryName)
+      setCountrySearch(`${selectedCountryObj.flag} ${countryName}`)
+      setShowCountryDropdown(false)
+    }
+  }
+
+  const handleCountryFocus = () => {
+    if (!selectedCountry) {
+      setShowCountryDropdown(true)
+    }
+  }
+
+  const clearCountrySelection = () => {
+    setSelectedCountry(null)
+    setCountry('')
+    setCountrySearch('')
+    setShowCountryDropdown(false)
+  }
 
   // Synopsis word count
   const wordCount = synopsis.trim().length > 0 ? synopsis.trim().split(/\s+/).length : 0
@@ -202,6 +463,8 @@ export default function SubmissionForm() {
     setEmail('')
     setPhone('')
     setCountry('')
+    setCountrySearch('')
+    setShowCountryDropdown(false)
     setCity('')
     setProductionCompany('')
     setFilmTitle('')
@@ -340,7 +603,7 @@ export default function SubmissionForm() {
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                placeholder="+234 ... / +1 ..."
+                placeholder="e.g. +234 801 234 5678"
                 className={styles.customInput}
               />
             </div>
@@ -349,14 +612,51 @@ export default function SubmissionForm() {
               <label className={styles.inputLabel}>
                 Country <span className={styles.requiredStar}>*</span>
               </label>
-              <input
-                type="text"
-                required
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-                placeholder="e.g. Nigeria, Ghana, Kenya, UK, USA"
-                className={styles.customInput}
-              />
+              <div className={styles.countryDropdownContainer} ref={countryDropdownRef}>
+                <div className={styles.countryInputWrapper}>
+                  <input
+                    type="text"
+                    required
+                    value={countrySearch}
+                    onChange={handleCountryInputChange}
+                    onFocus={handleCountryFocus}
+                    placeholder="Search and select your country..."
+                    className={styles.customInput}
+                    autoComplete="off"
+                    readOnly={selectedCountry !== null}
+                  />
+                  {selectedCountry && (
+                    <button
+                      type="button"
+                      onClick={clearCountrySelection}
+                      className={styles.clearCountryBtn}
+                      title="Clear selection"
+                    >
+                      ×
+                    </button>
+                  )}
+                </div>
+                {showCountryDropdown && (
+                  <div className={styles.countryDropdown}>
+                    {filteredCountries.length > 0 ? (
+                      filteredCountries.map((country) => (
+                        <div
+                          key={country.name}
+                          className={styles.countryOption}
+                          onClick={() => handleCountrySelect(country.name)}
+                        >
+                          <span className={styles.countryFlag}>{country.flag}</span>
+                          <span className={styles.countryName}>{country.name}</span>
+                        </div>
+                      ))
+                    ) : (
+                      <div className={styles.countryNoResults}>
+                        No countries found matching &quot;{countrySearch}&quot;
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 

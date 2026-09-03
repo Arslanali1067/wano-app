@@ -2395,3 +2395,223 @@
 }
 
 
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .hideOnMobile {
+    display: none;
+  }
+}/* Count
+ry Dropdown Styles */
+.countryDropdownContainer {
+  position: relative;
+}
+
+.countryDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(15, 15, 24, 0.95);
+  border: 1px solid rgba(115, 189, 140, 0.3);
+  border-radius: 12px;
+  margin-top: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.countryOption {
+  padding: 12px 16px;
+  color: #e4e4e7;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.countryOption:hover {
+  background: rgba(115, 189, 140, 0.15);
+  color: #fff;
+}
+
+.countryOption:last-child {
+  border-bottom: none;
+}
+
+.countryNoResults {
+  padding: 12px 16px;
+  color: #9ca3af;
+  font-size: 14px;
+  text-align: center;
+  font-style: italic;
+}.coun
+tryFlag {
+  font-size: 18px;
+  width: 24px;
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.countryName {
+  flex: 1;
+}
+
+/* Increase dropdown height to show more countries */
+.countryDropdown {
+  max-height: 280px !important;
+}
+
+/* Country Input Wrapper with Clear Button */
+.countryInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.clearCountryBtn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #9ca3af;
+  font-size: 20px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.clearCountryBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* Phone Input with Country Code */
+.phoneInputWrapper {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.countryCodeSelector {
+  position: relative;
+  min-width: 120px;
+}
+
+.countryCodeDisplay {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  background: rgba(24, 24, 36, 0.9);
+  border: 1px solid rgba(115, 189, 140, 0.3);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 14px;
+  color: #e4e4e7;
+  min-height: 50px;
+  box-sizing: border-box;
+}
+
+.countryCodeDisplay:hover {
+  border-color: rgba(115, 189, 140, 0.5);
+  background: rgba(30, 30, 48, 0.9);
+}
+
+.dropdownArrow {
+  margin-left: auto;
+  font-size: 10px;
+  color: #9ca3af;
+}
+
+.countryCodeDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(15, 15, 24, 0.95);
+  border: 1px solid rgba(115, 189, 140, 0.3);
+  border-radius: 12px;
+  margin-top: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.countryCodeOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #e4e4e7;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s ease;
+}
+
+.countryCodeOption:hover {
+  background: rgba(115, 189, 140, 0.15);
+  color: #fff;
+}
+
+.countryCodeOption:last-child {
+  border-bottom: none;
+}
+
+.countryCodeOption .countryFlag {
+  width: 16px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.countryCodeOption .countryName {
+  flex: 1;
+  font-size: 12px;
+}
+
+.countryCodeOption .countryCode {
+  font-family: monospace;
+  font-size: 12px;
+  color: #9ca3af;
+  min-width: 40px;
+  text-align: right;
+}
+
+.phoneNumberInput {
+  flex: 1;
+  padding: 14px 18px;
+  background: rgba(24, 24, 36, 0.9);
+  border: 1px solid rgba(115, 189, 140, 0.3);
+  border-radius: 12px;
+  color: #e4e4e7;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  outline: none;
+  font-family: inherit;
+}
+
+.phoneNumberInput:focus {
+  border-color: rgba(115, 189, 140, 0.6);
+  background: rgba(30, 30, 48, 0.9);
+  box-shadow: 0 0 0 3px rgba(115, 189, 140, 0.1);
+}
+
+.phoneNumberInput::placeholder {
+  color: #6b7280;
+}

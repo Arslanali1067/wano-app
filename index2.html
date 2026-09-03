@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aid4Umma Donate</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif;color:#10203d}
+body{display:flex;justify-content:center;padding:20px;background:radial-gradient(circle at 8% 20%,#ffdce8 0,transparent 28%),radial-gradient(circle at 92% 25%,#d9f2ff 0,transparent 30%),radial-gradient(circle at 82% 72%,#dff9ef 0,transparent 27%),#f7fbff}
+.phone{width:832px;height:1792px;overflow:hidden;position:relative;border-radius:48px;background:radial-gradient(circle at 100% 30%,rgba(207,236,255,.7),transparent 32%),radial-gradient(circle at 0 75%,rgba(255,216,230,.52),transparent 31%),linear-gradient(135deg,#fff,#f8fbff 55%,#f7fcff);box-shadow:0 30px 90px rgba(39,65,100,.18)}
+.phone:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 28% 44%,rgba(255,255,255,.95),transparent 26%),radial-gradient(circle at 76% 76%,rgba(255,255,255,.7),transparent 27%)}
+.status{height:104px;padding:28px 57px 0;display:flex;justify-content:space-between;font-size:30px;font-weight:700;position:relative;z-index:3}.status-right{display:flex;gap:17px;align-items:center;font-size:23px}.signal{letter-spacing:-4px}.wifi{font-size:27px;transform:rotate(-18deg)}.battery{width:55px;height:27px;border:3px solid #111;border-radius:8px;position:relative}.battery:before{content:"";position:absolute;inset:4px 5px;background:#111;border-radius:3px}.battery:after{content:"";position:absolute;right:-7px;top:6px;width:4px;height:11px;background:#111;border-radius:2px}
+.content{padding:0 48px;position:relative;z-index:2}.topbar{height:110px;display:flex;align-items:center;justify-content:center;position:relative}.back{position:absolute;left:0;top:24px;color:#10203d;text-decoration:none;font-size:64px;font-weight:200;line-height:1}.title{font-size:38px;font-weight:750}
+.glass{position:relative;background:linear-gradient(135deg,rgba(255,255,255,.67),rgba(255,255,255,.30) 48%,rgba(255,255,255,.54));border:1.5px solid rgba(255,255,255,.95);box-shadow:0 20px 45px rgba(62,89,119,.12),0 6px 18px rgba(62,89,119,.06),inset 0 1px 0 #fff,inset 1px 0 rgba(255,255,255,.72),inset 0 -1px rgba(255,255,255,.35);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);isolation:isolate}.glass:before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;background:linear-gradient(115deg,rgba(255,255,255,.84),rgba(255,255,255,.10) 28%,transparent 48%,rgba(255,255,255,.2) 72%,rgba(255,255,255,.5));opacity:.75}.glass:after{content:"";position:absolute;width:170px;height:170px;right:-70px;top:-85px;border-radius:50%;background:rgba(255,255,255,.5);filter:blur(38px);pointer-events:none;z-index:-1}
+.toggle{height:105px;border-radius:28px;padding:9px;display:grid;grid-template-columns:1fr 1fr;margin-bottom:54px}.toggle button{border:0;background:transparent;color:#10203d;border-radius:20px;font-size:28px;font-weight:500}.toggle .selected{color:#ff4774;background:rgba(255,255,255,.38);border:1.5px solid rgba(255,104,137,.27);box-shadow:inset 0 1px #fff,0 5px 15px rgba(255,91,126,.06)}
+.heading{font-size:29px;font-weight:700;margin:0 0 27px;letter-spacing:-.3px}
+.cause{height:187px;border-radius:30px;margin-bottom:62px;display:flex;align-items:center;padding:0 29px}.cause-icon{width:108px;height:108px;border-radius:50%;display:grid;place-items:center;flex:none;margin-right:29px;font-size:45px;background:linear-gradient(135deg,rgba(255,171,93,.34),rgba(255,69,121,.30));border:1px solid rgba(255,255,255,.85);box-shadow:inset 0 1px #fff,0 9px 22px rgba(244,130,115,.11)}.cause-copy{flex:1}.cause-title{font-size:29px;font-weight:500;margin-bottom:13px}.cause-desc{font-size:23px;color:#596a84;line-height:1.48}.chevron{font-size:53px;color:#7b8799;font-weight:250}
+.amount-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;margin-bottom:51px}.amount{height:143px;border-radius:29px;display:grid;place-items:center;font-size:28px;font-weight:500;color:#10203d}.amount.selected{color:#ff4774;border:2px solid #ff6689;background:linear-gradient(135deg,rgba(255,255,255,.58),rgba(255,226,234,.34));box-shadow:0 14px 30px rgba(255,84,120,.08),inset 0 1px #fff}.custom-label{font-size:24px;color:#748198;margin:0 0 14px}.custom{height:126px;border-radius:29px;display:flex;align-items:center;padding:0 38px;margin-bottom:73px}.currency{font-size:38px;color:#7b8799;margin-right:32px}.placeholder{font-size:27px;color:#9aa6b8}
+.payment{border-radius:29px;overflow:hidden;margin-bottom:57px}.card-row{height:123px;display:flex;align-items:center;padding:0 31px}.visa{width:72px;height:48px;border-radius:9px;display:grid;place-items:center;background:rgba(255,255,255,.58);font-size:21px;font-style:italic;font-weight:900;color:#19386e;margin-right:25px;box-shadow:0 4px 12px rgba(44,63,88,.07),inset 0 1px #fff}.card-number{font-size:27px;color:#596a84;flex:1}.radio{width:31px;height:31px;border:3px solid #ff9ab2;border-radius:50%;display:grid;place-items:center}.radio:after{content:"";width:13px;height:13px;background:#ff4774;border-radius:50%}.add-card{height:100px;display:flex;align-items:center;padding:0 30px;border-top:1px solid rgba(130,145,164,.12);font-size:25px;color:#ff668b}.plus{font-size:42px;font-weight:250;margin-right:22px}
+.donate{height:116px;border:0;border-radius:29px;width:100%;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;color:#fff;font-size:31px;font-weight:700;background:linear-gradient(100deg,#ff695f,#ff3e73);box-shadow:0 18px 32px rgba(255,70,107,.24)}.donate:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,.16),transparent 38%,rgba(255,255,255,.12))}.donate-heart{position:absolute;right:0;top:0;width:112px;height:100%;display:grid;place-items:center;font-size:37px;background:rgba(255,255,255,.10);border-left:1px solid rgba(255,255,255,.16)}.security{text-align:center;color:#748198;font-size:20px;margin-top:43px}.lock{font-size:25px;margin-right:13px}
+@media(max-width:850px){body{padding:0}.phone{width:100vw;min-height:100vh;height:auto;border-radius:0;box-shadow:none}}
+@media(max-width:600px){.content{padding:0 20px}.status{padding-left:25px;padding-right:25px}.title{font-size:28px}.toggle{height:80px;margin-bottom:35px}.toggle button{font-size:20px}.heading{font-size:23px}.cause{height:145px;padding:0 18px;margin-bottom:40px}.cause-icon{width:76px;height:76px;font-size:31px;margin-right:16px}.cause-title{font-size:21px}.cause-desc{font-size:15px}.amount-grid{gap:9px}.amount{height:105px;font-size:21px}.custom{height:95px;margin-bottom:45px}.placeholder{font-size:20px}.card-number{font-size:20px}.payment{margin-bottom:35px}.donate{height:90px;font-size:24px}.security{font-size:15px;margin-bottom:25px}}
+</style>
+</head>
+<body>
+<div class="phone">
+  <div class="status"><span>9:41</span><div class="status-right"><span class="signal">▮▮▮</span><span class="wifi">◔</span><span class="battery"></span></div></div>
+  <main class="content">
+    <header class="topbar"><a class="back" href="#">‹</a><div class="title">Donate</div></header>
+    <section class="toggle glass"><button class="selected">One Time</button><button>Monthly</button></section>
+    <h2 class="heading">Select Cause</h2>
+    <section class="cause glass"><div class="cause-icon">🎓</div><div class="cause-copy"><div class="cause-title">Education for All</div><div class="cause-desc">Help provide quality education<br>to underprivileged children.</div></div><div class="chevron">›</div></section>
+    <h2 class="heading">Donate Amount</h2>
+    <section class="amount-grid"><button class="amount glass">£10</button><button class="amount glass selected">£25</button><button class="amount glass">£50</button><button class="amount glass">£100</button></section>
+    <div class="custom-label">Custom Amount</div>
+    <div class="custom glass"><span class="currency">£</span><span class="placeholder">Enter amount</span></div>
+    <h2 class="heading">Payment Method</h2>
+    <section class="payment glass"><div class="card-row"><div class="visa">VISA</div><div class="card-number">Visa&nbsp; •••• 4242</div><div class="radio"></div></div><div class="add-card"><span class="plus">＋</span>Add New Card</div></section>
+    <button class="donate"><span>Donate £25</span><span class="donate-heart">♥</span></button>
+    <div class="security"><span class="lock">♙</span>Your donation is secure and encrypted.</div>
+  </main>
+</div>
+</body>
+</html>
