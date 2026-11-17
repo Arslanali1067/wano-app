@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     description:
       'Get in touch with WANO. Contact our team for general inquiries, partnerships, or creator support.',
     url: 'https://wanoafrica.com/contact',
+    images: [{ url: '/images/og-wano.jpg', width: 1200, height: 630, alt: 'Wano: African videos, films and chat' }],
   },
 }
 

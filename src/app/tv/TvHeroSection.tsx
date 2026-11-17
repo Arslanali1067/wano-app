@@ -20,7 +20,7 @@ export default function TvHeroSection() {
         >
           <div className={styles.heroBadge}>
             <span className={styles.heroBadgePulse} />
-            <span className={styles.heroBadgeText}>WANO TV • COMING SOON</span>
+            <span className={styles.heroBadgeText}>WANO TV • NOW IN THE WANO APP</span>
           </div>
           <div className={styles.freeSubmissionBadge}>
             <span className={styles.freeBadgeIcon}>✦</span>
@@ -142,7 +142,7 @@ export default function TvHeroSection() {
             <div className={styles.theaterFooter}>
               <div className={styles.launchPillHolder}>
                 <div className={`${styles.launchBadge} ${styles.hideOnMobile}`}>
-                  <span>✨</span> Coming Soon
+                  <span>✨</span> Streaming now
                 </div>
                 <div className={`${styles.statusPillLive} ${styles.hideOnMobile}`}>
                   <span>●</span> 100% Free Submissions Open

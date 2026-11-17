@@ -4,6 +4,7 @@ import PhoneFeaturesSection from '@/components/PhoneFeaturesSection'
 import PlatformListFeaturesSection from '@/components/PlatformListFeaturesSection'
 import EasyAccessSection from '@/components/EasyAccessSection'
 import CTASection from '@/components/CTASection'
+import WorkWithWanoSection from '@/components/WorkWithWanoSection'
 
 export const metadata: Metadata = {
   title: 'WANO Partnerships',
@@ -25,6 +26,7 @@ export default function PartnershipsPage() {
   return (
     <>
       <PlatformHeroSection variant="partnerships" />
+      <WorkWithWanoSection />
       <PhoneFeaturesSection variant="partnerships" />
       <PlatformListFeaturesSection variant="partnerships" />
       <EasyAccessSection variant="platform" />

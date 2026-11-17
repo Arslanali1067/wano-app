@@ -1,7 +1,10 @@
 const SITE_URL = "https://wanoafrica.com";
 const FEED_API = "https://devbe.wanoafrica.com/api/v1/feed/";
-const PAGE_SIZE = 1000;
-const MAX_PAGES = 200; // safety cap (=> up to 200k videos)
+// The feed answers at most 50 videos per request (a bigger limit is refused,
+// which left this sitemap empty). The newest PAGES * 50 videos are listed,
+// fetched in parallel so the sitemap builds within a few seconds.
+const PAGE_SIZE = 50;
+const PAGES = 40; // => the newest 2,000 videos
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 3600;
@@ -46,33 +49,29 @@ function buildDescription(item: FeedItem): string {
   return raw.length > 2048 ? raw.slice(0, 2048) : raw;
 }
 
+async function fetchPage(page: number): Promise<FeedItem[]> {
+  const url = `${FEED_API}?skip=${page * PAGE_SIZE}&limit=${PAGE_SIZE}&authenticated=false`;
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 6000);
+  try {
+    const res = await fetch(url, { signal: controller.signal, next: { revalidate: 3600 } });
+    if (!res.ok) return [];
+    const batch = await res.json();
+    return Array.isArray(batch) ? batch : [];
+  } catch {
+    return [];
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
 async function fetchAllVideos(): Promise<FeedItem[]> {
   const byId = new Map<string, FeedItem>();
-  try {
-    for (let page = 0; page < MAX_PAGES; page++) {
-      const url = `${FEED_API}?skip=${page * PAGE_SIZE}&limit=${PAGE_SIZE}&authenticated=false`;
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000);
-      try {
-        const res = await fetch(url, {
-          signal: controller.signal,
-          next: { revalidate: 3600 },
-        });
-        clearTimeout(timeoutId);
-        if (!res.ok) break;
-        const batch: FeedItem[] = await res.json();
-        if (!Array.isArray(batch) || batch.length === 0) break;
-        for (const item of batch) {
-          if (item?.id && !byId.has(item.id)) byId.set(item.id, item);
-        }
-        if (batch.length < PAGE_SIZE) break;
-      } catch {
-        clearTimeout(timeoutId);
-        break;
-      }
+  const pages = await Promise.all(Array.from({ length: PAGES }, (_, i) => fetchPage(i)));
+  for (const batch of pages) {
+    for (const item of batch) {
+      if (item?.id && !byId.has(item.id)) byId.set(item.id, item);
     }
-  } catch {
-    // Return harvested items or empty list if remote feed is unreachable
   }
   return Array.from(byId.values());
 }

@@ -57,10 +57,10 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/wano-logo.png',
+        url: '/images/og-wano.jpg',
         width: 1200,
         height: 630,
-        alt: 'WANO - Watch Culture Move',
+        alt: 'Wano: African videos, films and chat',
       },
     ],
   },
@@ -71,7 +71,11 @@ export const metadata: Metadata = {
       'A short-form video platform connecting Africa, the Diaspora, and communities worldwide shaped by Afrocentric influence.',
     site: '@Wano2025',
     creator: '@Wano2025',
-    images: ['/images/wano-logo.png'],
+    images: ['/images/og-wano.jpg'],
+  },
+  // Safari on iPhone shows a small "Open / Get" Wano bar at the top of the site.
+  itunes: {
+    appId: '6753104927',
   },
 }
 

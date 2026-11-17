@@ -7,75 +7,72 @@ export interface BlogPost {
   content: string
 }
 
-// Original blog image URLs from HTML
+const GET = 'https://wanoafrica.com/get?by=blog'
+
 export const blogPosts: BlogPost[] = [
   {
-    slug: '20-myths-about-web-design',
-    date: 'September 18, 2023',
-    title: '20 Myths About Web Design Right Now',
-    description: 'Et quo ea fugiat qui et dignissimos possimus quia ut. A qui magni veritatis similique.',
-    imageUrl: 'https://wubflow-shield.nocodexport.dev/65085bda4c2393ac25665f74/65085ce17c9d9e7da3cba6ae_google-deepmind-vHa_8A1_340-unsplash.jpg',
+    slug: 'the-new-wano',
+    date: 'November 17, 2026',
+    title: 'The new Wano: Wano TV, voice messages and city battles',
+    description: 'African films in the app, chat with voice messages, Home Ground city battles and Quick posts. Here is what changed.',
+    imageUrl: '/images/Feature1.webp',
     content: `
-      <h2>Eveniet minus architecto doloremque tempore nulla dicta perferendis.</h2>
-      <p>Repudiandae eos ducimus nobis molestiae. Dolorum rerum et et ut omnis. Ipsum minus necessitatibus qui saepe eum. Et culpa velit rem qui veritatis.</p>
-      <h3>Id quia enim adipisci.</h3>
-      <blockquote>Sit qui consequatur totam nisi aspernatur rerum. Doloremque magni repudiandae sint incidunt sint praesentium quia fugiat sed. Excepturi consectetur velit fugit.</blockquote>
-      <p>Sed dolorem id laboriosam pariatur dicta atque. Ut nulla sed. Iure eius quo.</p>
-      <p>Ipsa minima fugit tempore autem nihil quibusdam ea. Doloremque ab sit dolores ex commodi. Non molestias voluptatem fugit nobis reiciendis. Enim ut quaerat fugiat provident molestiae consequatur reprehenderit iusto. Doloremque ducimus dicta est eos optio eaque.</p>
-      <h2>Consequatur hic qui sed accusamus explicabo dolorem est.</h2>
-      <p>Qui consequatur natus est molestiae unde tempore doloribus necessitatibus ad. Aut blanditiis eum. Enim sit et. Debitis labore commodi et et iste.</p>
-      <h3>Eaque velit id nisi doloremque.</h3>
-      <blockquote>Facilis quis fugiat omnis molestias. In dolore voluptate animi enim et hic quo. Quia commodi est non distinctio harum voluptas explicabo dolore ducimus.</blockquote>
-      <p>Et voluptatem dolorem ut alias nemo voluptates. Optio qui aut. Necessitatibus assumenda animi sequi.</p>
-      <p>Quia ipsa a eos delectus nemo rem et illo totam. Ut odio sint quaerat nesciunt culpa eius consequuntur. Qui quibusdam quibusdam. Vitae est praesentium.</p>
+      <p>Wano started as a place to watch and share short videos from Africa and the diaspora. It is still that, and now a lot more. Here is what is new.</p>
+      <h2>Wano TV</h2>
+      <p>African films and series, free inside the app. Browse the Wano TV Top 10 for the week and rows by genre, pick up where you left off with Continue watching, and let the next episode start on its own. Save titles to My List and share them with friends.</p>
+      <p>Made a film? <a href="/submit-film">Submit it to Wano TV</a>. Submission is free and you keep ownership of your work.</p>
+      <h2>Messages</h2>
+      <p>Chat with creators and friends right inside Wano. Share a video into a chat, react to a message, reply to it, edit it or delete it. Wrote something with no network? It sends when the network comes back. Hold the mic to send a voice message of up to 2 minutes (on Android now, and on iPhone with the next update).</p>
+      <p>Messages are for people 18 and over, with blocking and reporting in every chat.</p>
+      <h2>Represent your city: Home Ground</h2>
+      <p>Pick your Home Ground and represent your city and your country. Cities and countries battle every week, with the top local creators shown for each. React with your city, or with an Eish or an Ayaa.</p>
+      <h2>Quick posts</h2>
+      <p>Voice notes and status cards in the ring around your profile picture. They disappear after 24 hours.</p>
+      <h2>Also new</h2>
+      <ul>
+        <li>Trending by country: what Nigeria, Kenya, Ghana, Uganda or Jamaica is watching right now</li>
+        <li>Wano Picks: the best videos of the week, chosen by our team</li>
+        <li>Sign in with a code if you forget your password</li>
+        <li>"Made with AI" labels, and easy reporting and blocking</li>
+      </ul>
+      <p>No account is needed to start watching. <a href="${GET}">Get Wano free on Android and iPhone</a>.</p>
     `,
   },
   {
-    slug: 'the-worst-advice-weve-ever-heard-about',
-    date: 'September 18, 2023',
-    title: "The Worst Advice We've Ever Heard About",
-    description: 'Nulla nemo iure voluptatem omnis hic culpa ullam rerum. Praesentium necessitatibus voluptatem autem consectetur in et.',
-    imageUrl: 'https://wubflow-shield.nocodexport.dev/65085bda4c2393ac25665f74/65085cec270106fa065ef0d9_google-deepmind-Sqg9QWERMDU-unsplash.jpg',
+    slug: 'wano-is-light-on-your-data',
+    date: 'November 17, 2026',
+    title: 'Why Wano is light on your data',
+    description: 'Most of our viewers buy data in small bundles. So we made pictures and pages small, and kept videos the same.',
+    imageUrl: '/images/Section.webp',
     content: `
-      <h2>The Worst Advice We've Ever Heard About Web Design</h2>
-      <p>This is a placeholder for the content of the second blog post. It would contain detailed information about the worst advice in web design.</p>
-      <p>More content here...</p>
+      <p>Most people who watch Wano are on mobile data, and many buy it in small bundles. Every megabyte the app spends on something you never see is a megabyte you paid for. So we went through the app and cut what you don't need.</p>
+      <h2>Smaller pictures</h2>
+      <p>Profile pictures used to arrive at full size, up to 2 MB each, even though they show as a small circle. Wano now sends a small copy: about 10 KB for a profile picture.</p>
+      <h2>Lighter pages</h2>
+      <p>The list of videos the app loads as you scroll is now compressed. A page of the feed is about 7 KB instead of 34 KB.</p>
+      <h2>The videos stay the same</h2>
+      <p>None of this touches the videos you watch. It only removes the waste around them, so your bundle goes on what you came for.</p>
+      <p><a href="${GET}">Get Wano free on Android and iPhone</a>.</p>
     `,
   },
   {
-    slug: 'how-to-improve-web-design-process',
-    date: 'September 18, 2023',
-    title: 'How to improve Web Design Process Now',
-    description: 'Laudantium temporibus ut necessitatibus aliquam iure. Eos molestiae voluptatibus quo et consequatur voluptatem doloremque ullam.',
-    imageUrl: 'https://wubflow-shield.nocodexport.dev/65085bda4c2393ac25665f74/65085cf7056db19f3377486a_google-deepmind-RN6Pip2bR3Q-unsplash.jpg',
+    slug: 'submit-your-film-to-wano-tv',
+    date: 'November 17, 2026',
+    title: 'Wano TV is open for films: submit yours',
+    description: 'Shorts, features, documentaries and docuseries from Africa and the diaspora. Free to submit, and your film stays yours.',
+    imageUrl: '/images/Feature2.webp',
     content: `
-      <h2>How to improve Web Design Process Now</h2>
-      <p>This is a placeholder for the content of the third blog post. It would contain detailed information on improving the web design process.</p>
-      <p>More content here...</p>
-    `,
-  },
-  {
-    slug: '7-of-the-best-examples-of-beautiful-blog-design',
-    date: 'September 18, 2023',
-    title: '7 of the Best Examples of Beautiful Blog Design',
-    description: 'Et vel est voluptas rerum ipsa cumque dolore natus maxime. Dolorem facilis repellat tempore incidunt et nobis.',
-    imageUrl: 'https://wubflow-shield.nocodexport.dev/65085bda4c2393ac25665f74/65085ce17c9d9e7da3cba6ae_google-deepmind-vHa_8A1_340-unsplash.jpg',
-    content: `
-      <h2>7 of the Best Examples of Beautiful Blog Design</h2>
-      <p>This is a placeholder for the content of the fourth blog post. It would showcase examples of beautiful blog designs.</p>
-      <p>More content here...</p>
-    `,
-  },
-  {
-    slug: '7-must-have-tools-for-web-designers',
-    date: 'September 18, 2023',
-    title: '7 Must Have Tools For Web Designers',
-    description: 'Natus impedit consectetur velit. Sapiente perferendis eveniet quo ut. Consequuntur ad cum harum inventore beatae.',
-    imageUrl: 'https://wubflow-shield.nocodexport.dev/65085bda4c2393ac25665f74/65085cec270106fa065ef0d9_google-deepmind-Sqg9QWERMDU-unsplash.jpg',
-    content: `
-      <h2>7 Must Have Tools For Web Designers</h2>
-      <p>This is a placeholder for the content of the fifth blog post. It would list essential tools for web designers.</p>
-      <p>More content here...</p>
+      <p>Wano TV is a curated home for films, documentaries and original stories from Africa and the global African diaspora, inside the Wano app. We are looking for filmmakers to help shape what appears on it.</p>
+      <h2>What we are looking for</h2>
+      <ul>
+        <li>Short films: 5 to 40 minutes</li>
+        <li>Feature films and documentaries: 40 to 120+ minutes</li>
+        <li>Docuseries</li>
+      </ul>
+      <p>Debut shorts, grassroots documentaries and festival films are all welcome. Every submission is judged on story, vision and craft, not on industry connections.</p>
+      <h2>Your film stays yours</h2>
+      <p>Submitting is free. You keep ownership of your film, and submitting does not transfer your copyright to Wano. If your film is selected, distribution and licensing terms are agreed with you before it appears on Wano TV.</p>
+      <p><a href="/submit-film">Submit your film</a></p>
     `,
   },
 ]

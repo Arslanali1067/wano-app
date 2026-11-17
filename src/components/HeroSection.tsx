@@ -36,8 +36,14 @@ export default function HeroSection() {
       // Check hardware concurrency (CPU cores)
       const isLowCPU = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4
       
+      // Phones (most visitors, often on mobile data) keep the still picture:
+      // the video is ~1.6 MB. So does anyone who asked to save data or isn't on a fast connection.
+      const isPhone = window.matchMedia('(max-width: 767px)').matches
+      const saveData = connection && connection.saveData === true
+      const notFast = connection && connection.effectiveType && connection.effectiveType !== '4g'
+
       // Only use video if connection is good and device is capable
-      if (!isSlowConnection && !isLowEndDevice && !isLowCPU) {
+      if (!isPhone && !saveData && !notFast && !isSlowConnection && !isLowEndDevice && !isLowCPU) {
         setUseVideo(true)
       }
     }

@@ -14,6 +14,12 @@ const STATIC_PATHS = [
   "/wano-studio",
   "/privacy",
   "/terms-of-service",
+  "/kampala",
+  "/blog",
+  "/submit-film",
+  "/post/the-new-wano",
+  "/post/wano-is-light-on-your-data",
+  "/post/submit-your-film-to-wano-tv",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

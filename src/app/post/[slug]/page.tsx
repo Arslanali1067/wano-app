@@ -48,6 +48,7 @@ export default async function PostPage({ params }: PostPageProps) {
   }
 
   const relatedPosts = getRelatedPosts(slug, 3)
+  const postUrl = `https://wanoafrica.com/post/${post.slug}`
 
   return (
     <>
@@ -68,7 +69,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
               <div className={styles.animateOnLoad}>
                 <div className={styles.shareBlogIcons}>
-                  <Link href="https://facebook.com" target="_blank" className={styles.shareIconHolder}>
+                  <Link href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(postUrl)}`} target="_blank" rel="noopener noreferrer" className={styles.shareIconHolder}>
                     <Image
                       src="/icons/facebook.svg"
                       alt="Share on Facebook"
@@ -76,7 +77,7 @@ export default async function PostPage({ params }: PostPageProps) {
                       height={24}
                     />
                   </Link>
-                  <Link href="https://twitter.com" target="_blank" className={styles.shareIconHolder}>
+                  <Link href={`https://x.com/intent/post?url=${encodeURIComponent(postUrl)}&text=${encodeURIComponent(post.title)}`} target="_blank" rel="noopener noreferrer" className={styles.shareIconHolder}>
                     <Image
                       src="/icons/twitter.svg"
                       alt="Share on Twitter"
@@ -84,7 +85,7 @@ export default async function PostPage({ params }: PostPageProps) {
                       height={24}
                     />
                   </Link>
-                  <Link href="https://linkedin.com" target="_blank" className={styles.shareIconHolder}>
+                  <Link href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(postUrl)}`} target="_blank" rel="noopener noreferrer" className={styles.shareIconHolder}>
                     <Image
                       src="/icons/linkedin.svg"
                       alt="Share on LinkedIn"
@@ -92,10 +93,10 @@ export default async function PostPage({ params }: PostPageProps) {
                       height={24}
                     />
                   </Link>
-                  <Link href="#" className={styles.shareIconHolder}>
+                  <Link href={`https://wa.me/?text=${encodeURIComponent(`${post.title} ${postUrl}`)}`} target="_blank" rel="noopener noreferrer" className={styles.shareIconHolder}>
                     <Image
                       src="/icons/link.svg"
-                      alt="Copy Link"
+                      alt="Share on WhatsApp"
                       width={24}
                       height={24}
                     />
