@@ -69,6 +69,12 @@
   position: relative;
 }
 
+.mainImageWrap {
+  /* In the centred column a wrapper without a width shrank to nothing, hiding the picture. */
+  width: 100%;
+  max-width: 800px;
+}
+
 .blogDetailsMainImage {
   object-fit: cover;
 }

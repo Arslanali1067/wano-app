@@ -23,13 +23,18 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
   }
 
   return {
-    title: `${post.title} - Wano`,
+    title: post.title,
     description: post.description,
+    alternates: { canonical: `/post/${post.slug}` },
     openGraph: {
       title: post.title,
       description: post.description,
+      url: `https://wanoafrica.com/post/${post.slug}`,
+      type: 'article',
+      publishedTime: new Date(post.date).toISOString(),
       images: [post.imageUrl],
     },
+    twitter: { card: 'summary_large_image', images: [post.imageUrl] },
   }
 }
 
@@ -49,9 +54,22 @@ export default async function PostPage({ params }: PostPageProps) {
 
   const relatedPosts = getRelatedPosts(slug, 3)
   const postUrl = `https://wanoafrica.com/post/${post.slug}`
+  // Article details for search engines.
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: post.title,
+    description: post.description,
+    image: [`https://wanoafrica.com${post.imageUrl}`],
+    datePublished: new Date(post.date).toISOString(),
+    author: { '@type': 'Organization', name: 'Wano', url: 'https://wanoafrica.com' },
+    publisher: { '@type': 'Organization', name: 'Wano', logo: { '@type': 'ImageObject', url: 'https://wanoafrica.com/images/wano-logo.png' } },
+    mainEntityOfPage: postUrl,
+  }
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <section className="section">
         <div className="container">
           <div className={styles.blogDetailsHolder}>
@@ -105,7 +123,7 @@ export default async function PostPage({ params }: PostPageProps) {
               </div>
             </div>
 
-            <div className={styles.animateOnLoad}>
+            <div className={`${styles.animateOnLoad} ${styles.mainImageWrap}`}>
               <div className={styles.blogDetailsMainImageHolder}>
                 <Image
                   src={post.imageUrl}

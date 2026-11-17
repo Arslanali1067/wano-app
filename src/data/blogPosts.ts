@@ -7,9 +7,11 @@ export interface BlogPost {
   content: string
 }
 
+import { batch1 } from './blogPostsBatch1'
+
 const GET = 'https://wanoafrica.com/get?by=blog'
 
-export const blogPosts: BlogPost[] = [
+const launchPosts: BlogPost[] = [
   {
     slug: 'the-new-wano',
     date: 'November 17, 2026',
@@ -76,6 +78,9 @@ export const blogPosts: BlogPost[] = [
     `,
   },
 ]
+
+// Newest first.
+export const blogPosts: BlogPost[] = [...batch1, ...launchPosts]
 
 export function getBlogPost(slug: string): BlogPost | undefined {
   return blogPosts.find((post) => post.slug === slug)

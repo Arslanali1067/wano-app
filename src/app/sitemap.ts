@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { blogPosts } from "@/data/blogPosts";
 
 const SITE_URL = "https://wanoafrica.com";
 
@@ -17,16 +18,21 @@ const STATIC_PATHS = [
   "/kampala",
   "/blog",
   "/submit-film",
-  "/post/the-new-wano",
-  "/post/wano-is-light-on-your-data",
-  "/post/submit-your-film-to-wano-tv",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return STATIC_PATHS.map((path) => ({
+  const pages = STATIC_PATHS.map((path) => ({
     url: `${SITE_URL}${path}`,
-    changeFrequency: path === "/" ? "daily" : "weekly",
+    changeFrequency: (path === "/" ? "daily" : "weekly") as "daily" | "weekly",
     priority: path === "/" ? 1 : 0.7,
   }));
+  // Every blog post, so Google finds new ones without a code change here.
+  const posts = blogPosts.map((post) => ({
+    url: `${SITE_URL}/post/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+  return [...pages, ...posts];
 }
 
