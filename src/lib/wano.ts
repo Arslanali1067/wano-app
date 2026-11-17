@@ -124,3 +124,21 @@ export async function forward(path: string, body: Record<string, unknown>, heade
     return { status: 503, data: { detail: "We couldn't reach our server. Please try again in a minute." } }
   }
 }
+
+export interface TopicRow { topic: string; label: string; country: string | null; country_name: string | null; posts: number }
+export interface TopicPage {
+  topic: string; label: string; country: string | null; country_name: string | null; posts_count: number
+  posts: Post[]; creators: RankedCreator[]; countries: { id: string; name: string; posts: number }[]
+  related: { topic: string; label: string }[]
+}
+export interface TagPage { tag: string; posts_count: number; posts: Post[]; creators: RankedCreator[]; related: string[] }
+export interface SoundPage { id: string; title: string; artist: string; posts_count: number; posts: Post[]; creators: RankedCreator[] }
+
+export const getTopics = async () => (await get<{ items: TopicRow[] }>('/topics', 3600))?.items ?? []
+export const getTopic = (topic: string, country?: string | null) =>
+  get<TopicPage>(`/topics/${encodeURIComponent(topic)}${country ? `?country=${country}` : ''}`, 1800)
+export const getTags = async () => (await get<{ items: { tag: string; posts: number }[] }>('/tags', 3600))?.items ?? []
+export const getTag = (tag: string) => get<TagPage>(`/tags/${encodeURIComponent(tag)}`, 1800)
+export const getSounds = async () =>
+  (await get<{ items: { id: string; title: string; artist: string; posts: number }[] }>('/sounds', 3600))?.items ?? []
+export const getSound = (id: string) => get<SoundPage>(`/sounds/${encodeURIComponent(id)}`, 1800)

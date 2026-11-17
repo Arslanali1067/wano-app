@@ -9,6 +9,7 @@ const companyLinks = [
   { href: '/wano-studio', label: 'WANO Studio' },
   { href: '/partnerships', label: 'Partnerships' },
   { href: '/trending', label: 'Trending' },
+  { href: '/videos', label: 'Browse videos' },
   { href: '/advertise', label: 'Advertise' },
   { href: '/press', label: 'Press & partners' },
   { href: '/blog', label: 'Blog' },
