@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
 import s from './Site.module.css'
-import { compact, handlePath, type Post, type RankedCreator } from '@/lib/wano'
+import { compact, personHref, type Post, type RankedCreator } from '@/lib/wano'
 
 export function Avatar({ src, name, className }: { src: string | null; name: string; className?: string }) {
   if (src) return <img src={src} alt={name} className={className ?? s.avatar} loading="lazy" />
@@ -19,7 +19,7 @@ export function PostGrid({ posts, showCreator }: { posts: Post[]; showCreator?: 
           <div className={s.postInfo}>
             {p.title ? <div className={s.postTitle}>{p.title}</div> : null}
             <div className={s.postBy}>
-              {showCreator && p.creator ? `@${p.creator.username} · ` : ''}
+              {showCreator && p.creator ? `${p.creator.username ? `@${p.creator.username}` : p.creator.display_name} · ` : ''}
               {compact(p.views)} views
             </div>
           </div>
@@ -34,8 +34,8 @@ export function RankList({ rows, metric = 'views' }: { rows: RankedCreator[]; me
   return (
     <ol className={s.ranks}>
       {rows.map((r) => (
-        <li key={r.username}>
-          <Link href={handlePath(r.username)} className={s.rankRow}>
+        <li key={`${r.rank}-${r.username ?? r.url}`}>
+          <Link href={personHref(r)} className={s.rankRow}>
             <span className={s.rankNo}>{r.rank}</span>
             {r.profile_picture ? (
               <img src={r.profile_picture} alt="" className={s.rankPic} loading="lazy" />
@@ -44,7 +44,7 @@ export function RankList({ rows, metric = 'views' }: { rows: RankedCreator[]; me
             )}
             <span className={s.rankName}>
               <strong>{r.display_name || r.username}</strong>
-              <span>@{r.username}</span>
+              {r.username ? <span>@{r.username}</span> : null}
             </span>
             <span className={s.rankMeta}>{compact(r[metric] ?? 0)}<span className={s.rankMetaLong}> views this week</span><span className={s.rankMetaShort}> views</span></span>
           </Link>

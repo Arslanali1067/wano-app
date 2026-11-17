@@ -7,7 +7,8 @@ export const API = process.env.WANO_API_URL ?? 'https://devbe.wanoafrica.com'
 export const SITE = 'https://wanoafrica.com'
 
 export interface Person {
-  username: string
+  /** null when the account's handle is an email or phone number (not shown publicly). */
+  username: string | null
   display_name: string
   profile_picture: string | null
   url: string | null
@@ -91,6 +92,9 @@ export const getCreatorIndex = async () =>
   (await get<{ items: { username: string; followers: number; updated: string }[] }>('/creators', 3600))?.items ?? []
 
 export const handlePath = (username: string) => `/@${encodeURIComponent(username)}`
+
+/** Where a listed creator links: their page, or (no public handle) their app profile. */
+export const personHref = (p: Person) => (p.username ? handlePath(p.username) : (p.url ?? '/').replace(SITE, ''))
 
 export function compact(n: number): string {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(n >= 10_000_000 ? 0 : 1).replace(/\.0$/, '')}M`
