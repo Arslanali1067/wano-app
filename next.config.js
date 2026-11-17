@@ -13,6 +13,18 @@ const nextConfig = {
       // Wano TV film submissions have one address: /tv/submit.
       .concat([{ source: "/submit-film", destination: "/tv/submit", permanent: true }]);
   },
+  // wanoafrica.com/@username is a creator's page; post, profile and embed links are
+  // served by the Wano server's share pages under wanoafrica.com, so shared links
+  // carry Wano's own address.
+  async rewrites() {
+    const API = process.env.WANO_API_URL || "https://devbe.wanoafrica.com";
+    return [
+      { source: "/@:username", destination: "/creator/:username" },
+      { source: "/v/:id", destination: `${API}/v/:id` },
+      { source: "/u/:id", destination: `${API}/u/:id` },
+      { source: "/embed/:id", destination: `${API}/embed/:id` },
+    ];
+  },
   async headers() {
     return [
       {

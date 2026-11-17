@@ -178,6 +178,8 @@ export async function POST(request: NextRequest) {
 
       <p>Our curation and editorial team will privately review your submission. If your film is selected for the next stage, Wano will reach out to you directly via this email address.</p>
 
+      <p>You can check where your film is at any time at <a href="https://wanoafrica.com/tv/status" style="color:#E38028;">wanoafrica.com/tv/status</a> with your reference and this email address.</p>
+
       <p><strong>Important reminder:</strong> Please do <em>not</em> send full master video files unless explicitly requested by the Wano TV team.</p>
     </div>
 

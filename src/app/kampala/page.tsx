@@ -1,7 +1,5 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
-import styles from '@/components/Landing.module.css'
-import AppTour from '@/components/AppTour'
+import CityPage from '@/components/CityPage'
 
 export const metadata: Metadata = {
   title: 'Wano in Kampala',
@@ -16,8 +14,6 @@ export const metadata: Metadata = {
     images: [{ url: '/images/og-wano.jpg', width: 1200, height: 630, alt: 'Wano: African videos, films and chat' }],
   },
 }
-
-const GET = '/get?by=kampala'
 
 const cards = [
   {
@@ -48,47 +44,19 @@ const cards = [
   },
 ]
 
+export const revalidate = 600
+
 export default function KampalaPage() {
   return (
-    <>
-      <section className={styles.hero}>
-        <div className={styles.glow} />
-        <div className="container">
-          <p className={styles.eyebrow}>Wano · Kampala</p>
-          <h1 className={styles.h1}>Kampala, represent.</h1>
-          <p className={styles.lead}>
-            Wano means &ldquo;here&rdquo; in Luganda. Watch and share Kampala&apos;s comedy, music, food and everyday life,
-            watch African films on Wano TV, and chat with your people. Free, and light on your data.
-          </p>
-          <div className={styles.buttons}>
-            <a className={styles.btn} href={GET}>Get Wano free</a>
-            <Link className={styles.btnGhost} href="/#whats-on-wano">What&apos;s on Wano</Link>
-          </div>
-          <div className={styles.facts}>
-            <span className={styles.fact}><strong>50K+</strong> downloads on Google Play</span>
-            <span className={styles.fact}>Android and iPhone</span>
-            <span className={styles.fact}>No account needed to start watching</span>
-          </div>
-        </div>
-      </section>
-      <AppTour />
-      <section className={styles.block}>
-        <div className="container">
-          <h2 className={styles.h2}>Why Kampala is on Wano</h2>
-          <div className={styles.grid}>
-            {cards.map((c) => (
-              <div key={c.title} className={styles.card}>
-                <h3 className={styles.cardTitle}>{c.title}</h3>
-                <p className={styles.cardText}>{c.text}</p>
-                {c.link && <Link className={styles.cardLink} href={c.link.href}>{c.link.label} →</Link>}
-              </div>
-            ))}
-          </div>
-          <p className={styles.note}>
-            Creators: ask us for your own invite link. Everyone who joins through it is counted for you.
-          </p>
-        </div>
-      </section>
-    </>
+    <CityPage
+      copy={{
+        id: 'kampala',
+        name: 'Kampala',
+        country: 'Uganda',
+        headline: 'Kampala, represent.',
+        lead: 'Wano means “here” in Luganda. Watch and share Kampala’s comedy, music, food and everyday life, watch African films on Wano TV, and chat with your people. Free, and light on your data.',
+        cards,
+      }}
+    />
   )
 }

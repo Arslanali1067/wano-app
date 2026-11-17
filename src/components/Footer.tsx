@@ -8,19 +8,32 @@ const companyLinks = [
   { href: '/tv/submit', label: 'Submit Your Film' },
   { href: '/wano-studio', label: 'WANO Studio' },
   { href: '/partnerships', label: 'Partnerships' },
-  { href: '/partnerships#work-with-wano', label: 'Advertise & invest' },
-  { href: '/kampala', label: 'Wano in Kampala' },
+  { href: '/trending', label: 'Trending' },
+  { href: '/advertise', label: 'Advertise' },
+  { href: '/press', label: 'Press & partners' },
   { href: '/blog', label: 'Blog' },
+]
+
+const cityLinks = [
+  { href: '/kampala', label: 'Kampala' },
+  { href: '/lagos', label: 'Lagos' },
+  { href: '/nairobi', label: 'Nairobi' },
+  { href: '/accra', label: 'Accra' },
+  { href: '/johannesburg', label: 'Johannesburg' },
+  { href: '/london', label: 'London' },
 ]
 
 const socialLinks = [
   { href: 'https://www.instagram.com/wanoapp/', label: 'Instagram' },
-  { href: 'https://www.tiktok.com/@wanoapp6', label: 'TikTok' },
-  { href: 'https://x.com/Wano2025', label: 'X (Twitter)' },
-  { href: 'https://www.youtube.com/@wano-app', label: 'YouTube' },
+  { href: 'https://www.tiktok.com/@wanoapp1', label: 'TikTok' },
+  { href: 'https://x.com/wanoapp', label: 'X (Twitter)' },
+  { href: 'https://www.youtube.com/@Wanoapp', label: 'YouTube' },
 ]
 
 const supportLinks = [
+  { href: '/help', label: 'Help centre' },
+  { href: '/tv/status', label: 'Film submission status' },
+  { href: '/help/delete-account', label: 'Delete your account' },
   { href: '/contact', label: 'Contact Us' },
   { href: '/privacy', label: 'Privacy Policy' },
   { href: '/terms-of-service', label: 'Terms of Service' },
@@ -53,6 +66,15 @@ export default function Footer() {
             <div className={styles.footerBlock}>
               <div className="title-small">Company</div>
               {companyLinks.map((link) => (
+                <Link key={link.label} href={link.href} className={styles.footerLink}>
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+
+            <div className={styles.footerBlock}>
+              <div className="title-small">Wano in your city</div>
+              {cityLinks.map((link) => (
                 <Link key={link.label} href={link.href} className={styles.footerLink}>
                   {link.label}
                 </Link>

@@ -18,12 +18,16 @@ const navLinks: Array<
   { href: '/', label: 'Home', type: 'link' as const },
   { href: '/tv', label: 'Wano TV', type: 'link' as const },
   { href: '/creators', label: 'Creators', type: 'link' as const },
+  { href: '/trending', label: 'Trending', type: 'link' as const },
   {
     label: 'About',
     type: 'submenu' as const,
     items: [
       { label: 'About WANO', href: '/about' },
       { label: 'WANO Studio', href: '/wano-studio' },
+      { label: 'Press & partners', href: '/press' },
+      { label: 'Advertise', href: '/advertise' },
+      { label: 'Help centre', href: '/help' },
     ],
   },
   { href: '/partnerships', label: 'Partnerships', type: 'link' as const },

@@ -1,6 +1,7 @@
 import { MetadataRoute } from "next";
 import { publishedPosts, postTime } from "@/data/blogPosts";
 import { getTvTitles } from "@/lib/tv";
+import { getCreatorIndex } from "@/lib/wano";
 
 export const revalidate = 3600;
 
@@ -21,6 +22,17 @@ const STATIC_PATHS = [
   "/kampala",
   "/blog",
   "/tv/submit",
+  "/tv/status",
+  "/trending",
+  "/lagos",
+  "/nairobi",
+  "/accra",
+  "/johannesburg",
+  "/london",
+  "/advertise",
+  "/press",
+  "/help",
+  "/help/delete-account",
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -42,6 +54,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
-  return [...pages, ...titles, ...posts];
+  // Creator pages (wanoafrica.com/@username): adults with public posts, most followed first.
+  const creators = (await getCreatorIndex()).map((c) => ({
+    url: `${SITE_URL}/@${encodeURIComponent(c.username)}`,
+    lastModified: new Date(c.updated),
+    changeFrequency: "daily" as const,
+    priority: c.followers >= 1000 ? 0.7 : 0.5,
+  }));
+  return [...pages, ...titles, ...posts, ...creators];
 }
 

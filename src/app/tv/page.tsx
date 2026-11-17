@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Newsletter from '@/components/Newsletter'
 import CTASection from '@/components/CTASection'
 import { getTvTitles, runtimeLabel, WATCH_LINK } from '@/lib/tv'
 import PosterFan from './PosterFan'
@@ -135,7 +136,11 @@ export default async function WanoTvPage() {
             <div className={styles.ctas}>
               <Link href="/tv/submit" className={styles.btnPrimary}>Submit your film →</Link>
               <Link href="/tv/submit#why-wano-tv" className={styles.btnGhost}>How it works</Link>
+              <Link href="/tv/status" className={styles.btnGhost}>Check a submission</Link>
             </div>
+          </div>
+          <div style={{ marginTop: 40 }}>
+            <Newsletter source="tv" />
           </div>
         </div>
       </section>
