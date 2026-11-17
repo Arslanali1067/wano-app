@@ -5,7 +5,7 @@ import styles from './Footer.module.css'
 const companyLinks = [
   { href: '/about', label: 'About Wano' },
   { href: '/tv', label: 'Wano TV' },
-  { href: '/tv#submit-film', label: 'Submit Your Film' },
+  { href: '/tv/submit', label: 'Submit Your Film' },
   { href: '/wano-studio', label: 'WANO Studio' },
   { href: '/partnerships', label: 'Partnerships' },
   { href: '/partnerships#work-with-wano', label: 'Advertise & invest' },

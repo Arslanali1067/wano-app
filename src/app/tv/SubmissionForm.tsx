@@ -221,6 +221,39 @@ interface SubmittedFilmData {
   viewingLink: string
 }
 
+/**
+ * Make the poster small enough to send: at most 1200 px on its long side, as a
+ * JPEG of about 900 KB or less. Big posters used to make the whole submission
+ * fail, because the website's server only accepts about 4.5 MB per request.
+ */
+function shrinkPoster(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file)
+    const img = new Image()
+    img.onload = () => {
+      URL.revokeObjectURL(url)
+      const scale = Math.min(1, 1200 / Math.max(img.naturalWidth, img.naturalHeight))
+      const canvas = document.createElement('canvas')
+      canvas.width = Math.max(1, Math.round(img.naturalWidth * scale))
+      canvas.height = Math.max(1, Math.round(img.naturalHeight * scale))
+      const ctx = canvas.getContext('2d')
+      if (!ctx) return reject(new Error('no canvas'))
+      ctx.fillStyle = '#000'
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+      let q = 0.85
+      let out = canvas.toDataURL('image/jpeg', q)
+      while (out.length > 1_200_000 && q > 0.4) {
+        q -= 0.1
+        out = canvas.toDataURL('image/jpeg', q)
+      }
+      resolve(out)
+    }
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('bad image')) }
+    img.src = url
+  })
+}
+
 export default function SubmissionForm() {
   const [loading, setLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState<string | null>(null)
@@ -355,24 +388,18 @@ export default function SubmissionForm() {
       return
     }
 
-    if (file.size > 10 * 1024 * 1024) {
-      setErrorMsg('Poster image size must be under 10MB.')
+    if (file.size > 25 * 1024 * 1024) {
+      setErrorMsg('Poster image size must be under 25MB.')
       return
     }
 
     setErrorMsg(null)
-    const reader = new FileReader()
-    reader.onload = () => {
-      const dataUrl = reader.result as string
-      const sizeKb = (file.size / 1024).toFixed(0)
-      const sizeStr = file.size > 1024 * 1024 ? `${(file.size / (1024 * 1024)).toFixed(1)} MB` : `${sizeKb} KB`
-      setPosterFile({
-        name: file.name,
-        size: sizeStr,
-        dataUrl,
+    shrinkPoster(file)
+      .then((dataUrl) => {
+        const bytes = Math.round((dataUrl.length - dataUrl.indexOf(',') - 1) * 0.75)
+        setPosterFile({ name: file.name, size: `${Math.max(1, Math.round(bytes / 1024))} KB (resized for upload)`, dataUrl })
       })
-    }
-    reader.readAsDataURL(file)
+      .catch(() => setErrorMsg('We could not read that picture. Try a JPG or PNG, or skip the poster; you can send it later.'))
   }
 
   const removePoster = () => {
@@ -429,7 +456,7 @@ export default function SubmissionForm() {
         body: JSON.stringify(payload),
       })
 
-      const data = await res.json()
+      const data = await res.json().catch(() => ({}))
 
       if (!res.ok) {
         throw new Error(data.error || 'Failed to submit film. Please try again.')
@@ -917,7 +944,7 @@ export default function SubmissionForm() {
                 >
                   <span className={styles.uploadIcon}>🖼️</span>
                   <p className={styles.uploadText}>Click or drop your film poster here</p>
-                  <p className={styles.uploadHint}>Accepts JPG, PNG, WEBP (Max 10MB)</p>
+                  <p className={styles.uploadHint}>JPG, PNG or WEBP. We resize it for you.</p>
                   <input
                     ref={fileInputRef}
                     type="file"

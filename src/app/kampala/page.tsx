@@ -35,7 +35,7 @@ const cards = [
   {
     title: 'Wano TV',
     text: 'African films and series, free in the app. Filmmakers in Uganda can submit their work.',
-    link: { href: '/submit-film', label: 'Submit your film' },
+    link: { href: '/tv/submit', label: 'Submit your film' },
   },
   {
     title: 'Chat and voice notes',

@@ -282,7 +282,7 @@ export const batch1: BlogPost[] = [
         <li>You keep ownership of your film; submitting does not transfer your copyright to Wano.</li>
         <li>If your film is selected, distribution and licensing terms are agreed with you before it appears on Wano TV.</li>
       </ul>
-      <p><a href="/submit-film">Submit your film to Wano TV</a>.</p>
+      <p><a href="/tv/submit">Submit your film to Wano TV</a>.</p>
 
       <h2>Promote it like a release</h2>
       <p>Whatever route you choose, plan the release: post short clips, behind-the-scenes moments and cast interviews before and after. Short vertical clips are where audiences discover films now.</p>
@@ -321,7 +321,7 @@ export const batch1: BlogPost[] = [
       </ul>
 
       <h2>Filmmakers</h2>
-      <p>If you have made a film, <a href="/submit-film">submit it to Wano TV</a>. Submitting is free and you keep ownership of your work.</p>
+      <p>If you have made a film, <a href="/tv/submit">submit it to Wano TV</a>. Submitting is free and you keep ownership of your work.</p>
     `,
   },
   {

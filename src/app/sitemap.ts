@@ -1,5 +1,6 @@
 import { MetadataRoute } from "next";
 import { publishedPosts, postTime } from "@/data/blogPosts";
+import { getTvTitles } from "@/lib/tv";
 
 export const revalidate = 3600;
 
@@ -19,10 +20,10 @@ const STATIC_PATHS = [
   "/terms-of-service",
   "/kampala",
   "/blog",
-  "/submit-film",
+  "/tv/submit",
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const pages = STATIC_PATHS.map((path) => ({
     url: `${SITE_URL}${path}`,
     changeFrequency: (path === "/" ? "daily" : "weekly") as "daily" | "weekly",
@@ -35,6 +36,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
-  return [...pages, ...posts];
+  // Every Wano TV title page.
+  const titles = (await getTvTitles()).map((t) => ({
+    url: `${SITE_URL}/tv/${t.slug}`,
+    changeFrequency: "weekly" as const,
+    priority: 0.8,
+  }));
+  return [...pages, ...titles, ...posts];
 }
 

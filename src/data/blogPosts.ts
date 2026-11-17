@@ -23,7 +23,7 @@ const launchPosts: BlogPost[] = [
       <p>Wano started as a place to watch and share short videos from Africa and the diaspora. It is still that, and now a lot more. Here is what is new.</p>
       <h2>Wano TV</h2>
       <p>African films and series, free inside the app. Browse the Wano TV Top 10 for the week and rows by genre, pick up where you left off with Continue watching, and let the next episode start on its own. Save titles to My List and share them with friends.</p>
-      <p>Made a film? <a href="/submit-film">Submit it to Wano TV</a>. Submission is free and you keep ownership of your work.</p>
+      <p>Made a film? <a href="/tv/submit">Submit it to Wano TV</a>. Submission is free and you keep ownership of your work.</p>
       <h2>Messages</h2>
       <p>Chat with creators and friends right inside Wano. Share a video into a chat, react to a message, reply to it, edit it or delete it. Wrote something with no network? It sends when the network comes back. Hold the mic to send a voice message of up to 2 minutes (on Android now, and on iPhone with the next update).</p>
       <p>Messages are for people 18 and over, with blocking and reporting in every chat.</p>
@@ -75,7 +75,7 @@ const launchPosts: BlogPost[] = [
       <p>Debut shorts, grassroots documentaries and festival films are all welcome. Every submission is judged on story, vision and craft, not on industry connections.</p>
       <h2>Your film stays yours</h2>
       <p>Submitting is free. You keep ownership of your film, and submitting does not transfer your copyright to Wano. If your film is selected, distribution and licensing terms are agreed with you before it appears on Wano TV.</p>
-      <p><a href="/submit-film">Submit your film</a></p>
+      <p><a href="/tv/submit">Submit your film</a></p>
     `,
   },
 ]

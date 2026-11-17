@@ -7,7 +7,7 @@ const features = [
     icon: '🎬',
     title: 'Wano TV',
     text: 'African films and series, free in the app. Top 10 of the week, rows by genre, Continue watching and My List.',
-    link: { href: '/submit-film', label: 'Filmmakers: submit your film' },
+    link: { href: '/tv/submit', label: 'Filmmakers: submit your film' },
   },
   {
     icon: '💬',

@@ -8,7 +8,10 @@ const nextConfig = {
       "how-to-improve-web-design-process",
       "7-of-the-best-examples-of-beautiful-blog-design",
       "7-must-have-tools-for-web-designers",
-    ].map((slug) => ({ source: `/post/${slug}`, destination: "/blog", permanent: true }));
+    ]
+      .map((slug) => ({ source: `/post/${slug}`, destination: "/blog", permanent: true }))
+      // Wano TV film submissions have one address: /tv/submit.
+      .concat([{ source: "/submit-film", destination: "/tv/submit", permanent: true }]);
   },
   async headers() {
     return [

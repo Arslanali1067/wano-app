@@ -123,7 +123,7 @@ export const batch2b: BlogPost[] = [
       <p>Today many Nollywood producers release full films free on their own YouTube channels and earn from ads, while big streaming services commission Nigerian originals. Watch on official channels: it pays the people who made the film. See <a href="/post/where-to-watch-african-films">where to watch African films legally</a>.</p>
 
       <h2>African films on Wano TV</h2>
-      <p>Wano TV is our home for African films and series, free in the Wano app. Filmmakers can <a href="/submit-film">submit their films</a>.</p>
+      <p>Wano TV is our home for African films and series, free in the Wano app. Filmmakers can <a href="/tv/submit">submit their films</a>.</p>
       <p><a href="${GET}">Get Wano free on Android and iPhone</a>.</p>
     `,
   },
@@ -162,7 +162,7 @@ export const batch2b: BlogPost[] = [
 
       <h2>9. Get it seen</h2>
       <p>Send it to festivals, put clips online and submit it to platforms. Our guide <a href="/post/how-to-get-your-african-film-seen">How to get your African film seen</a> covers festivals like FESPACO, Durban and Amakula, and Wano TV. Read each festival&rsquo;s rules before posting the full film online.</p>
-      <p>Wano TV takes short films from 5 to 40 minutes. <a href="/submit-film">Submitting is free and your film stays yours</a>.</p>
+      <p>Wano TV takes short films from 5 to 40 minutes. <a href="/tv/submit">Submitting is free and your film stays yours</a>.</p>
     `,
   },
   {
@@ -341,7 +341,7 @@ export const batch2b: BlogPost[] = [
       <p>Show them the film before it goes public if you can. Their trust is the most valuable thing you have, for this film and the next.</p>
 
       <h2>Show it</h2>
-      <p>Share short clips to build an audience, send it to festivals, and submit it to Wano TV, which takes documentaries of all lengths. Read <a href="/post/how-to-get-your-african-film-seen">How to get your African film seen</a> first. <a href="/submit-film">Submit your film</a>.</p>
+      <p>Share short clips to build an audience, send it to festivals, and submit it to Wano TV, which takes documentaries of all lengths. Read <a href="/post/how-to-get-your-african-film-seen">How to get your African film seen</a> first. <a href="/tv/submit">Submit your film</a>.</p>
     `,
   },
 ]

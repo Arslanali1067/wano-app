@@ -1,6 +1,15 @@
+// Film submissions from wanoafrica.com/tv/submit.
+// Saved on the Wano server first (Admin > Film submissions), then emailed to
+// the filmmaker and the team. A submission only counts as received when it is
+// saved or the team email went out, so a film is never silently lost.
+import { createHash } from 'crypto'
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
-import { saveSubmission } from '@/lib/tv-submissions'
+
+export const dynamic = 'force-dynamic'
+export const maxDuration = 30
+
+const API = process.env.WANO_API_URL ?? 'https://devbe.wanoafrica.com'
 
 const DEFAULT_CONTACT_EMAIL = 'mailer@wanoafrica.com'
 const CONTACT_EMAIL = process.env.CONTACT_EMAIL ?? DEFAULT_CONTACT_EMAIL
@@ -71,32 +80,57 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // Save to persistent storage
-    const saved = saveSubmission({
-      fullName: String(fullName).trim(),
-      email: String(email).trim(),
-      phone: phone ? String(phone).trim() : undefined,
-      country: String(country).trim(),
-      city: city ? String(city).trim() : undefined,
-      productionCompany: productionCompany ? String(productionCompany).trim() : undefined,
-      filmTitle: String(filmTitle).trim(),
-      countryRepresented: String(countryRepresented).trim(),
-      yearCompleted: String(yearCompleted).trim(),
-      runtime: String(runtime).trim(),
-      category: String(category).trim(),
-      languages: String(languages).trim(),
-      subtitles: String(subtitles).trim(),
-      synopsis: String(synopsis).trim(),
-      viewingLink: String(viewingLink).trim(),
-      viewingPassword: viewingPassword ? String(viewingPassword).trim() : undefined,
-      trailerLink: trailerLink ? String(trailerLink).trim() : undefined,
-      posterFileName: posterFileName ? String(posterFileName).trim() : undefined,
-      posterDataUrl: posterDataUrl ? String(posterDataUrl) : undefined,
-      rightsConfirmed: true,
-    })
+    const t = (v: unknown) => (typeof v === 'string' ? v.trim() : '')
+    const saved = {
+      id: '',
+      fullName: t(fullName), email: t(email), phone: t(phone), country: t(country), city: t(city),
+      productionCompany: t(productionCompany), filmTitle: t(filmTitle), countryRepresented: t(countryRepresented),
+      yearCompleted: t(yearCompleted), runtime: t(runtime), category: t(category), languages: t(languages),
+      subtitles: t(subtitles), synopsis: t(synopsis), viewingLink: t(viewingLink), viewingPassword: t(viewingPassword),
+      trailerLink: t(trailerLink),
+    }
+
+    // 1. Save on the Wano server.
+    const ip = (request.headers.get('x-forwarded-for') ?? '').split(',')[0].trim()
+    const who = createHash('sha256').update(`${ip}|${request.headers.get('user-agent') ?? ''}`).digest('hex').slice(0, 32)
+    let stored = false
+    try {
+      const r = await fetch(`${API}/api/v1/film-submissions`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        cache: 'no-store',
+        signal: AbortSignal.timeout(15000),
+        body: JSON.stringify({
+          full_name: saved.fullName, email: saved.email, phone: saved.phone, country: saved.country, city: saved.city,
+          production_company: saved.productionCompany, film_title: saved.filmTitle,
+          country_represented: saved.countryRepresented, year_completed: saved.yearCompleted, runtime: saved.runtime,
+          category: saved.category, languages: saved.languages, subtitles: saved.subtitles, synopsis: saved.synopsis,
+          viewing_link: saved.viewingLink, viewing_password: saved.viewingPassword, trailer_link: saved.trailerLink,
+          poster_file_name: t(posterFileName), poster_data_url: typeof posterDataUrl === 'string' ? posterDataUrl : '',
+          rights_confirmed: true, who,
+        }),
+      })
+      const out = await r.json().catch(() => ({}))
+      if (r.ok && out.ref) {
+        saved.id = out.ref
+        stored = true
+        if (out.created === false) {
+          // The same film a moment ago (a double tap): it is already in, don't email again.
+          return NextResponse.json({ success: true, submissionId: saved.id, filmTitle: saved.filmTitle, fullName: saved.fullName })
+        }
+      } else if (r.status === 400 || r.status === 429) {
+        return NextResponse.json({ error: out.detail || 'Please check the form and try again.' }, { status: r.status })
+      } else {
+        console.error('[Wano TV] Server save failed', r.status, out)
+      }
+    } catch (err) {
+      console.error('[Wano TV] Server save failed', err)
+    }
+    if (!saved.id) saved.id = `WTV-${Math.floor(100000 + Math.random() * 900000)}`
 
     // Trigger automated emails via Resend if API key is provided
     const apiKey = process.env.RESEND_API_KEY
+    let teamEmailed = false
     if (apiKey) {
       try {
         const resend = new Resend(apiKey)
@@ -125,7 +159,7 @@ export async function POST(request: NextRequest) {
   <div class="card">
     <div class="header">
       <div class="logo">WANO TV</div>
-      <div class="tagline">Stories worth watching • Launching Soon</div>
+      <div class="tagline">Stories worth watching • Now streaming in the Wano app</div>
     </div>
     
     <div class="title">Film Received — Thank you for submitting!</div>
@@ -165,7 +199,7 @@ export async function POST(request: NextRequest) {
           to: [saved.email],
           subject: `Film Received: ${saved.filmTitle} (${saved.id}) | Wano TV`,
           html: filmmakerHtml,
-        })
+        }).catch((e) => console.error('Filmmaker email failed:', e))
 
         // 2. Team Notification Email
         const teamHtml = `
@@ -179,23 +213,29 @@ export async function POST(request: NextRequest) {
           <p><strong>Languages:</strong> ${escapeHtml(saved.languages)} (Subtitles: ${escapeHtml(saved.subtitles)})</p>
           <p><strong>Viewing Link:</strong> <a href="${escapeHtml(saved.viewingLink)}">${escapeHtml(saved.viewingLink)}</a></p>
           ${saved.viewingPassword ? `<p><strong>Password:</strong> ${escapeHtml(saved.viewingPassword)}</p>` : ''}
+          <p><strong>Saved in Wano admin:</strong> ${stored ? 'yes (Admin &gt; Film submissions)' : 'NO, the server save failed: this email is the only copy'}</p>
           ${saved.trailerLink ? `<p><strong>Trailer:</strong> <a href="${escapeHtml(saved.trailerLink)}">${escapeHtml(saved.trailerLink)}</a></p>` : ''}
           <p><strong>Synopsis:</strong></p>
           <p>${escapeHtml(saved.synopsis).replace(/\n/g, '<br>')}</p>
         `
 
-        await resend.emails.send({
+        const sent = await resend.emails.send({
           from: FROM_EMAIL,
           to: [CONTACT_EMAIL],
           subject: `[Wano TV Submission] ${saved.filmTitle} - ${saved.fullName} (${saved.id})`,
           html: teamHtml,
         })
+        teamEmailed = !sent.error
       } catch (emailErr) {
         console.error('Failed to send Resend email:', emailErr)
-        // We still return success since the submission is safely stored in our database/file
       }
-    } else {
-      console.log(`[Wano TV] Submission saved: ${saved.id} - ${saved.filmTitle} by ${saved.fullName} (RESEND_API_KEY not configured)`)
+    }
+
+    if (!stored && !teamEmailed) {
+      return NextResponse.json(
+        { error: 'We could not receive your film just now. Please try again in a few minutes, or email it to mailer@wanoafrica.com.' },
+        { status: 503 },
+      )
     }
 
     return NextResponse.json({
