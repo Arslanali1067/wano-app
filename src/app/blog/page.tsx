@@ -1,7 +1,10 @@
 import { Metadata } from 'next'
 import BlogGrid from '@/components/BlogGrid'
-import { blogPosts } from '@/data/blogPosts'
+import { publishedPosts } from '@/data/blogPosts'
 import styles from './page.module.css'
+
+// Re-check hourly so scheduled posts appear on their date.
+export const revalidate = 3600
 
 export const metadata: Metadata = {
   title: 'Blog - WANO Notes',
@@ -28,7 +31,7 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
-      <BlogGrid posts={blogPosts} showHeader={false} />
+      <BlogGrid posts={publishedPosts()} showHeader={false} />
     </>
   )
 }

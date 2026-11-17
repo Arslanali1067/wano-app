@@ -8,6 +8,7 @@ export interface BlogPost {
 }
 
 import { batch1 } from './blogPostsBatch1'
+import { batch2 } from './blogPostsBatch2'
 
 const GET = 'https://wanoafrica.com/get?by=blog'
 
@@ -79,15 +80,41 @@ const launchPosts: BlogPost[] = [
   },
 ]
 
-// Newest first.
-export const blogPosts: BlogPost[] = [...batch1, ...launchPosts]
+// Every post, scheduled ones included.
+const allPosts: BlogPost[] = [...batch2, ...batch1, ...launchPosts]
+
+/**
+ * Posts whose date has arrived, newest first. Scheduled posts (a future date)
+ * stay hidden until their day; the blog, post pages and sitemap re-check every
+ * hour, so a scheduled post goes live on its own without a new deploy.
+ */
+export function publishedPosts(now: Date = new Date()): BlogPost[] {
+  return allPosts
+    .filter((post) => postTime(post) <= now.getTime())
+    .sort((a, b) => postTime(b) - postTime(a))
+}
+
+/**
+ * When a post goes live: midnight East Africa Time (UTC+3) on its date, the
+ * same on any server whatever its time zone. A date that can't be read counts
+ * as published, so a typo never hides a post.
+ */
+export function postTime(post: BlogPost): number {
+  const t = new Date(`${post.date} 00:00:00 GMT+0300`).getTime()
+  return Number.isNaN(t) ? 0 : t
+}
+
+/** Every post including scheduled ones (for checks, not for pages). */
+export function allBlogPosts(): BlogPost[] {
+  return allPosts
+}
 
 export function getBlogPost(slug: string): BlogPost | undefined {
-  return blogPosts.find((post) => post.slug === slug)
+  return publishedPosts().find((post) => post.slug === slug)
 }
 
 export function getRelatedPosts(currentSlug: string, limit: number = 3): BlogPost[] {
-  return blogPosts
+  return publishedPosts()
     .filter((post) => post.slug !== currentSlug)
     .slice(0, limit)
 }

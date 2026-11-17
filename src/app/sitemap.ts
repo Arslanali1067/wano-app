@@ -1,5 +1,7 @@
 import { MetadataRoute } from "next";
-import { blogPosts } from "@/data/blogPosts";
+import { publishedPosts, postTime } from "@/data/blogPosts";
+
+export const revalidate = 3600;
 
 const SITE_URL = "https://wanoafrica.com";
 
@@ -27,9 +29,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: path === "/" ? 1 : 0.7,
   }));
   // Every blog post, so Google finds new ones without a code change here.
-  const posts = blogPosts.map((post) => ({
+  const posts = publishedPosts().map((post) => ({
     url: `${SITE_URL}/post/${post.slug}`,
-    lastModified: new Date(post.date),
+    lastModified: new Date(postTime(post)),
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));

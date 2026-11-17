@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import BlogGrid from '@/components/BlogGrid'
-import { getBlogPost, getRelatedPosts, blogPosts } from '@/data/blogPosts'
+import { getBlogPost, getRelatedPosts, publishedPosts, postTime } from '@/data/blogPosts'
 import styles from './page.module.css'
 
 interface PostPageProps {
@@ -31,15 +31,19 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
       description: post.description,
       url: `https://wanoafrica.com/post/${post.slug}`,
       type: 'article',
-      publishedTime: new Date(post.date).toISOString(),
+      publishedTime: new Date(postTime(post)).toISOString(),
       images: [post.imageUrl],
     },
     twitter: { card: 'summary_large_image', images: [post.imageUrl] },
   }
 }
 
+// Re-check hourly: a scheduled post goes live on its date (pages for posts
+// not yet built are made on first visit).
+export const revalidate = 3600
+
 export async function generateStaticParams() {
-  return blogPosts.map((post) => ({
+  return publishedPosts().map((post) => ({
     slug: post.slug,
   }))
 }
@@ -61,7 +65,7 @@ export default async function PostPage({ params }: PostPageProps) {
     headline: post.title,
     description: post.description,
     image: [`https://wanoafrica.com${post.imageUrl}`],
-    datePublished: new Date(post.date).toISOString(),
+    datePublished: new Date(postTime(post)).toISOString(),
     author: { '@type': 'Organization', name: 'Wano', url: 'https://wanoafrica.com' },
     publisher: { '@type': 'Organization', name: 'Wano', logo: { '@type': 'ImageObject', url: 'https://wanoafrica.com/images/wano-logo.png' } },
     mainEntityOfPage: postUrl,
