@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import styles from '@/components/Landing.module.css'
+import AppTour from '@/components/AppTour'
 
 export const metadata: Metadata = {
   title: 'Wano in Kampala',
@@ -70,6 +71,7 @@ export default function KampalaPage() {
           </div>
         </div>
       </section>
+      <AppTour />
       <section className={styles.block}>
         <div className="container">
           <h2 className={styles.h2}>Why Kampala is on Wano</h2>

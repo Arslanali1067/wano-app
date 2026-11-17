@@ -6,6 +6,7 @@ import ListFeaturesSection from '@/components/ListFeaturesSection'
 import EasyAccessSection from '@/components/EasyAccessSection'
 import CTASection from '@/components/CTASection'
 import WhatsOnWanoSection from '@/components/WhatsOnWanoSection'
+import AppTour from '@/components/AppTour'
 
 export const metadata: Metadata = {
   title: 'WANO — A Global Short-Form Video Platform Rooted in Culture',
@@ -32,6 +33,7 @@ export default function Home() {
     <>
       <HeroSection />
       <StatsSection />
+      <AppTour />
       <WhatsOnWanoSection />
       <PhoneFeaturesSection />
       <ListFeaturesSection />
