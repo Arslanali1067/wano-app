@@ -6,6 +6,14 @@ import { getTvTitle, getTvTitles, runtimeLabel, WATCH_LINK, type TvTitle } from 
 import TrailerPlayer from '../TrailerPlayer'
 import styles from '../TvCatalogue.module.css'
 
+/** Google wants uploadDate as a full date and time with a time zone; a bare
+ *  "2026-11-20" (or nothing) was flagged in Search Console. */
+const isoDate = (d?: string | null): string | undefined => {
+  if (!d) return undefined
+  const t = new Date(/^\d{4}-\d{2}-\d{2}$/.test(d) ? `${d}T00:00:00Z` : d)
+  return isNaN(t.getTime()) ? undefined : t.toISOString()
+}
+
 export const revalidate = 3600
 export const dynamicParams = true
 
@@ -56,8 +64,8 @@ export default async function TvTitlePage({ params }: { params: { slug: string }
     ...(t.credits?.cast?.length ? { actor: t.credits.cast.map((name) => ({ '@type': 'Person', name })) } : {}),
     ...(t.credits?.production ? { productionCompany: { '@type': 'Organization', name: t.credits.production } } : {}),
     ...(t.captions?.length ? { subtitleLanguage: t.captions.map((c) => c.language) } : {}),
-    ...(t.trailer?.video_url
-      ? { trailer: { '@type': 'VideoObject', name: `${t.title} trailer`, description: t.description, thumbnailUrl: t.trailer.thumbnail || t.poster, contentUrl: t.trailer.video_url, uploadDate: t.release_date, ...(t.trailer.duration_seconds ? { duration: `PT${t.trailer.duration_seconds}S` } : {}) } }
+    ...(t.trailer?.video_url && isoDate(t.release_date)
+      ? { trailer: { '@type': 'VideoObject', name: `${t.title} trailer`, description: t.description, thumbnailUrl: t.trailer.thumbnail || t.poster, contentUrl: t.trailer.video_url, uploadDate: isoDate(t.release_date), ...(t.trailer.duration_seconds ? { duration: `PT${t.trailer.duration_seconds}S` } : {}) } }
       : {}),
   }
 
