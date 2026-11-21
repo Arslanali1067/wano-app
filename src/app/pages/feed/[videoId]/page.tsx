@@ -28,17 +28,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = [creatorTag, data?.description].filter(Boolean).join(" · ") || "Watch videos on Wano App";
   const thumbnail = data?.urls?.thumbnail;
 
+  // Each video's own name in search results and link previews, not "Wano App"
+  // on every one (Search Console treats identical titles as near-duplicates).
+  const name = (typeof data?.title === "string" && data.title.trim())
+    || (typeof data?.description === "string" && data.description.trim().slice(0, 70))
+    || (user ? `${user.display_name || user.username} on Wano` : "");
+  const title = name ? `${name} · Wano` : "Wano App";
   return {
-    title: "Wano App",
+    title,
     description,
+    alternates: { canonical: `/pages/feed/${videoId}` },
     openGraph: {
-      title: "Wano App",
+      title,
       description,
       ...(thumbnail && { images: [{ url: thumbnail }] }),
     },
     twitter: {
       card: "summary_large_image",
-      title: "Wano App",
+      title,
       description,
       ...(thumbnail && { images: [thumbnail] }),
     },
