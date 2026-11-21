@@ -20,9 +20,14 @@ const nextConfig = {
     const API = process.env.WANO_API_URL || "https://devbe.wanoafrica.com";
     return [
       { source: "/@:username", destination: "/creator/:username" },
-      { source: "/v/:id", destination: `${API}/v/:id` },
-      { source: "/u/:id", destination: `${API}/u/:id` },
-      { source: "/embed/:id", destination: `${API}/embed/:id` },
+      // via=site tells the server the visitor is already on wanoafrica.com, so it
+      // doesn't send them back here (old app versions still share devbe links).
+      { source: "/v/:id", destination: `${API}/v/:id?via=site` },
+      { source: "/u/:id", destination: `${API}/u/:id?via=site` },
+      { source: "/embed/:id", destination: `${API}/embed/:id?via=site` },
+      // A Wano TV share link carries the title's id; /tv/<slug> stays this site's page.
+      { source: "/tv/:id([0-9a-f]{24})", destination: `${API}/tv/:id?via=site` },
+      { source: "/app", destination: `${API}/app?via=site` },
     ];
   },
   async headers() {
