@@ -38,7 +38,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ? (user.username ? `${user.display_name} (@${user.username})` : user.display_name)
     : null;
   const description = [creatorTag, data?.description].filter(Boolean).join(" · ") || "Watch videos on Wano App";
-  const thumbnail = data?.urls?.thumbnail;
+  // With the share_play switch on, the preview picture has a play button.
+  const thumbnail = data?.preview_image || data?.urls?.thumbnail;
 
   // Each video's own name in search results and link previews, not "Wano App"
   // on every one (Search Console treats identical titles as near-duplicates).
