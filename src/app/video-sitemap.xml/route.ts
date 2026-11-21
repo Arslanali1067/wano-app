@@ -1,5 +1,7 @@
 const SITE_URL = "https://wanoafrica.com";
-const FEED_API = "https://devbe.wanoafrica.com/api/v1/feed/";
+// The website's own list: public videos by adults only (never a young
+// person's post), newest first.
+const FEED_API = "https://devbe.wanoafrica.com/api/v1/public/sitemap-videos";
 // The feed answers at most 50 videos per request (a bigger limit is refused,
 // which left this sitemap empty). The newest PAGES * 50 videos are listed,
 // fetched in parallel so the sitemap builds within a few seconds.
@@ -50,14 +52,14 @@ function buildDescription(item: FeedItem): string {
 }
 
 async function fetchPage(page: number): Promise<FeedItem[]> {
-  const url = `${FEED_API}?skip=${page * PAGE_SIZE}&limit=${PAGE_SIZE}&authenticated=false`;
+  const url = `${FEED_API}?skip=${page * PAGE_SIZE}&limit=${PAGE_SIZE}`;
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 6000);
   try {
     const res = await fetch(url, { signal: controller.signal, next: { revalidate: 3600 } });
     if (!res.ok) return [];
-    const batch = await res.json();
-    return Array.isArray(batch) ? batch : [];
+    const body = await res.json();
+    return Array.isArray(body?.items) ? body.items : [];
   } catch {
     return [];
   } finally {

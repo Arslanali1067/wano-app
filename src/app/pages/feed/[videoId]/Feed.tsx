@@ -49,9 +49,9 @@ export const Feed = ({ data: _data }: { data: unknown }) => {
         <div className={styles.card}>
           <div style={{ overflow: "hidden" }}>
             <a
-              href={`https://share.wanoafrica.com/pages/feed?videoId=${data._id}&single=true`}
-              target="_blank"
-              rel="noopener noreferrer"
+              // share.wanoafrica.com no longer answers (404). /v/ opens the
+              // app when it's installed, otherwise the store.
+              href={`/v/${data._id}`}
               className={styles.watchButton}
             >
               Watch on Wano App

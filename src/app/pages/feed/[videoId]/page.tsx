@@ -9,7 +9,9 @@ type Props = {
 async function getVideo(videoId: string) {
   try {
     const res = await fetch(
-      `https://devbe.wanoafrica.com/api/v1/videos/${videoId}?authenticated=false`,
+      // The website's own endpoint: public posts by adults only (a young
+      // person's post answers {limited: true}), and no view is counted.
+      `https://devbe.wanoafrica.com/api/v1/public/videos/${encodeURIComponent(videoId)}`,
       { next: { revalidate: 60 } }
     );
     if (!res.ok) return null;
@@ -23,8 +25,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { videoId } = await params;
   const data = await getVideo(videoId);
 
+  if (data?.limited) {
+    return {
+      title: "Open this post in Wano",
+      description: "Watch on the Wano app.",
+      robots: { index: false, follow: false },
+    };
+  }
+
   const user = data?.user;
-  const creatorTag = user ? `${user.display_name} (@${user.username})` : null;
+  const creatorTag = user
+    ? (user.username ? `${user.display_name} (@${user.username})` : user.display_name)
+    : null;
   const description = [creatorTag, data?.description].filter(Boolean).join(" · ") || "Watch videos on Wano App";
   const thumbnail = data?.urls?.thumbnail;
 
@@ -39,6 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: name || "Wano App",
     description,
     alternates: { canonical: `/pages/feed/${videoId}` },
+    ...(data?.unlisted && { robots: { index: false, follow: false } }),
     openGraph: {
       title,
       description,
@@ -83,10 +96,7 @@ function buildVideoJsonLd(data: any) {
   const description = data.description || "Watch videos on Wano App";
   const thumbnail = data?.urls?.thumbnail;
   const uploadDate = toIsoDate(data.created_at);
-  const duration =
-    typeof data.end === "number"
-      ? toIsoDuration(data.end - (data.start || 0))
-      : undefined;
+  const duration = toIsoDuration(data.duration);
   const contentUrl = data.remoteUrl_CF || data?.urls?.hls_playlist;
 
   // Cloudflare Stream UID -> iframe player embed
@@ -133,7 +143,20 @@ export default async function FeedPage({ params }: Props) {
     notFound();
   }
 
-  const jsonLd = buildVideoJsonLd(data);
+  if (data.limited) {
+    // A young person's post: nothing about it on the open web.
+    return (
+      <div style={{ minHeight: "60vh", display: "flex", flexDirection: "column", alignItems: "center",
+        justifyContent: "center", gap: 16, padding: 24, textAlign: "center" }}>
+        <h1 style={{ fontSize: 22, fontWeight: 700 }}>Open this post in Wano</h1>
+        <p>Watch it on the Wano app.</p>
+        <a href={`/v/${videoId}`} style={{ background: "#16805A", color: "#fff", padding: "12px 20px",
+          borderRadius: 999, fontWeight: 700 }}>Open in Wano</a>
+      </div>
+    );
+  }
+
+  const jsonLd = data.unlisted ? null : buildVideoJsonLd(data);
 
   return (
     <div className="h-full">
