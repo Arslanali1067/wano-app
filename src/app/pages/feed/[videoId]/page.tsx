@@ -35,7 +35,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     || (user ? `${user.display_name || user.username} on Wano` : "");
   const title = name ? `${name} · Wano` : "Wano App";
   return {
-    title,
+    // The site's layout adds " | WANO" to the page title.
+    title: name || "Wano App",
     description,
     alternates: { canonical: `/pages/feed/${videoId}` },
     openGraph: {
