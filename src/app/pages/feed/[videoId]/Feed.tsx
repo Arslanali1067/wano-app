@@ -3,43 +3,28 @@ import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import Hls from "hls.js";
 import styles from "./Feed.module.css";
+import { PublicVideo, videoName, creatorUrl } from "@/lib/video-seo";
 
-interface User {
-  username: string;
-  display_name: string;
-  profile_picture: string;
-}
-
-interface VideoData {
-  _id: string;
-  title: string | null;
-  description: string;
-  views_count: number;
-  likes_count: number;
-  comments_count: number;
-  remoteUrl_CF: string;
-  is_liked: boolean;
-  is_following: boolean;
-  user: User;
-}
-
-export const Feed = ({ data: _data }: { data: unknown }) => {
-  const data = _data as VideoData;
+export const Feed = ({ data }: { data: PublicVideo }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  const source = data.remoteUrl_CF || data.urls?.hls_playlist || undefined;
+  const poster = data.urls?.thumbnail || undefined;
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video || !data?.remoteUrl_CF) return;
+    if (!video || !source || data.photo) return;
 
-    if (Hls.isSupported()) {
+    // Prefer native HLS (Safari); use MSE only when native playback is absent.
+    if (video.canPlayType("application/vnd.apple.mpegurl")) {
+      video.src = source;
+    } else if (Hls.isSupported()) {
       const hls = new Hls();
-      hls.loadSource(data.remoteUrl_CF);
+      hls.loadSource(source);
       hls.attachMedia(video);
       return () => hls.destroy();
-    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
-      video.src = data.remoteUrl_CF;
     }
-  }, [data?.remoteUrl_CF]);
+  }, [source, data.photo]);
 
   if (!data) return null;
 
@@ -57,15 +42,28 @@ export const Feed = ({ data: _data }: { data: unknown }) => {
               Watch on Wano App
             </a>
           </div>
+          <h1 className={styles.title}>{videoName(data)}</h1>
           <div className={styles.playerWrapper}>
+            {data.photo ? (
+              // Photo posts must not be advertised to Google as playable videos.
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={poster} alt={videoName(data)} className={styles.video} />
+            ) : (
             <video
               ref={videoRef}
+              src={source}
+              poster={poster}
+              preload="metadata"
+              aria-label={videoName(data)}
               className={styles.video}
               controls
               playsInline
               autoPlay
               muted
-            />
+            >
+              Your browser cannot play this video. <a href={`/v/${data._id}`}>Open it in Wano</a>.
+            </video>
+            )}
           </div>
           <div className={styles.meta}>
             {data.user && (
@@ -82,7 +80,9 @@ export const Feed = ({ data: _data }: { data: unknown }) => {
                 )}
                 <div className={styles.creatorInfo}>
                   <span className={styles.displayName}>{data.user.display_name}</span>
-                  <span className={styles.handle}>@{data.user.username}</span>
+                  {creatorUrl(data.user.username) && (
+                    <a className={styles.handle} href={creatorUrl(data.user.username)}>@{data.user.username}</a>
+                  )}
                 </div>
               </div>
             )}

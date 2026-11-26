@@ -1,0 +1,105 @@
+WANO GOOGLE INDEXING — FIRST REPAIR SET
+26 November 2026, America/Chicago
+Status: local changes tested; NOT deployed, NOT submitted for Google validation.
+
+REPOSITORIES
+Website: Arslanali1067/wano-app
+Base: 528b6712440736554e3076049fa6679734a4ea22
+Branch: fix/google-indexing-watch-pages
+Worktree: /Users/eilmerbahri/Downloads/wano-google-indexing
+Backend: KanuAnalytics/wanoapp-backend
+Base: 969b904a6bf0a76f5b2571a822e6e4c6d5849142
+Branch: fix/google-share-metadata
+Worktree: /Users/eilmerbahri/Downloads/wano-google-indexing-backend
+Earlier website checkout contains unrelated uncommitted work. It was preserved.
+No package dependency versions changed; test dependencies installed only locally.
+
+EVIDENCE
+Search Console property sc-domain:wanoafrica.com, report last update 11/22/26:
+6.45K indexed; 3,161 crawled-not-indexed; 349 missing; 211 discovered-not-indexed;
+79 alternate canonical; 43 noindex; 43 duplicates without chosen canonical;
+34 redirect pages; 14 Google-selected canonical mismatches; 2 robots blocks.
+Counts describe reported states, not 3,936 proven website defects.
+
+LIVE WATCH PAGE
+/v/6b0178d7dd0ec3e87b6f3060 and /pages/feed/6b0178d7dd0ec3e87b6f3060
+both answered 200. Share canonical and sitemap agree on /pages/feed/<id>.
+Feed initial HTML had <video controls ...> with no src or poster and no h1.
+It had generic schema description and creator name without profile URL.
+Backend share schema URL named /v/<id> despite canonical naming /pages/feed/<id>.
+
+CANONICAL INSPECTION
+Google fetched /pages/feed/6b017926dd0ec3e87b6f3066 successfully on 11/23/26;
+crawling and indexing allowed. User canonical pointed to itself; Google chose
+/pages/feed/6b01790add0ec3e87b6f3064 instead. Both posts are called Chevrolet,
+both have empty descriptions, but different Stream UIDs and durations (25s/54s).
+The patch exposes the actual differing media in server HTML; it cannot guarantee
+Google will separate them. Creator-written descriptive titles/captions remain useful.
+
+INTENTIONAL EXCLUSIONS SAMPLED
+/pages/feed/68a9254e698edb6b2afed4c2 and /pages/feed/691157435631743400b8c1b2
+both return limited:true from public API. Their noindex restrictions remain.
+Two robots exclusions are devbe.wanoafrica.com/embed/<id>; backend robots
+intentionally disallows /embed/ and /api/. Do not globally open those paths.
+
+OLD SHARE HOST
+All ten initially displayed 404 examples used share.wanoafrica.com/pages/feed
+with videoId and single query arguments. One live request confirmed nginx/1.24.0
+returns 404. Main website robots.txt currently allows crawling.
+ops/nginx/share-watch-links.conf contains narrowly scoped redirect locations.
+It is NOT installed or syntax-tested with the target server configuration.
+The host is served by Nginx, so changing the Next website alone cannot repair it.
+Preserve certificates, ACME renewal and other host behavior when installing.
+
+IMPLEMENTED WEBSITE CHANGES
+- Initial HTML includes video src and poster; native Safari HLS remains supported.
+- Visible post h1 and public creator link.
+- Watch URL, OG URL and video schema agree on the canonical watch page.
+- Meaningful fallback description based on actual post title/creator.
+- Creator profile URL in schema; no email/phone-derived profile links.
+- UTC date normalization, Unicode-safe title truncation, script-safe JSON-LD.
+- No VideoObject for restricted, unlisted, photo or non-playable posts.
+- Reuse fetch per render; bounded upstream fetch; 404 only for actual missing posts.
+  Temporary API failures throw and produce 500 rather than a false 404.
+- Legacy website /pages/feed?videoId=<id> redirects permanently to exact watch URL.
+- No mobile, database, ranking or authentication changes.
+
+IMPLEMENTED BACKEND CHANGES
+app/routes/share.py: public author URL uses existing public_handle/handle_url
+privacy rules; schema URL and mainEntityOfPage agree with existing canonical.
+Social sharing/deep-link OG URLs and visibility checks remain intact.
+
+VALIDATION
+Website: npm run build; npm run lint; six Node helper tests;
+one built-Next integration scenario covering public/restricted/unlisted/photo,
+404 and 500, script breakout, SSR media, author URL and permanent legacy redirect.
+Safari playback manually observed on local production build, duration loaded,
+real video frames visible and title displayed.
+Commands (Node 24 used for direct TypeScript stripping):
+  node --experimental-strip-types --test tests/video-seo.test.mjs
+  node --test tests/watch-page.integration.mjs
+Backend: 75 tests across test_share_links.py, test_share_more.py,
+test_share_installs.py, plus 11 test_public_site.py tests passed.
+Backend tests use mocked external services and in-memory MongoDB, not production.
+Python syntax and both git diff --check passed. Existing deprecation warnings remain.
+
+RELEASE / VERIFY
+1. Review isolated branch diffs and current remote heads; avoid replaying older
+   changes. Backend dev has an automatic deployment workflow: verify its target.
+2. Release website and backend through their existing workflows. No deployment
+   was attempted in this task. gh has no authenticated host on this Mac.
+3. Install reviewed Nginx redirect locations on the actual old-share TLS host,
+   test complete nginx config, then reload; retain existing certificates/config.
+4. Verify public watch pages 200 + src + poster + h1, matching canonical/schema,
+   creator URL/date; verify old share URL returns permanent redirect preserving ID.
+5. Confirm restricted/unlisted/deleted pages retain their visibility behavior.
+6. Inspect several public URLs live in Search Console and request indexing only
+   after deployed HTML is verified. Validate relevant fixes after release.
+7. Monitor recrawl and canonical selection; do not promise full indexing.
+
+STILL OPEN
+The historical Truncated Unicode character report needs its specific affected
+URL rechecked; safe serialization here is not proof every historical issue is fixed.
+All 349 404 URLs have NOT been audited; only the first ten displayed examples.
+No site-wide sitemap cleanup or data deletion was performed.
+Nginx host repair, deployment, live verification and Google reprocessing remain.
