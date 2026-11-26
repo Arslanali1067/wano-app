@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import s from '@/components/Site.module.css'
 import PlatformHeroSection from '@/components/PlatformHeroSection'
 import PhoneFeaturesSection from '@/components/PhoneFeaturesSection'
 import PlatformListFeaturesSection from '@/components/PlatformListFeaturesSection'
@@ -27,6 +28,12 @@ export default function CreatorsPage() {
       <PlatformHeroSection variant="creators" />
       <PhoneFeaturesSection variant="creators" />
       <PlatformListFeaturesSection variant="creators" />
+      <section className="section" aria-labelledby="paid-collaborations">
+        <div className={`container ${s.narrow}`}>
+          <h2 id="paid-collaborations" className={s.h2}>Interested in paid collaborations?</h2>
+          <p className={s.text}>We consider creators with an active presence on Wano, quality content, and authentic audience engagement. Selection depends on campaign fit and available budget—not follower counts alone. Joining, posting, or reaching a milestone does not guarantee a paid partnership. Any paid work and payment terms are agreed separately before work begins.</p>
+        </div>
+      </section>
       <EasyAccessSection variant="creators" />
       <CTASection />
     </>

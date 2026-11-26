@@ -20,9 +20,9 @@ const heroContent = {
     bgImage: '/images/image3.webp',
   },
   creators: {
-    title: 'Creators',
+    title: 'Create. Connect. Grow with Wano.',
     description:
-      'Share your culture with audiences across Africa and the diaspora. Start with original content, consistent posting, and genuine engagement on Wano.',
+      'Share original stories, music, and videos that reflect your creativity and culture. Build your presence through consistent contributions and genuine connections with your audience.',
     bgImage: '/images/Creators-bg.webp',
   },
   about: {
@@ -93,11 +93,7 @@ export default function PlatformHeroSection({ variant = 'platform' }: PlatformHe
                   {content.description}
                   </p>
                   {variant === 'creators' && (
-                    <p>
-                      Paid partnerships are considered for creators with an established, active presence on Wano.
-                      Joining, posting, or reaching a follower milestone does not guarantee payment.
-                      Any paid collaboration is agreed separately before work begins.
-                    </p>
+                    <p>Share content you have the right to use, respect others, and follow our <Link href="/community-guidelines" style={{ textDecoration: 'underline', color: 'inherit' }}>Community Guidelines</Link>.</p>
                   )}
                   <div
                     className={`${styles.heroSectionButtonHolder} ${platformStyles.heroButtonHolder} ${styles.animateFadeIn} ${isVisible ? styles.visible : ''}`}
@@ -106,6 +102,7 @@ export default function PlatformHeroSection({ variant = 'platform' }: PlatformHe
                     <Link href={joinHref} className="button">
                       {variant === 'creators' ? 'Start creating on Wano' : 'Join now'}
                     </Link>
+                    {variant === 'creators' && <p style={{ marginTop: 16 }}><Link href="/community-guidelines" style={{ textDecoration: 'underline', color: 'inherit' }}>Read Community Guidelines</Link></p>}
                   </div>
                 </div>
               </div>

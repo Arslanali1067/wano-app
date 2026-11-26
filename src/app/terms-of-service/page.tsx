@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
@@ -17,7 +18,7 @@ export default function TermsOfServicePage() {
         <div className="container" style={{ textAlign: 'center' }}>
           <h1>Terms of Service</h1>
           <p style={{ marginTop: 8, fontSize: 14, opacity: 0.8 }}>
-            Last updated: February 2026
+            Last updated: November 26, 2026
           </p>
         </div>
       </section>
@@ -46,7 +47,7 @@ export default function TermsOfServicePage() {
 
           <h3 style={{ marginTop: 24, marginBottom: 8, fontSize: 18, fontWeight: 600 }}>2. Use of the Service</h3>
           <p style={{ marginBottom: 16 }}>
-            You agree to use Wano in compliance with applicable laws and our community guidelines.
+            You agree to use Wano in compliance with applicable laws and our <Link href="/community-guidelines">Community Guidelines</Link>.
             You will not use the service to post illegal, harmful, or infringing content, or to
             harass, abuse, or harm others.
           </p>

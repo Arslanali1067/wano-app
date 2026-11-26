@@ -32,6 +32,7 @@ const socialLinks = [
 ]
 
 const supportLinks = [
+  { href: '/community-guidelines', label: 'Community Guidelines' },
   { href: '/help', label: 'Help centre' },
   { href: '/tv/status', label: 'Film submission status' },
   { href: '/help/delete-account', label: 'Delete your account' },

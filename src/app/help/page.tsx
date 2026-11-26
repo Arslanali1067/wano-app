@@ -55,6 +55,7 @@ const sections: { id: string; title: string; items: QA[] }[] = [
   },
   {
     id: 'safety', title: 'Safety', items: [
+      { q: 'Where can I read Wano’s community rules?', a: <p>Read our <Link href="/community-guidelines">Community Guidelines</Link> for content rules, reporting and review information, and creator expectations.</p> },
       { q: 'How do I report a post, message or account?', a: <p>Tap the three dots on the post, message or profile and choose Report. Our team reviews every report. You can also block an account from its profile.</p> },
       { q: 'What isn’t allowed on Wano?', a: <ul><li>Nudity and sexual content</li><li>Hate, harassment and bullying</li><li>Violence, threats and dangerous acts</li><li>Scams, spam and impersonation</li><li>Content you don&apos;t have the rights to</li></ul> },
       { q: 'How old do I need to be?', a: <p>At least 13. Accounts of people under 18 have extra protections: no messages, and their names and faces never appear on our public web pages.</p> },

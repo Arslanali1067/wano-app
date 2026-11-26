@@ -20,6 +20,7 @@ const STATIC_PATHS = [
   "/wano-studio",
   "/privacy",
   "/terms-of-service",
+  "/community-guidelines",
   "/kampala",
   "/blog",
   "/tv/submit",

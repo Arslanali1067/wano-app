@@ -152,7 +152,7 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
                   {formType === 'creators' && (
                     <div className={styles.contactIntro}>
                       <p>You can start posting through the app without applying here. Use this form for creator support or potential collaboration. Include your Wano username or profile link and tell us about the community you are building on Wano.</p>
-                      <p><Link href="/help#creator-payments">Read about creator payments and partnerships</Link></p>
+                      <p><Link href="/help#creator-payments">Read about creator payments and partnerships</Link> and our <Link href="/community-guidelines">Community Guidelines</Link>.</p>
                     </div>
                   )}
                   {formType === 'partnerships' && variant !== 'contact' && (
