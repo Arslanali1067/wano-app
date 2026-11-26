@@ -22,7 +22,7 @@ const heroContent = {
   creators: {
     title: 'Creators',
     description:
-      'Join Wano as a creator and share your culture with the world. From music and video to storytelling—build your audience and grow with a community that celebrates you.',
+      'Share your culture with audiences across Africa and the diaspora. Start with original content, consistent posting, and genuine engagement on Wano.',
     bgImage: '/images/Creators-bg.webp',
   },
   about: {
@@ -46,7 +46,7 @@ export default function PlatformHeroSection({ variant = 'platform' }: PlatformHe
     setIsVisible(true)
   }, [])
 
-  const joinHref = '#Download'
+  const joinHref = variant === 'creators' ? '/get' : '#Download'
 
   return (
     <section
@@ -92,12 +92,19 @@ export default function PlatformHeroSection({ variant = 'platform' }: PlatformHe
                   <p>
                   {content.description}
                   </p>
+                  {variant === 'creators' && (
+                    <p>
+                      Paid partnerships are considered for creators with an established, active presence on Wano.
+                      Joining, posting, or reaching a follower milestone does not guarantee payment.
+                      Any paid collaboration is agreed separately before work begins.
+                    </p>
+                  )}
                   <div
                     className={`${styles.heroSectionButtonHolder} ${platformStyles.heroButtonHolder} ${styles.animateFadeIn} ${isVisible ? styles.visible : ''}`}
                     style={{ animationDelay: '0.3s' }}
                   >
                     <Link href={joinHref} className="button">
-                      Join now
+                      {variant === 'creators' ? 'Start creating on Wano' : 'Join now'}
                     </Link>
                   </div>
                 </div>

@@ -51,12 +51,12 @@ const creatorFeatures = [
   },
   {
     title: 'Grow Your Audience With Wano',
-    description: "We're building a global cultural platform. Early creators get visibility, support, and the chance to shape what comes next.",
+    description: "We're building a global cultural community. Share original content, connect with viewers, and use feedback to develop your presence on Wano. Posting does not guarantee visibility, audience growth, a partnership, or payment.",
     foregroundImage: '/images/Creators2.webp',
     imageFirst: true,
     checkItems: [
       "50k+ installs and growing",
-      "Early creator advantage",
+      "Build your presence through consistent posting",
       "Community support and feedback",
       "Cross-continental reach",
     ],

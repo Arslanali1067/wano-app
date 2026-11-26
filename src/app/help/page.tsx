@@ -26,6 +26,14 @@ const sections: { id: string; title: string; items: QA[] }[] = [
     ],
   },
   {
+    id: 'creator-payments', title: 'Creator payments and partnerships', items: [
+      { q: 'Does Wano pay me for joining or posting?', a: <p>No. Joining Wano, uploading content, or reaching a follower milestone does not automatically qualify you for payment. Build your presence through consistent original posts and genuine engagement with your audience on Wano.</p> },
+      { q: 'How does Wano choose creators for paid partnerships?', a: <p>We consider creators with an established, active presence on Wano. We look at original content, consistency, authentic engagement, and suitability for a specific campaign. Selection also depends on available opportunities and budget. These criteria do not guarantee selection or future payment. Any paid collaboration is agreed separately before work begins.</p> },
+      { q: 'Do I have to apply to start creating?', a: <p>No. Create a free account in the app to start posting. The <Link href="/creators#Download">creator enquiry form</Link> is for support and potential collaborations.</p> },
+      { q: 'Do rankings and creator badges qualify me for payment?', a: <p>No. Home Ground rankings and creator badges recognise activity and achievements on Wano. They do not automatically qualify you for payment or a paid partnership.</p> },
+    ],
+  },
+  {
     id: 'tv', title: 'Wano TV', items: [
       { q: 'What is Wano TV?', a: <p>A free home for African films, documentaries and series, inside the Wano app. <Link href="/tv">See what&apos;s on</Link>.</p> },
       { q: 'How do I submit my film?', a: <p>Use the <Link href="/tv/submit">submission form</Link>. Submitting is free and your film stays yours. You&apos;ll get a reference that starts with WTV-.</p> },

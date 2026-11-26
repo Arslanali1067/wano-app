@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, FormEvent } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from './EasyAccessSection.module.css'
 
 // Local check icon
@@ -145,7 +146,13 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
                         isVisible ? styles.visible : ''
                       }`}
                     >
-                      <h3>{formType === 'creators' ? 'Apply to Become a Creator' : 'Contact Us'}</h3>
+                      <h3>{formType === 'creators' ? 'Creator support and collaboration enquiries' : 'Contact Us'}</h3>
+                    </div>
+                  )}
+                  {formType === 'creators' && (
+                    <div className={styles.contactIntro}>
+                      <p>You can start posting through the app without applying here. Use this form for creator support or potential collaboration. Include your Wano username or profile link and tell us about the community you are building on Wano.</p>
+                      <p><Link href="/help#creator-payments">Read about creator payments and partnerships</Link></p>
                     </div>
                   )}
                   {formType === 'partnerships' && variant !== 'contact' && (
@@ -173,10 +180,10 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
                         name="organization"
                         placeholder={
                           formType === 'creators'
-                            ? 'Social Handle / Channel (optional)'
+                            ? 'Wano username / profile link (optional)'
                             : 'Organization / Brand (optional)'
                         }
-                        aria-label={formType === 'creators' ? 'Social Handle or Channel' : 'Organization or Brand'}
+                        aria-label={formType === 'creators' ? 'Wano username or profile link' : 'Organization or Brand'}
                         className="text-field"
                       />
                     </div>
@@ -218,12 +225,20 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
                   <div className={styles.formRow}>
                     <textarea name="message" placeholder="Message *" aria-label="Message" className={`text-field ${styles.formTextarea}`} rows={5} required />
                   </div>
+                  {formType === 'creators' && (
+                    <p className={styles.creatorNotice}>
+                      This is an enquiry for support or potential collaboration, not automatic payment.
+                      Paid partnerships are selective and depend on an established presence, consistent original content,
+                      genuine engagement on Wano, campaign fit, and available budget. Meeting these criteria does not
+                      guarantee an offer. Any paid work is agreed separately before it begins.
+                    </p>
+                  )}
                   <div className={styles.formRow}>
                     <button type="submit" className="submit-button" disabled={formStatus === 'loading'}>
-                      {formStatus === 'loading' ? 'Sending...' : formType === 'creators' ? 'Apply Now' : 'Submit Inquiry'}
+                      {formStatus === 'loading' ? 'Sending...' : formType === 'creators' ? 'Send enquiry' : 'Submit Inquiry'}
                     </button>
                   </div>
-                  <p className={styles.formNote}>{formType === 'creators' ? 'We review applications and reach out to creators who align with our community.' : 'We review inquiries carefully and respond directly.'}</p>
+                  <p className={styles.formNote}>{formType === 'creators' ? 'We review enquiries and contact creators when there is a suitable opportunity. Sending an enquiry does not create a paid arrangement.' : 'We review inquiries carefully and respond directly.'}</p>
                   {formStatus === 'success' && (
                     <div className={styles.formSuccess}>Thank you! Your inquiry has been received.</div>
                   )}
