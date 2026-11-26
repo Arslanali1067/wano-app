@@ -43,11 +43,52 @@ export function creatorUrl(username?: string | null): string | undefined {
 export function toIsoDate(raw?: string | null): string | undefined {
   if (!raw) return undefined;
   const text = raw.trim();
+  const parts = text.match(/^(\d{4})-(\d{2})-(\d{2})(?:T(\d{2}):(\d{2}):(\d{2})(?:\.\d+)?(?:z|[+-]\d{2}:?\d{2})?)?$/i);
+  if (!parts) return undefined;
+  const [, y, m, day, h = "0", min = "0", sec = "0"] = parts;
+  const year = Number(y), month = Number(m);
+  const leap = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+  const days = [31, leap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  if (month < 1 || month > 12 || Number(day) < 1 || Number(day) > days[month - 1]
+    || Number(h) > 23 || Number(min) > 59 || Number(sec) > 59) return undefined;
   // Backend timestamps without an offset represent UTC; date-only values need a time.
   const normalized = /^\d{4}-\d{2}-\d{2}$/.test(text) ? `${text}T00:00:00Z`
     : text.replace(/(\.\d{3})\d+/, "$1") + (/(?:z|[+-]\d{2}:?\d{2})$/i.test(text) ? "" : "Z");
   const d = new Date(normalized);
   return Number.isNaN(d.getTime()) ? undefined : d.toISOString();
+}
+
+export function parsePublicVideo(value: unknown, requestedId: string): PublicVideo {
+  const invalid = () => { throw new Error("Invalid public video response"); };
+  if (!value || typeof value !== "object" || Array.isArray(value)) return invalid();
+  const data = value as PublicVideo;
+  if (typeof data._id !== "string" || data._id.toLowerCase() !== requestedId.toLowerCase()) return invalid();
+  // Nothing supplied alongside a restricted response may reach HTML or client props.
+  if (data.limited === true) return { _id: data._id, limited: true };
+  for (const field of [data.limited, data.unlisted, data.photo]) {
+    if (field != null && typeof field !== "boolean") return invalid();
+  }
+  for (const field of [data.title, data.description, data.created_at, data.remoteUrl_CF]) {
+    if (field != null && typeof field !== "string") return invalid();
+  }
+  for (const field of [data.duration, data.views_count, data.likes_count, data.comments_count]) {
+    if (field != null && (typeof field !== "number" || !Number.isFinite(field) || field < 0)) return invalid();
+  }
+  if (data.urls != null && (typeof data.urls !== "object" || Array.isArray(data.urls))) return invalid();
+  if (data.user != null && (typeof data.user !== "object" || Array.isArray(data.user))) return invalid();
+  for (const field of [data.urls?.thumbnail, data.urls?.hls_playlist, data.user?.username,
+    data.user?.display_name, data.user?.profile_picture, data.preview_image]) {
+    if (field != null && typeof field !== "string") return invalid();
+  }
+  const source = data.remoteUrl_CF || data.urls?.hls_playlist;
+  if (!data.photo && !source) return invalid();
+  if (source) {
+    try {
+      const url = new URL(source);
+      if (url.protocol !== "https:" || url.username || url.password) return invalid();
+    } catch { return invalid(); }
+  }
+  return data;
 }
 
 export function videoJsonLd(data: PublicVideo) {

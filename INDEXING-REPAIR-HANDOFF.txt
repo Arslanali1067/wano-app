@@ -47,7 +47,8 @@ All ten initially displayed 404 examples used share.wanoafrica.com/pages/feed
 with videoId and single query arguments. One live request confirmed nginx/1.24.0
 returns 404. Main website robots.txt currently allows crawling.
 ops/nginx/share-watch-links.conf contains narrowly scoped redirect locations.
-It is NOT installed or syntax-tested with the target server configuration.
+It is NOT installed or tested with the target server configuration.
+The snippet passed isolated Nginx 1.24.0 syntax testing and 40 HTTP redirect cases.
 The host is served by Nginx, so changing the Next website alone cannot repair it.
 Preserve certificates, ACME renewal and other host behavior when installing.
 
@@ -70,8 +71,9 @@ privacy rules; schema URL and mainEntityOfPage agree with existing canonical.
 Social sharing/deep-link OG URLs and visibility checks remain intact.
 
 VALIDATION
-Website: npm run build; npm run lint; six Node helper tests;
-one built-Next integration scenario covering public/restricted/unlisted/photo,
+Website: npm run build; npm run lint; nine Node helper tests (including 500 generated-caption cases);
+one built-Next integration scenario including 100 varied requests at concurrency 10,
+covering public/restricted/unlisted/photo,
 404 and 500, script breakout, SSR media, author URL and permanent legacy redirect.
 Safari playback manually observed on local production build, duration loaded,
 real video frames visible and title displayed.
@@ -79,7 +81,8 @@ Commands (Node 24 used for direct TypeScript stripping):
   node --experimental-strip-types --test tests/video-seo.test.mjs
   node --test tests/watch-page.integration.mjs
 Backend: 75 tests across test_share_links.py, test_share_more.py,
-test_share_installs.py, plus 11 test_public_site.py tests passed.
+test_share_installs.py, plus 11 test_public_site.py tests initially passed. The pressure run added
+test_shares.py: all 89 combined backend tests passed.
 Backend tests use mocked external services and in-memory MongoDB, not production.
 Python syntax and both git diff --check passed. Existing deprecation warnings remain.
 
@@ -103,3 +106,13 @@ URL rechecked; safe serialization here is not proof every historical issue is fi
 All 349 404 URLs have NOT been audited; only the first ten displayed examples.
 No site-wide sitemap cleanup or data deletion was performed.
 Nginx host repair, deployment, live verification and Google reprocessing remain.
+
+PRESSURE-TEST UPDATE — 26 November 2026
+Two newly tested gaps failed before fixes and pass after fixes:
+1. Invalid calendar dates rolled over (February 30 became March 2). Such dates
+   are now omitted; valid leap days, timezone offsets and microseconds work.
+2. HTTP 200 with an empty/error/mismatched-post payload could render an
+   indexable placeholder. Invalid payloads now cause 500; restricted responses
+   are reduced to ID + limited flag before rendering. No hidden metadata passes.
+
+See PRESSURE-TEST-RESULTS.txt for scope, evidence and remaining release limits.

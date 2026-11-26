@@ -1,0 +1,57 @@
+WANO INDEXING REPAIR — PRESSURE TEST
+26 November 2026
+
+RESULT: prepared local changes pass the tests below. NOT deployed.
+
+DEFECTS CAUGHT AND FIXED IN PREPARED WEBSITE PATCH
+- Calendar date rollover: 2026-02-30 had become 2026-03-02. New test failed
+  before change; now rejects nonexistent dates, preserves valid leap days/offsets.
+- Empty HTTP-200 upstream response rendered a 200 indexable placeholder.
+  New built-app test failed before change (expected 500, got 200). Response
+  validation now rejects empty/error/null/mismatched-post/malformed payloads.
+  Actual missing/deleted responses remain 404; temporary errors remain 500.
+- Response validation rejects malformed fields, unsafe media URL schemes and
+  negative/nonfinite counts; restricted payloads strip extra fields entirely.
+
+WEBSITE CHECKS
+9 helper tests passed, including 500 deterministic caption combinations:
+script-closing tags, comment delimiters, emoji, flags, quotes, ampersands,
+Unicode line/paragraph separators, Arabic and Spanish text. JSON round trips
+preserve the trimmed caption and contain no raw HTML opening delimiters.
+One full built-Next integration scenario passed: SSR source/poster/title,
+canonical identity, creator URL, no script breakout, restricted/unlisted/photo
+visibility, 404/410 vs 429/503, malformed JSON and successful error envelopes,
+wrong-post identity, valid permanent redirects and invalid redirect inputs.
+100 additional varied HTTP requests at concurrency 10 all passed, checking
+separate post identities, privacy/noindex and upstream failures. They took
+approximately 0.31 seconds locally; this is NOT a production capacity or phone
+performance measurement. Backend data was provided by a local fixture API.
+Production build, type checks, lint and git diff --check passed.
+Safari native HLS playback was observed during initial verification.
+Chromium/MSE playback and real-phone playback have NOT been verified here.
+
+BACKEND CHECKS
+89 tests passed across test_share_links.py, test_share_more.py,
+test_share_installs.py, test_shares.py and test_public_site.py.
+They use in-memory MongoDB and mocked external services.
+A canonical-schema regression was deliberately run against the original
+share.py: failed as expected (missing mainEntityOfPage). Original modified
+file then restored exactly and test passed. Backend working tree is clean.
+
+NGINX CHECKS
+Built official Nginx 1.24.0 source in /tmp (matching old host's reported version);
+no system Nginx was installed or changed. Isolated config syntax passed.
+40 GET/HEAD cases passed: valid query/path links, optional trailing slash,
+query ordering, uppercase IDs, untrusted Host header and next-url arguments,
+invalid IDs, extra paths, encoded redirect and header-injection attempts.
+Valid requests returned 308 to the fixed Wano origin with correct video ID;
+invalid requests did not redirect. Temporary process stopped after tests.
+No production TLS server configuration was loaded, changed or reloaded.
+
+STILL REQUIRED BEFORE CLAIMING LIVE REPAIR
+Review current remote revisions and deployment targets, release both code
+changes, install redirects in the actual share-host TLS configuration, run
+nginx -t there, verify public/private/unlisted behavior live, then use Google
+URL Inspection. Google's eventual indexing is not guaranteed by these tests.
+All 349 reported 404s and every canonical mismatch have not been audited.
+The historical Unicode parsing report still needs its precise URL rechecked.

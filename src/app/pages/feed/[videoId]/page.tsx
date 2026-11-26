@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Feed } from "./Feed";
 import { cache } from "react";
 import { API } from "@/lib/wano";
-import { PublicVideo, videoName, videoDescription, videoJsonLd, serializeJsonLd, watchPath } from "@/lib/video-seo";
+import { PublicVideo, parsePublicVideo, videoName, videoDescription, videoJsonLd, serializeJsonLd, watchPath } from "@/lib/video-seo";
 
 type Props = {
   params: Promise<{ videoId: string }>;
@@ -18,7 +18,7 @@ const getVideo = cache(async (videoId: string): Promise<PublicVideo | null> => {
   });
   if (res.status === 404 || res.status === 410) return null;
   if (!res.ok) throw new Error(`Public video service unavailable (${res.status})`);
-  return await res.json() as PublicVideo;
+  return parsePublicVideo(await res.json(), videoId);
 });
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
