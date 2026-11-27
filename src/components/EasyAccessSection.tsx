@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, FormEvent } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from './EasyAccessSection.module.css'
+import PartnershipInquiryForm from './PartnershipInquiryForm'
 
 // Local check icon
 const images = {
@@ -146,7 +147,7 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
                         isVisible ? styles.visible : ''
                       }`}
                     >
-                      <h3>{formType === 'creators' ? 'Creator support and collaboration enquiries' : 'Contact Us'}</h3>
+                      <h3>{formType === 'creators' ? 'Creator support and collaboration enquiries' : 'Partnership enquiries'}</h3>
                     </div>
                   )}
                   {formType === 'creators' && (
@@ -163,13 +164,12 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
                       style={{ animationDelay: '0.15s' }}
                     >
                       <p>
-                        For partnership inquiries, collaborations, or strategic discussions, reach out
-                        directly or use the form.
+                        Choose the type of inquiry below so we can direct your proposal to the right team.
                       </p>
                       <p className={styles.contactEmail}>partnerships@wanoafrica.com</p>
                     </div>
                   )}
-                  <form onSubmit={handleFormSubmit} className={`${styles.inquiryForm} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}>
+                  {variant === 'platform' ? <PartnershipInquiryForm /> : <form onSubmit={handleFormSubmit} className={`${styles.inquiryForm} ${styles.fadeIn} ${isVisible ? styles.visible : ''}`}>
                   <div className={styles.formRow}>
                     <input type="text" name="fullName" placeholder="Full Name *" aria-label="Full Name" className="text-field" required />
                   </div>
@@ -247,7 +247,7 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
                       {errorMessage || 'Something went wrong. Please try again or email us directly.'}
                     </div>
                   )}
-                </form>
+                </form>}
                 </>
               ) : (
                 <>

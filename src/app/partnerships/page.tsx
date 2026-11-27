@@ -31,11 +31,19 @@ export default function PartnershipsPage() {
       <WorkWithWanoSection />
       <PhoneFeaturesSection variant="partnerships" />
       <PlatformListFeaturesSection variant="partnerships" />
-      <section className="section" aria-labelledby="creator-partnerships">
+      <section className="section" aria-labelledby="build-your-presence">
         <div className={`container ${s.narrow}`}>
-          <h2 id="creator-partnerships" className={s.h2}>Creators: build your presence on Wano first</h2>
-          <p className={s.text}>For paid creator partnerships, we consider an established presence on Wano, consistent original content, and genuine audience engagement. A following elsewhere can provide context, but does not replace building a community on Wano. Opportunities depend on campaign fit and available budget. Joining, posting, applying, or reaching a milestone does not guarantee payment. Any paid collaboration is agreed separately before work begins.</p>
-          <Link href="/creators" className={s.btn}>Read creator expectations</Link>
+          <h2 id="build-your-presence" className={s.h2}>Build your presence on Wano</h2>
+          <p className={s.text}>Share your work, connect with new audiences, and bring your community into the conversation. Make Wano part of your everyday social presence through consistent, relevant content and meaningful engagement.</p>
+          <p className={s.text}>Brands, organizations, event organizers, and creators can start participating without a sponsorship or partnership agreement. Building your presence can help people discover your work and connect your community across Africa, the Diaspora, and beyond.</p>
+          <h3 className={s.h2}>Seeking sponsorship or paid participation from Wano?</h3>
+          <p className={s.text}>Before requesting financial support or asking Wano to pay to participate in an event or project, establish an active presence on the platform. We assess proposals individually based on consistent contributions, genuine engagement, community benefit, strategic fit, and alignment with our <Link href="/community-guidelines">Community Guidelines</Link>. An audience elsewhere provides useful context, but does not replace meaningful participation on Wano.</p>
+          <p className={s.text}>Participation does not guarantee audience growth, funding, promotion, or a partnership. Invitations do not imply acceptance of participation fees or paid slots. Any financial commitment must be agreed separately in writing.</p>
+          <div className={s.row}>
+            <Link href="/#Download" className={s.btn}>Start building on Wano</Link>
+            <Link href="/advertise" className={s.btnOutline}>Advertise on Wano</Link>
+          </div>
+          <p className={s.text}>Want to sponsor Wano or discuss a media, investment, distribution, or technology partnership? Choose the relevant inquiry type below. An established Wano following is not required for these inquiries.</p>
         </div>
       </section>
       <EasyAccessSection variant="platform" />

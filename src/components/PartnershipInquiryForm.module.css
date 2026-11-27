@@ -1,0 +1,14 @@
+.form { min-width: 0; }
+.fields { border: 0; padding: 0; margin: 0; display: grid; gap: 20px; min-width: 0; }
+.legend { font-size: 20px; color: #fff; padding: 0 0 18px; }
+.fields label { color: #eeeef0; font-size: 16px; line-height: 1.5; }
+.hint { color: #c3c3cc; font-size: 14px; line-height: 1.6; margin: 0; overflow-wrap: anywhere; }
+.hint a, .fields p a { color: #a4dfb8; text-decoration: underline; text-underline-offset: 3px; }
+.fieldError { color: #ffd6d6; font-size: 14px; line-height: 1.5; margin: 0; }
+.fields [aria-invalid="true"] { border-color: #ffb4b4; }
+.fields input:focus-visible, .fields textarea:focus-visible, .fields select:focus-visible, .fields a:focus-visible, .form button:focus-visible { outline: 3px solid #a4dfb8; outline-offset: 3px; }
+.check { display: flex; align-items: flex-start; gap: 12px; cursor: pointer; }
+.check input { width: 22px; height: 22px; flex-shrink: 0; margin-top: 2px; accent-color: #73bd8c; }
+.fields:disabled { opacity: .75; }
+.fields button { min-height: 48px; }
+.fields select { white-space: normal; min-height: 50px; }
