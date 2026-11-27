@@ -1,15 +1,15 @@
 // Shared client/server rules. Profile references are syntax-checked, never fetched.
 // Identity, account activity and proposal suitability require human review.
 export const INQUIRY_TYPES = [
-  ['funding', 'Request sponsorship or funding from Wano'],
-  ['paid-participation', 'Ask Wano to pay for an event or project slot'],
-  ['advertise', 'Purchase advertising on Wano'],
-  ['sponsor-wano', 'Sponsor Wano or its community'],
-  ['community', 'Content, community or promotional collaboration'],
-  ['strategic', 'Investment, distribution or technology partnership'],
-  ['press', 'Press or media enquiry'],
+  ['funding', 'Funding from Wano'],
+  ['paid-participation', 'Wano pays for an event/project'],
+  ['advertise', 'Advertise on Wano'],
+  ['sponsor-wano', 'Sponsor Wano'],
+  ['community', 'Community or content project'],
+  ['strategic', 'Investment or strategic partner'],
+  ['press', 'Press or media'],
   ['support', 'Technical or account help'],
-  ['other', 'Other partnership enquiry'],
+  ['other', 'Other partnership'],
 ] as const
 export type InquiryType = typeof INQUIRY_TYPES[number][0]
 export const isFinancial = (type: string) => type === 'funding' || type === 'paid-participation'
@@ -19,16 +19,18 @@ export const ACKNOWLEDGMENT = 'Your inquiry has been received. We review proposa
 export type Inquiry = Record<keyof typeof LIMITS, string> & { inquiryType: InquiryType; acknowledgment: boolean }
 export type Validation = { ok: true; value: Inquiry } | { ok: false; errors: Record<string, string> }
 
+const HANDLE = new RegExp('^[\\p{L}\\p{M}\\p{N}_.-]{1,100}$', 'u')
+
 export function normalizeProfile(input: string): string | null {
   const value = input.trim()
-  if (!value || value.length > LIMITS.profile || /[\s\u0000-\u001f\u007f]/u.test(value)) return null
+  if (!value || value.length > LIMITS.profile || /[\s\u0000-\u001f\u007f]/.test(value)) return null
   const handle = value.startsWith('@') ? value.slice(1) : value
-  if (/^[\p{L}\p{M}\p{N}_.-]{1,100}$/u.test(handle)) return `@${handle}`
+  if (HANDLE.test(handle)) return `@${handle}`
   try {
     const url = new URL(/^(?:www\.|devbe\.)?wanoafrica\.com\//i.test(value) ? `https://${value}` : value)
     if (url.protocol !== 'https:' || url.username || url.password || url.port || !['wanoafrica.com', 'www.wanoafrica.com', 'devbe.wanoafrica.com'].includes(url.hostname)) return null
     const path = decodeURIComponent(url.pathname).replace(/\/$/, '')
-    if (/^\/@[\p{L}\p{M}\p{N}_.-]{1,100}$/u.test(path) || /^\/u\/[a-f0-9]{24}$/i.test(path)) return `https://${url.hostname}${url.pathname.replace(/\/$/, '')}`
+    if ((path.startsWith('/@') && HANDLE.test(path.slice(2))) || /^\/u\/[a-f0-9]{24}$/i.test(path)) return `https://${url.hostname}${url.pathname.replace(/\/$/, '')}`
   } catch { /* malformed references are returned as field errors */ }
   return null
 }
@@ -44,13 +46,13 @@ export function validateInquiry(input: unknown): Validation {
     text[key] = typeof item === 'string' ? item.trim() : ''
     if (item != null && typeof item !== 'string') errors[key] = 'Enter text in this field.'
     else if (text[key].length > max) errors[key] = `Use ${max} characters or fewer.`
-    else if (/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/u.test(text[key])) errors[key] = 'Remove unsupported control characters.'
+    else if (/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(text[key])) errors[key] = 'Remove unsupported control characters.'
   }
   const inquiryType = typeof raw.inquiryType === 'string' ? raw.inquiryType : ''
   if (!INQUIRY_TYPES.some(([value]) => value === inquiryType)) errors.inquiryType = 'Choose an inquiry type.'
   if (inquiryDestination(inquiryType)) errors.inquiryType = 'Please use the linked advertising, press or help page for this enquiry.'
   for (const key of ['name', 'email', 'message'] as const) if (!text[key]) errors[key] = 'This field is required.'
-  if (text.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/u.test(text.email)) errors.email = 'Enter a valid email address.'
+  if (text.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text.email)) errors.email = 'Enter a valid email address.'
   if (/[\r\n]/.test(text.name)) errors.name = 'Enter your name on one line.'
   if (text.profile) {
     const profile = normalizeProfile(text.profile)

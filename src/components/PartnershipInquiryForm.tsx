@@ -11,12 +11,16 @@ export default function PartnershipInquiryForm() {
   const [status, setStatus] = useState<'idle' | 'busy' | 'error' | 'done'>('idle')
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [notice, setNotice] = useState('')
+  const [feedbackVersion, setFeedbackVersion] = useState(0)
   const lock = useRef(false)
   const resultRef = useRef<HTMLDivElement>(null)
   const type = values.inquiryType ?? ''
   const financial = isFinancial(type)
   const destination = inquiryDestination(type)
-  useEffect(() => { if (status === 'done' || status === 'error') resultRef.current?.focus() }, [status, errors])
+  useEffect(() => { if (status === 'done' || status === 'error') resultRef.current?.focus() }, [status, feedbackVersion])
+  const showError = (fields: Record<string, string>, message: string) => {
+    setErrors(fields); setNotice(message); setStatus('error'); setFeedbackVersion(old => old + 1)
+  }
   const update = (key: string, value: string) => {
     setValues(old => key === 'inquiryType' ? { ...old, inquiryType: value, role: '', participation: '', communityBenefit: '' } : { ...old, [key]: value })
     if (key === 'inquiryType') { setAcknowledged(false); setErrors({}); setStatus('idle'); setNotice('') }
@@ -26,20 +30,19 @@ export default function PartnershipInquiryForm() {
     event.preventDefault()
     if (lock.current || destination) return
     const checked = validateInquiry({ ...values, acknowledgment: acknowledged })
-    if (!checked.ok) { setErrors(checked.errors); setNotice('Please check the highlighted fields.'); setStatus('error'); return }
+    if (!checked.ok) { showError(checked.errors, 'Please check the highlighted fields.'); return }
     lock.current = true
     setStatus('busy'); setErrors({}); setNotice('')
     try {
       const response = await fetch('/api/partnership-inquiry', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(checked.value) })
       const data = await response.json().catch(() => null)
-      if (!response.ok || data?.received !== true || typeof data?.ref !== 'string') {
-        setErrors(data?.errors && typeof data.errors === 'object' ? data.errors : {})
-        setNotice(typeof data?.detail === 'string' ? data.detail : 'We could not confirm receipt. Your answers are still here; please try again.')
-        setStatus('error'); return
+      if (!response.ok || data?.received !== true || typeof data?.ref !== 'string' || !data.ref.trim()) {
+        showError(data?.errors && typeof data.errors === 'object' ? data.errors : {}, typeof data?.detail === 'string' ? data.detail : 'We could not confirm receipt. Your answers are still here; please try again.')
+        return
       }
       setStatus('done')
     } catch {
-      setNotice('We could not confirm receipt. Check your connection. Your answers are still here; please try again.'); setStatus('error')
+      showError({}, 'We could not confirm receipt. Check your connection. Your answers are still here; please try again.')
     } finally { lock.current = false }
   }
   const field = (name: keyof typeof LIMITS, label: string, required = false, multiline = false, hint?: string) => {
@@ -75,7 +78,7 @@ export default function PartnershipInquiryForm() {
       </div> : type ? <>
         {financial && <div className={s.card}>
           <h3>Build your presence on Wano first</h3>
-          <p>Financial requests are considered from active participants in the Wano community. A profile alone does not demonstrate meaningful participation. We review the profile and proposal together; there is no follower-count shortcut or automatic approval.</p>
+          <p>Financial requests are considered from active participants in the Wano community. A profile alone does not demonstrate meaningful participation. We review the profile and proposal together; we consider relevance and participation, rather than follower counts alone.</p>
           <p>New to Wano? <Link href="/#Download">Get the app</Link>, share your work, and build genuine community connections before submitting a financial request.</p>
         </div>}
         {type === 'sponsor-wano' && <p className={styles.hint}>Use this option if your organization wants to support Wano. You do not need an established Wano following to enquire.</p>}
@@ -91,10 +94,10 @@ export default function PartnershipInquiryForm() {
         </>}
         {field('message', financial ? 'What are you asking Wano to contribute?' : 'Tell us about your proposal', true, true, financial ? 'Describe the contribution requested. Include the amount and currency for any fee, paid slot or funding request.' : undefined)}
         {financial && <div className={s.field}>
-          <label className={styles.check}><input id="partner-acknowledgment" type="checkbox" checked={acknowledged} required onChange={event => { setAcknowledged(event.target.checked); setErrors(old => { const next = { ...old }; delete next.acknowledgment; return next }) }} aria-invalid={!!errors.acknowledgment} aria-describedby="partner-expectations" />
+          <label className={styles.check}><input id="partner-acknowledgment" type="checkbox" checked={acknowledged} required onChange={event => { setAcknowledged(event.target.checked); setErrors(old => { const next = { ...old }; delete next.acknowledgment; return next }) }} aria-invalid={!!errors.acknowledgment} aria-describedby={errors.acknowledgment ? 'partner-expectations partner-acknowledgment-error' : 'partner-expectations'} />
             <span>I understand that participation and submission do not guarantee funding, promotion or a partnership. *</span></label>
           <p id="partner-expectations" className={styles.hint}>Invitations do not imply acceptance of participation fees or paid slots. Any financial commitment must be agreed separately in writing.</p>
-          {errors.acknowledgment && <p className={styles.fieldError}>{errors.acknowledgment}</p>}
+          {errors.acknowledgment && <p id="partner-acknowledgment-error" className={styles.fieldError}>{errors.acknowledgment}</p>}
         </div>}
         <div><button type="submit" className={s.btn} disabled={status === 'busy'}>{status === 'busy' ? 'Sending…' : 'Submit inquiry'}</button></div>
       </> : null}

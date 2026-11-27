@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
   if (message.length > 3000) return NextResponse.json({ detail: 'Please shorten your proposal.' }, { status: 400 })
   const fields = { kind: 'partner', name: value.name, email: value.email, company: value.company, country: value.country, message }
   const saved = await forward('/public/enquiries', fields, req.headers)
-  if (saved.status !== 200 || typeof saved.data?.ref !== 'string' || !saved.data.ref) {
+  if (saved.status !== 200 || typeof saved.data?.ref !== 'string' || !saved.data.ref.trim()) {
     const status = saved.status === 429 ? 429 : saved.status >= 500 || saved.status === 200 ? 503 : 400
     return NextResponse.json({ detail: status === 429 ? 'Too many inquiries. Please try again later.' : "Your inquiry could not be saved. Your answers are still here; please try again." }, { status })
   }

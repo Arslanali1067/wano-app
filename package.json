@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test:partnerships": "node --test tests/partnership-inquiry.test.mjs tests/partnership-form.test.cjs",
+    "test:partnerships:integration": "node --test tests/partnership-inquiry.integration.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^1.6.1",
@@ -22,6 +24,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.35",
-    "typescript": "^5"
+    "typescript": "^5",
+    "react-test-renderer": "18.3.1"
   }
 }

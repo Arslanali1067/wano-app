@@ -353,3 +353,11 @@
   line-height: 1.6;
   margin: 0 0 1.25rem;
 }
+
+/* Keep the conditional partnership fields readable on tablets as well as phones. */
+.partnershipLayout .listContent { min-width: 0; }
+@media screen and (max-width: 1100px) {
+  .partnershipLayout { flex-direction: column; }
+  .partnershipLayout .listImageHolder { display: none; }
+  .partnershipLayout .listContent { width: 100%; }
+}

@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 
 export default function PartnershipsPage() {
   return (
-    <>
+    <div className={s.partnershipPage}>
       <PlatformHeroSection variant="partnerships" />
       <WorkWithWanoSection />
       <PhoneFeaturesSection variant="partnerships" />
@@ -48,7 +48,7 @@ export default function PartnershipsPage() {
       </section>
       <EasyAccessSection variant="platform" />
       <CTASection />
-    </>
+    </div>
   )
 }
 

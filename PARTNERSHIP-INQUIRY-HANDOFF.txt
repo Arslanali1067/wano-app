@@ -1,0 +1,94 @@
+WANO WEBSITE — PARTNERSHIP PROFILE / INQUIRY FLOW
+26 November 2026 (America/Chicago)
+
+STATUS
+Built and tested locally. Not deployed to wanoafrica.com. No live enquiries or emails sent.
+Repository: Arslanali1067/wano-app
+Branch: codex/partnership-profile-flow
+Base: aa1c8e180e8d6dcff72fe7166fa23c4690cfe1cf (latest fetched main)
+Local worktree: /Users/eilmerbahri/Downloads/wano-partnership-inquiry
+Original local checkout and its seven pre-existing modifications were preserved.
+The initial draft was moved onto current remote main, retaining the published Community
+Guidelines, creator wording and indexing repairs. Review diff against origin/main.
+
+WHAT CHANGED
+Partnerships copy presents ordinary participation and community growth first.
+No disclosure of Wano's income, financial constraints or internal budget position added.
+Financial requests from Wano require a Wano profile, representative role, participation,
+community benefit, requested contribution, and acknowledgment of expectations.
+Ordinary sponsors, community and strategic partners may submit without a profile.
+Advertising, press and account-help selections link to the appropriate existing pages.
+Campaign/press/investor links in Work with Wano point to appropriate destinations.
+Accepts @handles, Unicode handles and known Wano website / old app profile-share links.
+Profile references are syntax-checked, never fetched, and explicitly marked unverified.
+No follower minimum, posting quota, automatic approval or promised funding/growth.
+Switching categories clears financial answers and acknowledgment; failed submissions
+preserve answers; successful receipt remains until the visitor starts another inquiry.
+
+PERSISTENCE / CONTRACT
+POST /api/partnership-inquiry validates server-side, bounds JSON bodies to 32 KiB even
+without Content-Length, and enforces field limits. It uses the existing forward helper
+and /api/v1/public/enquiries backend, kind=partner. All new details are assembled in the
+existing message field, under its 3,000-character limit, so current Admin retains them.
+Receipt is returned only for backend HTTP 200 plus a nonblank saved reference.
+Backend 429 and failures are surfaced without exposing private upstream error messages.
+Optional Resend notification reuses existing configuration and plaintext email; it follows
+persistence, and a notification exception does not undo an already-saved enquiry.
+No backend schema migration or new backend deployment is required for this representation.
+
+PRESSURE TEST RESULTS
+26 automated unit/component/regression tests passed:
+- all nine inquiry routes; financial requirements and real boolean acknowledgment;
+- missing/malformed fields, whitespace, limits and invalid categories;
+- profile host/scheme/credential/control-character attacks and old/new share links;
+- multilingual references and 200 varied proposal cases;
+- 100 rapid category switches clear stale financial state;
+- 100 rapid submit attempts produce one in-flight request;
+- disabled fields while sending; offline/server errors/malformed success retain answers;
+- genuine sponsors submit without a profile; persistent success acknowledgment;
+- error correction no longer steals keyboard focus (new regression failed before fix).
+Two built-Next integration scenarios passed:
+- partnership API persists every requested detail, handles upstream 429/503/empty-200,
+  rejects invalid JSON/types/oversized and chunked bodies, protects advertising/press routes;
+- existing watch/indexing regression scenario preserved.
+Partnership scenario included 100 varied HTTP submissions at concurrency 10 against a
+LOCAL fixture. Existing watch scenario also included 100 requests. Not production load proof.
+Production build, TypeScript, ESLint (no warnings/errors) and git diff --check passed.
+Real Chromium checks: 320px phone, 768px tablet and default 1579px desktop.
+No horizontal overflow at those widths after clipping existing decorative artwork and
+making the partnership form full-width on tablet. Dropdown choices shortened for phones.
+Invalid-profile error and keyboard correction observed; active field stayed partner-profile.
+Successful browser submission went only to a LOCAL fixture, never production.
+
+RUN CHECKS (Node 24 used; native TypeScript stripping needed for .mjs helper tests)
+  npm ci
+  npm run test:partnerships
+  node --test tests/video-seo.test.mjs
+  npm run build
+  npm run test:partnerships:integration
+  node --test tests/watch-page.integration.mjs
+  npm run lint
+  npx tsc --noEmit
+New react-test-renderer dependency is development-only, matching existing React 18.3.1.
+No production dependency upgrade.
+
+LOCAL PREVIEW
+http://localhost:3122/partnerships#Download
+Preview process: /Users/eilmerbahri/Downloads/wano-partnership-preview.cjs
+Its local fixture runs on 127.0.0.1:4518, returns local-preview-only references and sends
+no email. Never deploy this fixture or its environment settings.
+
+RELEASE / REVIEW LIMITS
+Not live. Merge/deploy through the existing website workflow after review.
+Reconfirm latest main before merging. Keep CONTACT_EMAIL, RESEND_FROM, RESEND_API_KEY,
+and WANO_API_URL configured through existing secret management, not committed files.
+Production Admin receipt and real email delivery were not exercised here. A controlled
+production smoke enquiry should be checked in Admin after release.
+Ownership, active participation, representative authority and authenticity require staff
+review. Form answers and a valid URL are not proof. Applicants can choose a different
+category or contact Wano by other channels; review must recognize financial requests.
+Existing public backend rate limiting is reused. No production abuse/load audit performed.
+The client blocks overlapping submissions, but exactly-once persistence after an ambiguous
+network failure is not guaranteed by the existing backend; do not auto-retry POSTs.
+Real Safari/iPhone/Android browser testing and every assistive technology not covered.
+No public funding, sponsorship or payment commitments were made by this change.

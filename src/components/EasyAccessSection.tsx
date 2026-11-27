@@ -122,7 +122,7 @@ export default function EasyAccessSection({ variant = 'default' }: EasyAccessSec
       <div id="Download" className="container">
         <div className={styles.divider} />
         
-          <div className={`${styles.listFeature} ${showForm ? styles.listFeaturePlatform : ''}`}>
+          <div className={`${styles.listFeature} ${showForm ? styles.listFeaturePlatform : ''} ${variant === 'platform' ? styles.partnershipLayout : ''}`}>
           {/* Image Side */}
           <div className={styles.listImageHolder}>
             <div className={styles.listBackgroundGradient} />

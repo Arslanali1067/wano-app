@@ -6,17 +6,17 @@ const cards = [
   {
     title: 'Brands and advertisers',
     text: 'Reach people across Africa and the diaspora through creators they already watch: sponsored challenges, creator campaigns and Wano TV. Tell us who you want to reach and we will shape it with you.',
-    link: { href: '/contact', label: 'Talk to us about a campaign' },
+    link: { href: '/advertise', label: 'Talk to us about a campaign' },
   },
   {
     title: 'Investors',
     text: 'Wano is a short-video, film and messaging app built for Africa and the diaspora, light on mobile data. We are happy to share where we are and where we are going.',
-    link: { href: '/contact', label: 'Get in touch' },
+    link: { href: '/partnerships#Download', label: 'Get in touch' },
   },
   {
     title: 'Press and partners',
     text: 'Telecoms, cultural organisations, film festivals and media: we work with partners who want African stories seen.',
-    link: { href: '/contact', label: 'Contact the team' },
+    link: { href: '/press', label: 'Contact the team' },
   },
 ]
 
